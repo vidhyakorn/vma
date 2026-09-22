@@ -10,7 +10,6 @@ description: Research Assistant at MORU, Bangkok.
 
 <figure style="float: left; max-width: 200px; margin: 0 20px 20px 0;"> <img src="profile.jpg" alt="vma" style="width: 80%; height: auto; display: block;"> <figcaption> <a href="https://share.google" target="_blank" rel="noopener"> @ Blackwell's Bookstore.</a> </figcaption> </figure>
 <div style="text-align: justify;">
-<br><br>
 I'm a research assistant at the <a href="https://www.tropmed.ac/units/moru-bangkok/mathematical-and-economic-modelling" target="_blank">Mathematical and Economic Modeling Group</a> at the <a href="https://www.tropmed.ac/units/moru-bangkok" target="_blank">Mahidol Oxford Tropical Medicine Research Unit (MORU) in Bangkok</a>, Thailand, where I am working on epidemiological modelling of infectious diseases, health policy analysis, and understanding of health, disease, well-being from interdisciplinary perspective. I use quantitative methods through mathematical modeling approach to understand real-world public health challenges in LMIC contexts.
 <br><br>
 More from that, I am deeply interested in the philosophy of science and medicine included sociological theories of health and diseases. I view such knowledge as a critical tool, rather than a subjects matters, to understand historical dynamic phenomenon where I believe full of data and patterns across time. It's our work to conceptualize and define it, where we must always well aware that it's falsifiable, to help anticipate the uncertain future. 
