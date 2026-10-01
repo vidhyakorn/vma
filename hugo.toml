@@ -45,39 +45,43 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   pageRef = '/research'
   weight = 1
 [[menu.main]]
+  name = 'Publications'
+  pageRef = '/research/publications'
+  weight = 2
+[[menu.main]]
   name = 'Writing'
   pageRef = '/blog'
-  weight = 2
+  weight = 3
 [[menu.main]]
   name = 'About'
   pageRef = '/about'
-  weight = 3
+  weight = 4
 [[menu.main]]
   name = 'Discuss'
   pageRef = '/discuss'
-  weight = 4
+  weight = 5
 [[menu.main]]
   name = 'Search'
-  weight = 4.5
+  weight = 6
   [menu.main.params]
     type = 'search'
 # Icons on the far right. ORCID and Google Scholar are added in data/icons.yaml.
 [[menu.main]]
   name = 'ORCID'
   url = 'https://orcid.org/0009-0008-2468-8870'
-  weight = 5
+  weight = 7
   [menu.main.params]
     icon = 'orcid'
 [[menu.main]]
   name = 'Google Scholar'
   url = 'https://scholar.google.com/citations?hl=en&user=jgY_JOAAAAAJ'
-  weight = 6
+  weight = 8
   [menu.main.params]
     icon = 'googlescholar'
 [[menu.main]]
   name = 'LinkedIn'
   url = 'https://www.linkedin.com/in/vidhyakorn'
-  weight = 7
+  weight = 9
   [menu.main.params]
     icon = 'linkedin'
 

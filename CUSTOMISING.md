@@ -58,7 +58,7 @@ In `hugo.toml`, under `[params.home]`:
 
 ```toml
 [params.home]
-  badge = 'MORU · Bangkok'           # the small pill at the top, with the orange dot
+  badge = 'MORU · Bangkok'           # the small pill at the top, with the green dot
   badgeLink = '/about'
   headline = 'τὸ τέλος τοῦ βαλάνου ἐστὶ τὸ γενέσθαι δρῦς'
   subtitle = '“An acorn’s telos is to become an oak tree.” — Aristotle'
@@ -78,7 +78,7 @@ below the grids.
 
 ## Colours
 
-Monochrome, with one orange for anything that should stand out. At the top of
+Monochrome, with green for anything that should stand out. At the top of
 `assets\css\custom.css`:
 
 ```css
@@ -89,10 +89,12 @@ Monochrome, with one orange for anything that should stand out. At the top of
 
   --ink: #111111;          /* headings, links, text */
   --muted: #555555;        /* dates, captions, card lines */
-  --accent: #F68048;       /* the orange: button, badge dot, link underlines,
+  --accent: #31A354;       /* the strong green: badge dot, link underlines,
                               active sidebar bar, card hover line */
-  --accent-text: #BD470F;  /* the same orange, darker, for orange words */
-  --accent-fill: #C64B10;  /* orange behind white text: buttons, filled pills */
+  --accent-soft: #A1D99B;  /* the mid green: tints, the letter on card tiles */
+  --accent-wash: #E5F5E0;  /* the pale green: panel and hover backgrounds */
+  --accent-text: #288545;  /* green words: "Abstract", "All publications →" */
+  --accent-fill: #288545;  /* green behind white text: buttons, filled pills */
   --on-accent: #FFFFFF;    /* the text on --accent-fill */
 }
 ```
@@ -102,22 +104,20 @@ colour scale — search, focus rings, the active sidebar item — from one hue,
 saturation and lightness. Saturation `0%` makes all of it grey, which is what
 keeps the theme monochrome everywhere I haven't restyled by hand.
 
-**Why three oranges.** The bright `#F68048` is only 2.6 : 1 against white, in
-either direction — unreadable as words, and white words on it are unreadable
-too. So it is used only where no text is involved: lines, dots, underlines.
-Buttons and anything else filled with orange use `#C64B10`, deep enough that
-their white text reads at 4.8 : 1. Where the orange *is* the text —
-"Abstract", "All publications →" — it uses `#BD470F` (5.2 : 1).
-Links are black with an orange underline, so the colour is in the line, never
-in the words.
+**Why the greens differ.** `#31A354` is 3.2 : 1 against white — enough for a
+2px underline or a dot, not enough for words, and white words on it are just
+as hard to read. So it is used only where no text is involved. Buttons and
+anything else filled with green use `#288545`, deep enough that their white
+text reads at 4.6 : 1, and that same `#288545` is used where green *is* the
+text. `#A1D99B` and `#E5F5E0` are the two pale greens, for tints and
+backgrounds that never carry small text.
 
-To swap the orange for another colour, change `--accent`, then pick a darker
-version for `--accent-text` and check it reaches 4.5 : 1 at
+To change the green, swap `--accent`, then check whatever you choose for
+`--accent-fill` reaches 4.5 : 1 against white at
 [webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/).
 
 Dark mode has its own values just below, under `.dark { … }`. On a black
-background the orange is readable as text, so there `--accent-text` is the
-orange itself.
+background the pale green reads easily, so there green words use `#A1D99B`.
 
 ---
 
@@ -163,7 +163,7 @@ asking for semibold would make the browser fake it.
 2. `cover: "https://example.org/picture.jpg"` — any image on the web.
 3. `link: "https://journal.org/article"` — the site uses that page's preview
    image.
-4. Nothing — a dark tile with the title's first letter in orange. The shade
+4. Nothing — a dark tile with the title's first letter in green. The shade
    is chosen from the page's address, so each post keeps the same tile.
 
 Every picture is cropped to the same 16 : 9 box and converted to a small WebP
@@ -171,12 +171,19 @@ when the site builds, so a 300 KB photo arrives as a few kilobytes and a grid
 stays even. If a path is wrong, the card falls back to the tile and the build
 log names the file it couldn't find.
 
-**Shape and size** — in `custom.css`, the `CARDS` section:
+**Shape and size** — in `custom.css`, the `CARDS` section. The picture sits
+beside the text, and every card in a row is the same height:
 
 ```css
-.hextra-card .hextra-card-image { aspect-ratio: 16 / 9; }   /* picture shape */
-.hextra-card .hextra-card-icon  { -webkit-line-clamp: 3; }  /* title lines */
+:root { --card-h: 135px; }                                  /* card height */
+.hextra-card .hextra-card-image { width: 38%; }             /* picture width */
+.hextra-card .hextra-card-icon     { -webkit-line-clamp: 2; }  /* title lines */
+.hextra-card .hextra-card-subtitle { -webkit-line-clamp: 2; }  /* summary lines */
 ```
+
+Two lines of title and two of summary is what fits in 135px. Allow a third
+line of either and you have to raise `--card-h` to match, or the extra line
+is cut off.
 
 **Card text** — a publication's card shows where and when it appeared, taken
 from its DOI. Anything else shows its `description:`, or the start of the text.
