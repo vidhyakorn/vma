@@ -1,10 +1,10 @@
 ---
-title: "Untitled"
+title: Aristotle
 date: 2026-09-22
 draft: true
 tags: []
 description: ""
-cover: ""
+cover: /img/simple1.jpg
 math: false
 ---
 
