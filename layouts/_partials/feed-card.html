@@ -1,0 +1,33 @@
+{{/* feed-card.html — one card in a feed: picture, what kind of post it is,
+     its date, its title and a one-line summary.
+
+     The outer classes are Hextra's own, so the border, shadow and hover
+     behaviour match the theme's other cards; everything inside is ours and is
+     styled by the CARDS section of assets/css/custom.css.
+
+     Every partial below is called into a variable first. Calling one inside
+     {{ with partial … }} breaks the build in Hugo 0.166 — see CUSTOMISING.md. */}}
+{{- $page := . -}}
+{{- $thumb := partial "card-thumb.html" $page -}}
+{{- $sub := partial "card-subtitle.html" $page -}}
+{{- $title := partial "utils/title" $page -}}
+{{- $kind := "" -}}
+{{- with $page.CurrentSection -}}
+  {{- $kind = partial "utils/title" . -}}
+{{- end -}}
+<a class="hextra-card feed-card hx:group hx:flex hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:bg-gray-100 hx:shadow-sm hx:dark:border-neutral-700 hx:dark:bg-neutral-800 hx:dark:text-gray-50 hx:hover:shadow-lg hx:hover:border-gray-300 hx:dark:hover:border-neutral-500 hx:transition-all hx:duration-200"
+   href="{{ $page.RelPermalink }}">
+  {{- if $thumb -}}
+  <img class="hextra-card-image feed-card-image" src="{{ $thumb }}" alt="" loading="lazy" decoding="async">
+  {{- else -}}
+  <span class="feed-card-image feed-card-blank" aria-hidden="true"></span>
+  {{- end -}}
+  <div class="feed-card-body">
+    <div class="feed-card-meta">
+      {{- with $kind }}<span class="feed-tag">{{ . }}</span>{{ end -}}
+      {{- with $page.Date }}<time class="feed-card-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2 Jan 2006" }}</time>{{ end -}}
+    </div>
+    <h3 class="feed-card-title">{{ $title }}</h3>
+    {{- with $sub }}<p class="feed-card-sub">{{ . }}</p>{{ end -}}
+  </div>
+</a>

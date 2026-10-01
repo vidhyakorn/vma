@@ -241,7 +241,7 @@ header nav > a:first-child img {
 }
 .site-grid-title {
   font-size: 1.2rem;
-  color: var(--ink);
+  color: var(--accent-text);
   margin: 0;
 }
 .site-grid-more {
@@ -257,79 +257,135 @@ header nav > a:first-child img {
 }
 
 /* ===========================================================================
-   CARDS — half the height they were: the picture sits beside the text rather
-   than above it, cropped to fill, so every card in a row is the same size
-   whatever shape its picture is. Change --card-h to resize them all.
+   CARDS — the feed card used on the homepage, on /posts/ and on each
+   section's page: picture on the left, then what kind of post it is and its
+   date, the title, and a one-or-two-line summary.
+
+   Every picture is run through the duotone filter defined in
+   layouts/_partials/custom/head-end.html, which flattens it to two greens
+   and a neutral, so a row of very different photographs still reads as one
+   set. A post with no picture gets a plain grey panel of the same shape.
+
+   Change --card-h to resize every card at once.
    =========================================================================== */
 :root { --card-h: 135px; }
 
-.hextra-card {
+.feed-grid {
+  align-items: stretch;
+}
+
+.feed-card {
+  position: relative;
   flex-direction: row;
   align-items: stretch;
   height: var(--card-h);
-  overflow: hidden;
 }
-.hextra-card .hextra-card-image {
+
+.feed-card .feed-card-image {
   width: 38%;
   max-width: 170px;
   height: 100%;
-  aspect-ratio: auto;
   object-fit: cover;
   display: block;
   flex: none;
   transition: transform 0.4s ease;
 }
-.hextra-card:hover .hextra-card-image {
+.feed-card img.feed-card-image {
+  filter: url(#duotone);
+}
+.dark .feed-card img.feed-card-image {
+  filter: url(#duotone-dark);
+}
+.feed-card:hover img.feed-card-image {
   transform: scale(1.04);
 }
-/* the text column */
-.hextra-card > div {
+
+/* No picture: a plain grey panel of exactly the same shape, so a row of
+   cards stays even. Nothing is downloaded for it. */
+.feed-card .feed-card-blank {
+  background: #E6E6E6;
+}
+.dark .feed-card .feed-card-blank {
+  background: #2B2B2B;
+}
+
+.feed-card .feed-card-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.2rem;
   min-width: 0;
-  margin-top: 0;
   overflow: hidden;
-  /* the padding lives here, not on the clamped text: a clamped element with
-     its own bottom padding lets one extra line show through it */
-  padding: 0.6rem 0.8rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--bg-card, transparent);
 }
 
-/* Text a fifth smaller, to sit comfortably in the shorter card. */
-.hextra-card .hextra-card-icon {
+/* kind of post, and when */
+.feed-card .feed-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.feed-card .feed-tag {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--accent-wash);
+  color: var(--accent-text);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.feed-card .feed-card-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--ink);
   display: -webkit-box;
-  /* two lines of title and two of summary is what fits in --card-h; raise
-     either clamp and you have to raise --card-h with it */
+  /* two lines of title and two of summary is what fits in --card-h; allow a
+     third and --card-h has to grow with it */
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  line-height: 1.25;
-  font-size: 0.85rem;
-  font-weight: 700;
-  padding: 0 !important;
 }
-.hextra-card .hextra-card-subtitle {
+.feed-card:hover .feed-card-title {
+  color: var(--accent-text);
+}
+
+.feed-card .feed-card-sub {
   font-family: var(--font-body);
   font-size: 0.78rem;
   line-height: 1.4;
-  /* the theme's own clamp loses its display mode here, so both are set */
+  color: var(--muted);
+  margin: 0;
   display: -webkit-box;
-  -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 0.3rem 0 0 !important;
-  padding: 0 !important;
-}
-/* Cards with an icon instead of a picture (the Research overview) keep their
-   icon above the title rather than being squeezed into a row. */
-.hextra-card:not(:has(.hextra-card-image)) {
-  flex-direction: column;
 }
 
-/* A green rule runs along the top of a card on hover. */
-.hextra-card {
-  position: relative;
+/* The same cards also appear inside page content (the {{< section-list >}} and
+   {{< all-posts >}} shortcodes), where the prose styles would otherwise give
+   the title and summary body-text size and margins. */
+.content .feed-card .feed-card-title,
+.content .feed-card .feed-card-sub,
+.content .feed-card .feed-card-meta {
+  margin: 0;
+  letter-spacing: normal;
 }
+.content .feed-card .feed-card-title { font-size: 0.85rem; line-height: 1.25; }
+.content .feed-card .feed-card-sub  { font-size: 0.78rem; line-height: 1.4; }
+.content .feed-grid { margin-top: 1.5rem; }
+.content .feed-card { text-decoration: none; }
+
+/* A green rule runs along the top of a card on hover. */
 .hextra-card::after {
   content: '';
   position: absolute;
@@ -341,9 +397,19 @@ header nav > a:first-child img {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s ease;
+  z-index: 1;
 }
 .hextra-card:hover::after {
   transform: scaleX(1);
+}
+
+/* The Research overview still uses Hextra's own icon cards, which stack
+   their icon above the title. */
+.hextra-card:not(.feed-card) {
+  position: relative;
+}
+.hextra-card .hextra-card-icon {
+  font-size: 0.95rem;
 }
 
 .site-empty {

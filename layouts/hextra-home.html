@@ -45,32 +45,20 @@
         {{- end -}}
       </section>
 
-      {{/* ---------------- card grids ---------------- */}}
-      {{- $pubs := where site.RegularPages "Section" "research" -}}
-      {{- $pubs = where $pubs "CurrentSection.File.Dir" "research/publications/" -}}
-      {{- $posts := where site.RegularPages "Section" "blog" -}}
-
-      {{- range $grid := slice
-            (dict "title" "Publications" "link" "/research/publications" "pages" $pubs "n" ($h.publications | default 3))
-            (dict "title" "Writing" "link" "/blog" "pages" $posts "n" ($h.writing | default 3)) -}}
-        {{- with $grid.pages -}}
-        <section class="site-grid">
-          <div class="site-grid-head">
-            <h2 class="site-grid-title">{{ $grid.title }}</h2>
-            <a class="site-grid-more" href="{{ relLangURL (strings.TrimPrefix "/" $grid.link) }}">All {{ lower $grid.title }} &rarr;</a>
-          </div>
-          <div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
-            {{- range first $grid.n (sort . "Date" "desc") -}}
-              {{- partial "shortcodes/card.html" (dict
-                    "link" .RelPermalink
-                    "title" (partial "utils/title" .)
-                    "subtitle" (partial "card-subtitle.html" .)
-                    "image" (partial "card-thumb.html" .)
-                    "alt" "") -}}
-            {{- end -}}
-          </div>
-        </section>
-        {{- end -}}
+      {{/* ---------------- what's new ---------------- */}}
+      {{- $latest := first ($h.latest | default 6) (partial "feed-pages.html" .) -}}
+      {{- with $latest -}}
+      <section class="site-grid">
+        <div class="site-grid-head">
+          <h2 class="site-grid-title">{{ $h.latestTitle | default "What's New" }}</h2>
+          <a class="site-grid-more" href="{{ relLangURL (strings.TrimPrefix "/" ($h.latestLink | default "/posts")) }}">{{ $h.latestMore | default "More" }} &rarr;</a>
+        </div>
+        <div class="hextra-cards feed-grid hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;">
+          {{- range . -}}
+            {{- partial "feed-card.html" . -}}
+          {{- end -}}
+        </div>
+      </section>
       {{- end -}}
 
       {{- with .Content -}}

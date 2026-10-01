@@ -1,0 +1,12 @@
+{{/* all-posts — every post on the site as a card grid, newest first.
+     Used on content/posts/_index.md. */}}
+{{- $pages := partial "feed-pages.html" . -}}
+{{- if $pages -}}
+<div class="hextra-cards feed-grid hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;">
+  {{- range $pages -}}
+    {{- partial "feed-card.html" . -}}
+  {{- end -}}
+</div>
+{{- else -}}
+<p class="site-empty">Nothing published yet.</p>
+{{- end -}}

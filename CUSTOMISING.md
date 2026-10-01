@@ -29,6 +29,7 @@ content\
     projects\                ongoing research
     methods\                 methods notes
   blog\                      Writing — essays, dated, newest first
+  posts\_index.md            the "More →" page: everything, newest first
   about\index.md             About, with your photo and CV
 static\img\                  pictures
 static\cv\vidhyakorn-cv.pdf  the CV shown on About
@@ -58,27 +59,44 @@ In `hugo.toml`, under `[params.home]`:
 
 ```toml
 [params.home]
-  badge = 'MORU · Bangkok'           # the small pill at the top, with the green dot
-  badgeLink = '/about'
-  headline = 'τὸ τέλος τοῦ βαλάνου ἐστὶ τὸ γενέσθαι δρῦς'
-  subtitle = '“An acorn’s telos is to become an oak tree.” — Aristotle'
-  intro = 'I work on …'              # one short paragraph
-  buttonText = 'Read my research'
-  buttonLink = '/research'
-  publications = 3                   # how many cards in each grid
-  writing = 3
+  badge = 'reach out'                # the small pill at the top, with the green dot
+  badgeLink = '/discuss'
+  headline = ' '                     # big line under the pill
+  subtitle = ' "an acorn's telos…" '  # the quotation
+  intro = "What's on your mind?"     # one short paragraph
+  #buttonText = 'reach out'          # a line starting with # is switched off
+  #buttonLink = '/discuss'
+
+  latest = 6                         # how many cards in What's New
+  latestTitle = "What's New"         # the green heading
+  latestMore = 'More'                # the green link beside it
+  latestLink = '/posts'              # where that link goes
+  feedExclude = ['about', 'discuss', 'posts']
 ```
 
-Leave any line out and that piece simply isn't shown. The card grids under the
-button — latest publications, latest writing — fill themselves in from your
-content; you never edit them. Anything you write in `content\_index.md` appears
-below the grids.
+Leave any line out and that piece simply isn't shown. Put a `#` at the start of
+a line to switch it off without deleting it.
 
----
+**Watch the quotes.** A value with an apostrophe in it — `What's` — must be in
+double quotes, or the site will not build.
+
+### What's New, and /posts/
+
+**What's New** is every post on the site in one row, newest first: papers,
+essays, methods notes, project write-ups, and anything in a section you add
+later. You never list them; a new file appears there by itself. **More →** goes
+to `/posts/`, which is the same list with nothing left off.
+
+`feedExclude` is the only thing that keeps a page out: it names the top folders
+that hold pages rather than posts. `about`, `discuss` and `posts` are in it
+already — add a folder name there if you make another page of that kind.
+
+To put a post at the top of the row, give it a later `date:`. Order is by date
+alone.
 
 ## Colours
 
-Monochrome, with green for anything that should stand out. At the top of
+Monochrome, with one green for anything that should stand out. At the top of
 `assets\css\custom.css`:
 
 ```css
@@ -87,15 +105,15 @@ Monochrome, with green for anything that should stand out. At the top of
   --primary-saturation: 0%;       /* 0% = Hextra's whole colour scale is grey */
   --primary-lightness: 11.3%;
 
-  --ink: #111111;          /* headings, links, text */
-  --muted: #555555;        /* dates, captions, card lines */
-  --accent: #31A354;       /* the strong green: badge dot, link underlines,
-                              active sidebar bar, card hover line */
-  --accent-soft: #A1D99B;  /* the mid green: tints, the letter on card tiles */
-  --accent-wash: #E5F5E0;  /* the pale green: panel and hover backgrounds */
-  --accent-text: #288545;  /* green words: "Abstract", "All publications →" */
-  --accent-fill: #288545;  /* green behind white text: buttons, filled pills */
-  --on-accent: #FFFFFF;    /* the text on --accent-fill */
+  --ink: #111111;           /* headings, links, text */
+  --muted: #555555;         /* dates, captions, card lines */
+  --accent: #31A354;        /* the green: badge dot, link underlines,
+                               active sidebar bar, card hover line */
+  --accent-soft: #A1D99B;   /* the mid green, used in the card pictures */
+  --accent-wash: #E5F5E0;   /* the palest green: behind a card's tag */
+  --accent-text: #288545;   /* green words: What's New, More →, tags */
+  --accent-fill: #288545;   /* green behind white text: buttons */
+  --on-accent: #FFFFFF;     /* the text on --accent-fill */
 }
 ```
 
@@ -104,22 +122,22 @@ colour scale — search, focus rings, the active sidebar item — from one hue,
 saturation and lightness. Saturation `0%` makes all of it grey, which is what
 keeps the theme monochrome everywhere I haven't restyled by hand.
 
-**Why the greens differ.** `#31A354` is 3.2 : 1 against white — enough for a
-2px underline or a dot, not enough for words, and white words on it are just
-as hard to read. So it is used only where no text is involved. Buttons and
-anything else filled with green use `#288545`, deep enough that their white
-text reads at 4.6 : 1, and that same `#288545` is used where green *is* the
-text. `#A1D99B` and `#E5F5E0` are the two pale greens, for tints and
-backgrounds that never carry small text.
+**Why the greens differ.** `#31A354` is only 3.1 : 1 against white, so it is
+used where no text is involved: lines, dots, underlines, the pictures. Where
+the green *is* the text, or sits behind white text, it is `#288545`, which
+reads at 4.6 : 1. Links are black with a green underline, so the colour is in
+the line, never in the words.
 
-To change the green, swap `--accent`, then check whatever you choose for
-`--accent-fill` reaches 4.5 : 1 against white at
-[webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/).
+To swap the green for another colour, change `--accent`, then pick a darker
+version for `--accent-text` and `--accent-fill` and check each reaches 4.5 : 1
+at [webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/).
+
+The card pictures are tinted separately, in
+`layouts\_partials\custom\head-end.html` — see **Cards** below.
 
 Dark mode has its own values just below, under `.dark { … }`. On a black
-background the pale green reads easily, so there green words use `#A1D99B`.
-
----
+background the lighter green is readable as text, so there `--accent-text` is
+`#A1D99B`.
 
 ## Fonts
 
@@ -156,6 +174,19 @@ asking for semibold would make the browser fake it.
 
 ## Cards
 
+One card shape is used everywhere — What's New, `/posts/`, and each section's
+own page. It is a wide, short card: the picture on the left, then a green tag
+saying what kind of post it is, the date, the title and a line or two of
+summary.
+
+**The tag** is the name of the folder the post is in — Publications, Writing,
+Methods, Projects — taken from that folder's `_index.md` title. Rename the
+folder's title and every tag changes with it. A new folder gets its own tag
+with nothing to set up.
+
+**The date** is the `date:` in the post's front matter, shown as `20 Sep 2026`.
+A post with no date shows no date, and sorts last.
+
 **Pictures** — first one filled in wins:
 
 1. `cover: "/img/picture.jpg"` — a file in `static\img\`. The path starts at
@@ -163,32 +194,41 @@ asking for semibold would make the browser fake it.
 2. `cover: "https://example.org/picture.jpg"` — any image on the web.
 3. `link: "https://journal.org/article"` — the site uses that page's preview
    image.
-4. Nothing — a dark tile with the title's first letter in green. The shade
-   is chosen from the page's address, so each post keeps the same tile.
+4. Nothing — a plain grey panel the same shape as a picture.
 
-Every picture is cropped to the same 16 : 9 box and converted to a small WebP
-when the site builds, so a 300 KB photo arrives as a few kilobytes and a grid
-stays even. If a path is wrong, the card falls back to the tile and the build
-log names the file it couldn't find.
+Every picture is cropped to the same 16 : 9 box, converted to a small WebP, and
+run through a **duotone filter** that flattens it to two greens and a pale
+neutral, so a row of very different photographs still reads as one set. If a
+path is wrong, the card falls back to the grey panel and the build log names
+the file it couldn't find.
 
-**Shape and size** — in `custom.css`, the `CARDS` section. The picture sits
-beside the text, and every card in a row is the same height:
+The filter is in `layouts\_partials\custom\head-end.html`, as two short SVG
+blocks: `#duotone` for light mode and `#duotone-dark` for dark. Each has three
+`tableValues` numbers per colour — the shadows, the midtones and the
+highlights, in that order. To make the pictures less green, move the numbers
+closer to each other; to turn the effect off, delete these two lines from the
+`CARDS` section of `custom.css`:
 
 ```css
-:root { --card-h: 135px; }                                  /* card height */
-.hextra-card .hextra-card-image { width: 38%; }             /* picture width */
-.hextra-card .hextra-card-icon     { -webkit-line-clamp: 2; }  /* title lines */
-.hextra-card .hextra-card-subtitle { -webkit-line-clamp: 2; }  /* summary lines */
+.feed-card img.feed-card-image { filter: url(#duotone); }
+.dark .feed-card img.feed-card-image { filter: url(#duotone-dark); }
 ```
 
-Two lines of title and two of summary is what fits in 135px. Allow a third
-line of either and you have to raise `--card-h` to match, or the extra line
-is cut off.
+**Shape and size** — in `custom.css`, the `CARDS` section:
+
+```css
+:root { --card-h: 135px; }                            /* height of every card */
+.feed-card .feed-card-image { width: 38%; max-width: 170px; }   /* the picture */
+.feed-card .feed-card-title { font-size: 0.85rem; -webkit-line-clamp: 2; }
+.feed-card .feed-card-sub   { font-size: 0.78rem; -webkit-line-clamp: 2; }
+```
+
+`--card-h` resizes every card at once. Two lines of title and two of summary is
+what fits at 135px; allow a third line and `--card-h` has to grow with it, or
+the text is cut off.
 
 **Card text** — a publication's card shows where and when it appeared, taken
 from its DOI. Anything else shows its `description:`, or the start of the text.
-
----
 
 ## Publications — no typing
 
@@ -283,6 +323,16 @@ Your photo is `content\about\profile.jpg`. Its size on the page is set in
 3. **Hard refresh** with Ctrl+F5. The stylesheet is named after a hash of its
    contents, so it can't be stale, but a page can be cached for a minute.
 4. **Check you edited the right file** — never a file under `themes\`.
+
+Two things reliably stop the build, both with a long error naming the file:
+
+- an apostrophe inside `'single quotes'` in `hugo.toml` — use "double quotes";
+- a comma between a shortcode's settings — use spaces.
+
+And one for me rather than you: in a template, never write
+`{{ with partial "x" . }}`. Put the result in a variable first
+(`{{ $x := partial "x" . }}`), or Hugo 0.166 fails with a garbled error about
+something being nil.
 
 ## Seeing changes instantly
 

@@ -5,14 +5,9 @@
      {{< section-list empty="Nothing here yet." >}}   message when empty */}}
 {{- $pages := sort .Page.RegularPages "Date" "desc" -}}
 {{- if $pages -}}
-<div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+<div class="hextra-cards feed-grid hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;">
   {{- range $pages -}}
-    {{- partial "shortcodes/card.html" (dict
-          "link" .RelPermalink
-          "title" (partial "utils/title" .)
-          "subtitle" (partial "card-subtitle.html" .)
-          "image" (partial "card-thumb.html" .)
-          "alt" "") -}}
+    {{- partial "feed-card.html" . -}}
   {{- end -}}
 </div>
 {{- else -}}

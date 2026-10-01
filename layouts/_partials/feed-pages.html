@@ -1,0 +1,16 @@
+{{/* feed-pages.html — every post on the site in one list, newest first:
+     publications, writing, methods, projects, and any section added later.
+
+     Sections are skipped only if they are named in [params.home] feedExclude
+     in hugo.toml (About and Discuss, which are pages rather than posts).
+
+     Returns a slice of pages. Used by the homepage and by /posts/. */}}
+{{- $skip := site.Params.home.feedExclude | default (slice "about" "discuss") -}}
+{{- $pages := slice -}}
+{{- range site.RegularPages -}}
+  {{- $top := index (split (strings.TrimPrefix "/" .Path) "/") 0 -}}
+  {{- if not (in $skip $top) -}}
+    {{- $pages = $pages | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- return (sort $pages "Date" "desc") -}}

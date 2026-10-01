@@ -116,16 +116,22 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   # grids of latest publications and writing) is generated automatically.
   # ---------------------------------------------------------------------------
   [params.home]
-    badge = 'About Me'
-    badgeLink = '/about'
-    headline = 'τὸ τέλος τοῦ βαλάνου ἐστὶ τὸ γενέσθαι δρῦς'
+    badge = 'reach out'
+    badgeLink = '/discuss'
+    headline = ' '
     subtitle = ' “an acorn’s telos is to become an oak tree.” — Aristotle '
     intro = "What's on your mind?"
-    buttonText = 'Reach out'
-    buttonLink = '/discuss'
-    # How many cards in each grid.
-    publications = 3
-    writing = 3
+    #buttonText = 'reach out'
+    #buttonLink = '/discuss'
+    # The "What's New" row: how many cards, what it is called, and where the
+    # link beside it goes. The row is every post on the site — papers, essays,
+    # methods, projects and any section added later — newest first.
+    latest = 6
+    latestTitle = "What's New"
+    latestMore = 'More'
+    latestLink = '/posts'
+    # Sections that are pages rather than posts, so they stay out of the feed.
+    feedExclude = ['about', 'discuss', 'posts']
 
   # ---------------------------------------------------------------------------
   # Comments — giscus, stored as GitHub Discussions on the vidhyakorn/vma repo.
