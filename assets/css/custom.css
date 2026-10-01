@@ -134,6 +134,25 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ===========================================================================
+   NAVBAR — the signature image stands in for the site name (hugo.toml,
+   [params.navbar.logo]). It shrinks on narrow screens so it never crowds the
+   menu, and the dark-mode copy is the same signature in white.
+   =========================================================================== */
+.hextra-nav-container nav > a:first-child img,
+header nav > a:first-child img {
+  height: 28px;
+  width: auto;
+  max-width: 180px;
+}
+@media (max-width: 640px) {
+  .hextra-nav-container nav > a:first-child img,
+  header nav > a:first-child img {
+    height: 22px;
+    max-width: 140px;
+  }
+}
+
+/* ===========================================================================
    HOMEPAGE — hero, then card grids (layouts/hextra-home.html)
    =========================================================================== */
 .site-home {
@@ -142,12 +161,15 @@ h1, h2, h3, h4, h5, h6,
   margin: 0 auto;
 }
 
+/* Compact hero: the badge, headline, subtitle, intro line and button sit
+   close together, roughly a third shorter than the theme's default spacing.
+   Loosen it again by raising the gap and the bottom padding. */
 .site-hero {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem 0 3rem;
+  gap: 0.45rem;
+  padding: 0.35rem 0 1.5rem;
 }
 
 .site-badge-dot {
@@ -161,9 +183,13 @@ h1, h2, h3, h4, h5, h6,
 .site-headline {
   color: var(--ink);
   max-width: 22ch;
-  line-height: 1.12;
+  /* smaller and tighter than the theme's 48px, which cost the hero two of
+     its three lines of height */
+  font-size: clamp(1.85rem, 1.1rem + 2.2vw, 2.5rem);
+  line-height: 1.06;
   letter-spacing: -0.01em;
-  margin: 0.25rem 0 0;
+  margin: 0.1rem 0 0;
+  padding-block: 0;
 }
 
 .site-subtitle {
@@ -171,19 +197,22 @@ h1, h2, h3, h4, h5, h6,
   max-width: 44rem;
   font-family: var(--font-body);
   font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.4;
 }
 
 .site-intro {
   margin: 0;
   max-width: 40rem;
   color: var(--muted);
-  font-size: 1.075rem;
-  line-height: 1.65;
+  font-size: 1.05rem;
+  line-height: 1.45;
 }
 
 /* Filled orange, white text. */
 .site-button {
-  margin-top: 0.75rem;
+  margin-top: 0.4rem;
+  padding: 0.55rem 1.35rem !important;
   background-color: var(--accent-fill) !important;
   color: var(--on-accent) !important;
   font-weight: 700;

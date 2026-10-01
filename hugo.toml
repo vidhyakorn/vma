@@ -117,7 +117,7 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
     headline = 'τὸ τέλος τοῦ βαλάνου ἐστὶ τὸ γενέσθαι δρῦς'
     subtitle = ' “an acorn’s telos is to become an oak tree.” — Aristotle '
     intro = "What's on your mind?"
-    buttonText = 'Lets chat! '
+    buttonText = 'Reach out'
     buttonLink = '/discuss'
     # How many cards in each grid.
     publications = 3
@@ -146,9 +146,18 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
       lang = 'en'
 
   [params.navbar]
-    displayTitle = true
-    displayLogo = false
+    # The signature image replaces the site name in the top bar. It links to
+    # the homepage, as the name did. vmd-dark.png is the same signature in
+    # white, for dark mode. Both are in static/img/.
+    displayTitle = false
+    displayLogo = true
     width = 'wide'
+    [params.navbar.logo]
+      path = 'img/vmd.png'
+      dark = 'img/vmd-dark.png'
+      width = 180
+      height = 28
+      link = '/'
 
   [params.page]
     width = 'normal'
