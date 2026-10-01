@@ -38,50 +38,55 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
     endLevel = 4
 
 # ---------------------------------------------------------------------------
-# Top navigation — left to right in weight order.
+# Top navigation — left to right in weight order. Start at 1: Hugo treats
+# weight 0 as 'no weight' and puts that entry last.
 # ---------------------------------------------------------------------------
+[[menu.main]]
+  name = 'Home'
+  pageRef = '/'
+  weight = 1
 [[menu.main]]
   name = 'Research'
   pageRef = '/research'
-  weight = 1
+  weight = 2
 [[menu.main]]
   name = 'Publications'
   pageRef = '/research/publications'
-  weight = 2
+  weight = 3
 [[menu.main]]
   name = 'Writing'
   pageRef = '/blog'
-  weight = 3
+  weight = 4
 [[menu.main]]
   name = 'About'
   pageRef = '/about'
-  weight = 4
+  weight = 5
 [[menu.main]]
   name = 'Discuss'
   pageRef = '/discuss'
-  weight = 5
+  weight = 6
 [[menu.main]]
   name = 'Search'
-  weight = 6
+  weight = 7
   [menu.main.params]
     type = 'search'
 # Icons on the far right. ORCID and Google Scholar are added in data/icons.yaml.
 [[menu.main]]
   name = 'ORCID'
   url = 'https://orcid.org/0009-0008-2468-8870'
-  weight = 7
+  weight = 8
   [menu.main.params]
     icon = 'orcid'
 [[menu.main]]
   name = 'Google Scholar'
   url = 'https://scholar.google.com/citations?hl=en&user=jgY_JOAAAAAJ'
-  weight = 8
+  weight = 9
   [menu.main.params]
     icon = 'googlescholar'
 [[menu.main]]
   name = 'LinkedIn'
   url = 'https://www.linkedin.com/in/vidhyakorn'
-  weight = 9
+  weight = 10
   [menu.main.params]
     icon = 'linkedin'
 
@@ -167,7 +172,9 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
       dark = 'img/vmd-dark.png'
       width = 180
       height = 28
-      link = '/'
+      # No link = here: Hextra uses it exactly as written, and a bare '/' would
+      # point at the top of github.io rather than at /vma/. Left out, it links
+      # to the homepage by itself.
 
   [params.page]
     width = 'normal'
