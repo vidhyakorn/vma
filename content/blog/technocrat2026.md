@@ -1,5 +1,5 @@
 ---
-title: Technocrat or Public Servant? Rethinking the Role of Researcher
+title: 'Be A Public Intellectual or A Technocrat?: Rethinking the Role of Experts in Public Policy Competition'
 date: 2026-10-01
 draft: false
 tags:
@@ -9,9 +9,11 @@ description: ""
 cover: /img/Francis_Bacon.jpg
 math: false
 ---
->More about [**Technocracy**](https://en.wikipedia.org/wiki/Technocracy)
+
+>About   [**Technocracy**](https://en.wikipedia.org/wiki/Technocracy) ; [**Public Intellectual**](https://en.wikipedia.org/wiki/Technocracy)
 
 <div style="text-align: justify;">
+<br>
 A technocrat is a technical expert — a scientist, engineer, or economist — who holds influence over public policy through specialized knowledge rather than through election or direct accountability to the people affected by that policy. Technocrats favor evidence-based decisions, occupy bureaucratic roles in central banks, treasury departments and advisory boards, and are frequently presented as politically neutral administrators. It is worth asking whether the language, data, methods, goal researchers use when writing about health equity reveals the same instincts.
 
 In PLOS Global Public Health, Koay, Bowleg, Lee and Burgess sarcastically says in their opinion piece, “How (not) to write about health equity,” catalogues the euphemisms that let researchers describe injustice without naming who causes it. Phrases such as “vulnerable populations,” “social determinants of health,” “resilience” and “political will” compress histories of oppression into technical vocabulary. Under the manipulating from the technocratic researcher, this is unmistakable: the evidence-based policy recommendations that performs neutrality, written by people trained to analyses systems rather than to assign responsibility within them.
