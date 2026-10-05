@@ -1,0 +1,10 @@
+{
+	"nodes":[
+		{"id":"0591982dcfe0650a","type":"file","file":"blog/technocrat2026.md","x":-540,"y":120,"width":400,"height":400}
+	],
+	"edges":[],
+	"metadata":{
+		"version":"1.0-1.0",
+		"frontmatter":{}
+	}
+}
