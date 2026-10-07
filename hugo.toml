@@ -126,7 +126,7 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
     headline = ' “I Am Because We Are.” '
     subtitle = ' — Ubuntu Philosophy '
     intro = ' "...when you live in a way that your own life interests and welfare are connected to the interests and welfare of others around you, your humanity grows, and so does the humanity of the whole community." '
-    buttonText = 'reach out'
+    buttonText = 'sources'
     buttonLink = 'https://www.jyu.fi/en/blog/i-am-because-we-are-understanding-the-concept-of-ubuntu'
     # The "What's New" row: how many cards, what it is called, and where the
     # link beside it goes. The row is every post on the site — papers, essays,
