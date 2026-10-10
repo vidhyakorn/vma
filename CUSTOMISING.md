@@ -28,6 +28,10 @@ content\
     publications\            one .md per paper
     projects\                ongoing research
     methods\                 methods notes
+  ndls\                      the NDLS project section
+    _index.md                Overview
+    progress.md              the timeline
+    outputs.md               papers and essays tagged ndls
   blog\                      Writing — essays, dated, newest first
   posts\_index.md            the "More →" page: everything, newest first
   about\index.md             About, with your photo and CV
@@ -257,6 +261,72 @@ Anything you write yourself wins over what is fetched:
 - text in the body — replaces the fetched abstract on the page
 
 `content\_templates\new-publication.md` is a ready-made starting point.
+
+---
+
+## The NDLS project section
+
+NDLS has its own top-level section, separate from Research, because it is a
+project rather than a list of papers. It has three pages:
+
+| Page | File | What it is |
+|---|---|---|
+| Overview | `content\ndls\_index.md` | what the project is and why |
+| Progress | `content\ndls\progress.md` | the timeline, edited by hand |
+| Outputs | `content\ndls\outputs.md` | everything tagged `ndls`, gathered automatically |
+
+### Adding something to Outputs
+
+Nothing to edit. Put `ndls` in a paper's or a post's tags:
+
+```yaml
+tags: [ndls, modelling]
+```
+
+and it appears on the Outputs page, while staying where it already was under
+Publications or Writing. The newest is first.
+
+That is what the `tagged` shortcode does, and it works for any tag:
+
+```
+{{</* tagged tag="ndls" */>}}
+{{</* tagged tag="ndls" empty="Nothing yet." */>}}
+```
+
+### Adding to Progress
+
+Each entry on the timeline is one block:
+
+```
+{{</* milestone date="September 2026" status="done" */>}}
+**What happened.** A sentence or two about it.
+{{</* /milestone */>}}
+```
+
+`status` is one of three, and only changes the dot:
+
+- `done` — a filled green dot
+- `now` — a green ring, for what you are working on
+- `next` — a hollow grey dot, for what is planned (this is the default)
+
+Put the newest entry at the top. `date` is free text, so "September 2026",
+"Now" and "Later" are all fine.
+
+### The logo
+
+`static\img\ndls-logo.png`, shown by `{{</* ndls-mark */>}}` at the top of the
+Overview. It sits on a white tile, because the mark is drawn on white and
+would otherwise show a hard square on a dark page. Its size is the `110px` in
+the `NDLS` section of `custom.css`. To use it elsewhere:
+`{{</* ndls-mark src="/img/other.png" */>}}`.
+
+### Starting another project section
+
+Copy the `content\ndls\` folder, rename it, change the titles, pick a new tag
+for its Outputs page, and add it to `[[menu.main]]` in `hugo.toml`. Also add
+the folder name to `feedExclude` under `[params.home]`, so the project's own
+pages stay out of What's New — the papers and essays tagged to it still appear
+there, which is the point.
 
 ---
 

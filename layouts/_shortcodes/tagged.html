@@ -1,0 +1,27 @@
+{{/* tagged — every page carrying a tag, as feed cards, newest first.
+
+     {{< tagged tag="ndls" >}}
+     {{< tagged tag="ndls" empty="Nothing yet." >}}
+
+     Pages in the same section as this one are left out, so a project's own
+     Overview and Progress pages don't list themselves among its outputs. */}}
+{{- $tag := urlize (.Get "tag") -}}
+{{- $here := .Page.CurrentSection.RelPermalink -}}
+{{- $pages := slice -}}
+{{- with index site.Taxonomies.tags $tag -}}
+  {{- range .Pages -}}
+    {{- if not (hasPrefix .RelPermalink $here) -}}
+      {{- $pages = $pages | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $pages = sort $pages "Date" "desc" -}}
+{{- if $pages -}}
+<div class="hextra-cards feed-grid hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;">
+  {{- range $pages -}}
+    {{- partial "feed-card.html" . -}}
+  {{- end -}}
+</div>
+{{- else -}}
+<p class="site-empty">{{ .Get "empty" | default (printf "Nothing tagged %s yet." $tag) | safeHTML }}</p>
+{{- end -}}

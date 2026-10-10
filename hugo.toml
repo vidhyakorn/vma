@@ -54,39 +54,43 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   pageRef = '/research/publications'
   weight = 3
 [[menu.main]]
+  name = 'NDLS'
+  pageRef = '/ndls'
+  weight = 4
+[[menu.main]]
   name = 'Writing'
   pageRef = '/blog'
-  weight = 4
+  weight = 5
 [[menu.main]]
   name = 'About'
   pageRef = '/about'
-  weight = 5
+  weight = 6
 [[menu.main]]
   name = 'Discuss'
   pageRef = '/discuss'
-  weight = 6
+  weight = 7
 [[menu.main]]
   name = 'Search'
-  weight = 7
+  weight = 8
   [menu.main.params]
     type = 'search'
 # Icons on the far right. ORCID and Google Scholar are added in data/icons.yaml.
 [[menu.main]]
   name = 'ORCID'
   url = 'https://orcid.org/0009-0008-2468-8870'
-  weight = 8
+  weight = 9
   [menu.main.params]
     icon = 'orcid'
 [[menu.main]]
   name = 'Google Scholar'
   url = 'https://scholar.google.com/citations?hl=en&user=jgY_JOAAAAAJ'
-  weight = 9
+  weight = 10
   [menu.main.params]
     icon = 'googlescholar'
 [[menu.main]]
   name = 'LinkedIn'
   url = 'https://www.linkedin.com/in/vidhyakorn'
-  weight = 10
+  weight = 11
   [menu.main.params]
     icon = 'linkedin'
 
@@ -136,7 +140,7 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
     latestMore = 'More'
     latestLink = '/posts'
     # Sections that are pages rather than posts, so they stay out of the feed.
-    feedExclude = ['about', 'discuss', 'posts']
+    feedExclude = ['about', 'discuss', 'posts', 'ndls']
 
   # ---------------------------------------------------------------------------
   # Comments — giscus, stored as GitHub Discussions on the vidhyakorn/vma repo.

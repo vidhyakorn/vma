@@ -618,3 +618,80 @@ main#content h1:not(.site-headline) {
   .cv-frame { display: none; }
   .cv-mobile-note { display: block; }
 }
+
+/* ===========================================================================
+   NDLS — the project section: its logo and the progress timeline.
+   =========================================================================== */
+
+/* The logo sits on a white tile, because the mark itself is drawn on white and
+   would otherwise show a hard square against a dark page. */
+.content .ndls-mark {
+  margin: 0 0 1.5rem;
+  display: inline-block;
+  padding: 0.75rem;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  line-height: 0;
+}
+.dark .content .ndls-mark {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+.content .ndls-mark img {
+  width: 110px;
+  height: 110px;
+  margin: 0;
+  border-radius: 10px;
+}
+
+/* --- progress timeline --------------------------------------------------- */
+.content .milestone:first-of-type {
+  margin-top: 1.75rem;
+}
+.content .milestone {
+  position: relative;
+  padding: 0 0 1.5rem 1.75rem;
+  border-left: 2px solid var(--line);
+}
+.content .milestone:last-of-type {
+  border-left-color: transparent;
+  padding-bottom: 0.5rem;
+}
+/* the dot */
+.content .milestone::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 0.3rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--wash);
+  border: 2px solid var(--line);
+  box-sizing: border-box;
+}
+.content .milestone-done::before {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.content .milestone-now::before {
+  background: var(--wash);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-wash);
+}
+
+.content .milestone-date {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.content .milestone-done .milestone-date,
+.content .milestone-now .milestone-date {
+  color: var(--accent-text);
+}
+.content .milestone-body > :first-child { margin-top: 0; }
+.content .milestone-body > :last-child { margin-bottom: 0; }

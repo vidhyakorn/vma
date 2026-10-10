@@ -1,0 +1,17 @@
+{{/* ndls-mark — the project logo, on a white tile so the colours sit well in
+     both light and dark mode. Styled by the NDLS section of custom.css.
+
+     {{< ndls-mark >}}
+     {{< ndls-mark src="/img/other-logo.png" >}}   a different picture */}}
+{{- $src := .Get "src" | default "/img/ndls-logo.png" -}}
+{{- $alt := .Get "alt" | default "NeuroDiversity LifeSpace" -}}
+{{- $img := resources.Get (strings.TrimPrefix "/" $src) -}}
+{{- $url := $src | relURL -}}
+{{- with $img -}}
+  {{- with try (.Resize "320x webp q85") -}}
+    {{- with .Value }}{{ $url = .RelPermalink }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+<figure class="ndls-mark not-prose">
+  <img src="{{ $url }}" alt="{{ $alt }}" width="160" height="160" decoding="async">
+</figure>

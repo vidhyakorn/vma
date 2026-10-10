@@ -1,0 +1,15 @@
+{{/* milestone — one entry on a progress timeline.
+
+     {{< milestone date="September 2026" status="done" >}}
+     **What happened.** A sentence or two about it.
+     {{< /milestone >}}
+
+     status is one of:
+       done   a filled green dot   — finished
+       now    a ringed green dot   — underway
+       next   a hollow grey dot    — planned (the default) */}}
+{{- $status := .Get "status" | default "next" -}}
+<div class="milestone milestone-{{ $status }}">
+  <div class="milestone-date">{{ .Get "date" }}</div>
+  <div class="milestone-body">{{ .Inner | markdownify }}</div>
+</div>
