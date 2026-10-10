@@ -7,8 +7,8 @@ sidebar:
   open: true
 ---
 
-## **A capability-focused dynamic bio-psycho-social modelling framework.**
-<figure style="float: left; max-width: 200px; margin: 0 20px 20px 0;"> <img src="ndls-logo.png" alt="ndls" style="width: 80%; height: auto; display: block;"> <figcaption> <a href="https://share.google" target="_blank" rel="noopener">'NDLS Framework'</a> </figcaption> </figure>
+## **A Capability-focused Dynamic Bio-Psycho-Social Modelling Framework Social Health and Wel-Being of Persons with Neurodevelopmental Conditions (NDCs).**
+<figure style="float: left; max-width: 200px; margin: 0 20px 20px 0;"> <img src="ndls-logo.png" alt="ndls" style="width: 80%; height: auto; display: block;"> </figure>
 <div style="text-align: justify;">
 <br>
 NDLS treats neurodevelopmental conditions — ADHD, autism, Down syndrome,
