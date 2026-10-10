@@ -5,7 +5,11 @@
 
      Each book shows its cover, your note, and rows of links: where to buy it,
      where to read it free and legally, the author, things to watch or read
-     about it, and the ideas in it. A row with nothing in it is not shown. */}}
+     about it, and the ideas in it. A row with nothing in it is not shown.
+
+     Cover images: set `cover:` in books.yaml to a local file or a remote URL.
+     Leave it blank and the ISBN is used to pull a cover from Open Library
+     automatically at build time. */}}
 {{- $project := .Get "project" -}}
 {{- $data := site.Data.books -}}
 {{- $stores := $data.stores | default slice -}}
@@ -35,15 +39,31 @@
 {{- range $books -}}
   {{- $b := . -}}
   <article class="book" id="{{ .slug | default (urlize .title) }}">
+
+    {{- /* ---- cover image ------------------------------------------------- */ -}}
     {{- $cover := .cover | default "" -}}
+    {{- /* If no cover is set but an ISBN is, fall back to Open Library CDN */ -}}
+    {{- if and (not $cover) .isbn -}}
+      {{- $cover = printf "https://covers.openlibrary.org/b/isbn/%s-L.jpg" .isbn -}}
+    {{- end -}}
     {{- if $cover -}}
       {{- $src := $cover -}}
       {{- if not (hasPrefix $cover "http") -}}
+        {{- /* local asset in assets/ */ -}}
         {{- with resources.Get (strings.TrimPrefix "/" $cover) -}}
           {{- with try (.Fill "300x450 Smart webp q80") }}{{ with .Value }}{{ $src = .RelPermalink }}{{ end }}{{ end -}}
         {{- end -}}
+      {{- else -}}
+        {{- /* remote URL — fetch at build time and process through Hugo Pipes */ -}}
+        {{- with try (resources.GetRemote $cover) -}}
+          {{- with .Value -}}
+            {{- with try (.Fill "300x450 Smart webp q80") -}}
+              {{- with .Value }}{{ $src = .RelPermalink }}{{ end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
       {{- end -}}
-      <img class="book-cover" src="{{ $src }}" alt="" loading="lazy" decoding="async">
+      <img class="book-cover" src="{{ $src }}" alt="Cover of {{ .title }}" loading="lazy" decoding="async">
     {{- else -}}
       <span class="book-cover book-cover-blank" aria-hidden="true">{{ substr .title 0 1 }}</span>
     {{- end -}}
@@ -57,6 +77,16 @@
         {{- with .status }} &middot; <span class="book-status book-status-{{ . }}">{{ . }}</span>{{ end -}}
       </p>
       {{- with .note }}<p class="book-note">{{ . | markdownify }}</p>{{ end -}}
+
+      {{- /* ---- My Review button — shows when a review URL is set ---------- */ -}}
+      {{- with .review -}}
+      <div class="book-row book-row-review">
+        <span class="book-row-label">My review</span>
+        <span class="book-row-links">
+          <a class="book-chip book-chip-review" href="{{ . }}" rel="noopener">Read my review ↗</a>
+        </span>
+      </div>
+      {{- end -}}
 
       {{- /* --- where to buy it ------------------------------------------- */ -}}
       {{- $buy := .buy | default dict -}}
