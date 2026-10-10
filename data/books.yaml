@@ -219,7 +219,7 @@ books:
     author: "Thom Hartmann"
     year: 1993
     isbn: "9781620558980"
-    cover: "https://www.amazon.com/ADHD-Hunter-Farmers-Thom-Hartmann/dp/162055898X/ref=sr_1_1?crid=40883JD1RJTV&dib=eyJ2IjoiMSJ9.0ru7oPEA8t6o8f2kkID9-Elu6bSM5QI_RKQMIjp9TgsEbLt5J2LH_2LTR67vrpAACguC0TZ43KNs5PObEPMdc8eAVCXpIlSwFMMu3gmEuMWhmKATEowIkKpX698i-rG92TxBLVwihlDd1LMPkoyCElucCynIvvzX0eohTpFzviW5pwff-18JqEdauXEATXilrBt0jlYVskmbn1ZoTQrrV2soG7GLTz0jvlXPNy7sIlc.c1tdDiEueb52tilQQBIzTpCCqMFoI_GMU1Cr4Rxuomw&dib_tag=se&keywords=ADHD%3A+A+Hunter+in+a+Farmer%27s+World&qid=1791611513&s=books&sprefix=adhd+a+hunter+in+a+farmer%27s+world%2Cstripbooks-intl-ship%2C374&sr=1-1"
+    cover: "static/img/hunter.jpg"
     projects: [ndls]
     status: read
     note: >
@@ -308,7 +308,7 @@ books:
     author: "Edward M. Hallowell and John J. Ratey"
     year: 1994
     isbn: "9780307743152"
-    cover: ""
+    cover: "static/img/driven.jpg"
     projects: [ndls]
     status: read
     note: >
@@ -388,7 +388,7 @@ books:
     author: "Anders Hansen"
     year: 2017
     isbn: "9780593885819"
-    cover: ""
+    cover: "static/img/unlocking.jpg"
     projects: [ndls]
     status: read
     note: >
@@ -470,7 +470,7 @@ books:
     author: "Gemma Styles"
     year: 2024
     isbn: "9781804992708"
-    cover: ""
+    cover: "static/img/why.jpg"
     projects: [ndls]
     status: read
     note: >
