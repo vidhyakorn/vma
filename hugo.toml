@@ -140,7 +140,7 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
     latestMore = 'More'
     latestLink = '/posts'
     # Sections that are pages rather than posts, so they stay out of the feed.
-    feedExclude = ['about', 'discuss', 'posts', 'ndls']
+    feedExclude = ['about', 'discuss', 'posts']
 
   # ---------------------------------------------------------------------------
   # Comments — giscus, stored as GitHub Discussions on the vidhyakorn/vma repo.

@@ -1,16 +1,23 @@
 {{/* feed-pages.html — every post on the site in one list, newest first:
-     publications, writing, methods, projects, and any section added later.
+     publications, writing, methods, projects, NDLS updates, and any section
+     added later.
 
-     Sections are skipped only if they are named in [params.home] feedExclude
-     in hugo.toml (About and Discuss, which are pages rather than posts).
+     EXCLUDED from the feed:
+       1. Sections listed in [params.home] feedExclude in hugo.toml
+          (about, discuss, posts — pages rather than posts, or aggregate indexes)
+       2. Individual pages that set `feedExclude: true` in their front matter
+          (use this for utility / infrastructure pages inside a section, such as
+          the NDLS book list or progress timeline, that are not themselves news)
 
      Returns a slice of pages. Used by the homepage and by /posts/. */}}
 {{- $skip := site.Params.home.feedExclude | default (slice "about" "discuss") -}}
 {{- $pages := slice -}}
 {{- range site.RegularPages -}}
+  {{- /* skip whole sections */ -}}
   {{- $top := index (split (strings.TrimPrefix "/" .Path) "/") 0 -}}
-  {{- if not (in $skip $top) -}}
-    {{- $pages = $pages | append . -}}
-  {{- end -}}
+  {{- if in $skip $top -}}{{- continue -}}{{- end -}}
+  {{- /* skip individual pages that opt out */ -}}
+  {{- if .Params.feedExclude -}}{{- continue -}}{{- end -}}
+  {{- $pages = $pages | append . -}}
 {{- end -}}
 {{- return (sort $pages "Date" "desc") -}}
