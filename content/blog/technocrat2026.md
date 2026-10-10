@@ -1,5 +1,5 @@
 ---
-title: "Are You A '_Public Intellectual_' or A '_Technocrat_'?: Rethinking the Role of Research Scientist in A Global Health Policy Implementation"
+title: "Are You A Public Intellectual or A Technocrat?: Rethinking the Role of Research Scientist in A Global Health Policy Implementation"
 date: 2026-10-01
 draft: false
 tags:

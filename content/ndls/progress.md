@@ -6,6 +6,10 @@ weight: 1
 
 An honest running log of where the project actually is. Newest first.
 
+{{< milestone date="June 2023" status="done" >}}
+**Developing interest in Neurodevelopmental Conditions.** Late diagnosed of attention deficit/hyperactivity disorder (ADHD) after a year of depression and anxiety treatment and therapy with psychiatrist and psychotherapist. Starting read 'books' 
+{{< /milestone >}}
+
 {{< milestone date="September 2026" status="done" >}}
 **Framework proposal posted.** The full NDLS framework — the causal layer, the
 agent-based layer and the capabilities layer — written up and deposited on

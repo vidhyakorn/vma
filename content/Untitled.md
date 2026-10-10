@@ -1,3 +1,0 @@
-complimentary
-ownership
-data, value
