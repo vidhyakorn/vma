@@ -7,7 +7,7 @@ sidebar:
   open: true
 ---
 
-## **A Capability-focused Dynamic Bio-Psycho-Social Modelling Framework Social Health and Wel-Being of Persons with Neurodevelopmental Conditions (NDCs).**
+### **A Capability-focused Dynamic Bio-Psycho-Social Modelling Framework Social Health and Wel-Being of Persons with Neurodevelopmental Conditions (NDCs).**
 <figure style="float: left; max-width: 200px; margin: 0 20px 20px 0;"> <img src="ndls-logo.png" alt="ndls" style="width: 80%; height: auto; display: block;"> </figure>
 <div style="text-align: justify;">
 <br>
@@ -31,7 +31,7 @@ diagnosis — capability-based interventions that can be simulated before they
 are imposed.
 </div>
 
-## Why this framework
+### Why this framework
 <div style="text-align: justify;">
 <br>
 Most modelling of neurodevelopmental conditions is cross-sectional and
@@ -45,7 +45,7 @@ environment and agency together, and being explicit that the thing worth
 measuring is capability, not conformity.
 </div>
 
-## Work Package
+### Work Package
 
 {{< cards cols="3" >}}
   {{< card title="Causal" subtitle="Longitudinal analysis of linked population data: what actually shifts a trajectory, and when." >}}
@@ -53,7 +53,7 @@ measuring is capability, not conformity.
   {{< card title="Normative" subtitle="The capabilities approach: resources, structural barriers, and what a person is genuinely free to do and be." >}}
 {{< /cards >}}
 
-## Where it stands
+### Where it stands
 <div style="text-align: justify;">
 The framework proposal is posted and open to comment. [Progress](progress/)
 tracks what is built, what is underway and what comes next;
