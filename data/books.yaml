@@ -1,0 +1,81 @@
+# ---------------------------------------------------------------------------
+# The reading list behind the project.
+#
+# Add a book by copying one block below and filling it in. Everything except
+# title and author is optional — leave a line out and that row simply isn't
+# shown. Rendered by {{< book-list >}} (see CUSTOMISING.md).
+#
+# Bookshop links: paste the address of the book's own page in each shop. For a
+# shop you have no link for, the site falls back to a search built from the
+# ISBN, if one is set up for that shop in hugo.toml.
+#
+# Only link to free copies that are legal — a library, Open Library's lending
+# programme, an open-access publisher, or the author's own posted copy.
+# ---------------------------------------------------------------------------
+
+# The shops, in the order their buttons appear.
+stores:
+  - id: asiabooks
+    name: Asia Books
+    where: Thailand
+  - id: kinokuniya
+    name: Kinokuniya
+    where: Thailand
+  - id: amazon
+    name: Amazon
+    where: International
+
+books:
+  - slug: body-keeps-the-score
+    title: "The Body Keeps the Score"
+    subtitle: "Mind, Brain and Body in the Transformation of Trauma"
+    author: "Bessel van der Kolk"
+    year: 2014
+    isbn: "9780143127741"
+    # A picture of the cover. Either a file in static/img/books/, or an address
+    # on the web — https://covers.openlibrary.org/b/isbn/9780143127741-L.jpg
+    # serves covers for exactly this purpose.
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      The case that trauma is carried in the body and in development, not only
+      in memory — and that recovery is a matter of restoring what a person can
+      do, not only of relieving symptoms. It is the clearest argument I know
+      for why a model of neurodevelopment has to run across a whole life and
+      include the body, and it is where the capability side of NDLS starts to
+      look less like philosophy and more like clinical necessity.
+    buy:
+      asiabooks: "https://www.asiabooks.com/th/body-keeps-the-score-the-mind-brain-and-body-in-the-transformation-of-trauma.html"
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9780143127741"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9780143127741"
+    author_links:
+      - label: "Bessel van der Kolk"
+        url: "https://en.wikipedia.org/wiki/Bessel_van_der_Kolk"
+      - label: "His own site"
+        url: "https://www.besselvanderkolk.com/"
+      - label: "Trauma Research Foundation"
+        url: "https://www.traumaresearchfoundation.org/"
+    media:
+      - label: "The book on Wikipedia"
+        url: "https://en.wikipedia.org/wiki/The_Body_Keeps_the_Score"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Bessel+van+der+Kolk+The+Body+Keeps+the+Score"
+    concepts:
+      - label: "Polyvagal theory"
+        url: "https://en.wikipedia.org/wiki/Polyvagal_theory"
+      - label: "Adverse childhood experiences"
+        url: "https://en.wikipedia.org/wiki/Adverse_childhood_experiences"
+      - label: "Complex PTSD"
+        url: "https://en.wikipedia.org/wiki/Complex_post-traumatic_stress_disorder"
+      - label: "Attachment theory"
+        url: "https://en.wikipedia.org/wiki/Attachment_theory"
+      - label: "Interoception"
+        url: "https://en.wikipedia.org/wiki/Interoception"
+      - label: "EMDR"
+        url: "https://en.wikipedia.org/wiki/Eye_movement_desensitization_and_reprocessing"

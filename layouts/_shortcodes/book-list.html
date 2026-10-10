@@ -1,0 +1,106 @@
+{{/* book-list — the reading list from data/books.yaml.
+
+     {{< book-list >}}                  every book
+     {{< book-list project="ndls" >}}   only books whose projects: include ndls
+
+     Each book shows its cover, your note, and rows of links: where to buy it,
+     where to read it free and legally, the author, things to watch or read
+     about it, and the ideas in it. A row with nothing in it is not shown. */}}
+{{- $project := .Get "project" -}}
+{{- $data := site.Data.books -}}
+{{- $stores := $data.stores | default slice -}}
+{{- $books := $data.books | default slice -}}
+{{- if $project -}}
+  {{- $keep := slice -}}
+  {{- range $books -}}
+    {{- if in (.projects | default slice) $project }}{{ $keep = $keep | append . }}{{ end -}}
+  {{- end -}}
+  {{- $books = $keep -}}
+{{- end -}}
+
+{{- /* Is any shop set up to pay a commission? Only then is there anything to
+       disclose, and only then are links marked as sponsored. */ -}}
+{{- $aff := (site.Params.books | default dict).affiliate | default dict -}}
+{{- $anyAffiliate := false -}}
+{{- range $k, $v := $aff }}{{ if $v }}{{ $anyAffiliate = true }}{{ end }}{{ end -}}
+
+{{- if and $anyAffiliate (site.Params.books).disclosure -}}
+<p class="book-disclosure">{{ (site.Params.books).disclosure | markdownify }}</p>
+{{- end -}}
+
+{{- if not $books -}}
+<p class="site-empty">{{ .Get "empty" | default "No books listed yet." }}</p>
+{{- else -}}
+<div class="book-list not-prose">
+{{- range $books -}}
+  {{- $b := . -}}
+  <article class="book" id="{{ .slug | default (urlize .title) }}">
+    {{- $cover := .cover | default "" -}}
+    {{- if $cover -}}
+      {{- $src := $cover -}}
+      {{- if not (hasPrefix $cover "http") -}}
+        {{- with resources.Get (strings.TrimPrefix "/" $cover) -}}
+          {{- with try (.Fill "300x450 Smart webp q80") }}{{ with .Value }}{{ $src = .RelPermalink }}{{ end }}{{ end -}}
+        {{- end -}}
+      {{- end -}}
+      <img class="book-cover" src="{{ $src }}" alt="" loading="lazy" decoding="async">
+    {{- else -}}
+      <span class="book-cover book-cover-blank" aria-hidden="true">{{ substr .title 0 1 }}</span>
+    {{- end -}}
+
+    <div class="book-main">
+      <h3 class="book-title">
+        {{ .title }}{{ with .subtitle }}<span class="book-subtitle">{{ . }}</span>{{ end }}
+      </h3>
+      <p class="book-byline">
+        {{ .author }}{{ with .year }} &middot; {{ . }}{{ end }}
+        {{- with .status }} &middot; <span class="book-status book-status-{{ . }}">{{ . }}</span>{{ end -}}
+      </p>
+      {{- with .note }}<p class="book-note">{{ . | markdownify }}</p>{{ end -}}
+
+      {{- /* --- where to buy it ------------------------------------------- */ -}}
+      {{- $buy := .buy | default dict -}}
+      {{- $chips := slice -}}
+      {{- range $stores -}}
+        {{- $s := . -}}
+        {{- $r := partial "book-link.html" (dict "store" $s.id "url" (index $buy $s.id) "isbn" ($b.isbn | default "")) -}}
+        {{- with $r.url -}}
+          {{- $chips = $chips | append (dict "label" $s.name "hint" ($s.where | default "") "url" . "aff" $r.affiliate) -}}
+        {{- end -}}
+      {{- end -}}
+      {{- with $chips -}}
+      <div class="book-row">
+        <span class="book-row-label">Buy</span>
+        <span class="book-row-links">
+          {{- range . -}}
+          <a class="book-chip" href="{{ .url }}" target="_blank"
+             rel="{{ if .aff }}sponsored nofollow noopener{{ else }}noopener{{ end }}">
+            {{ .label }}{{ with .hint }}<span class="book-chip-hint">{{ . }}</span>{{ end }}
+          </a>
+          {{- end -}}
+        </span>
+      </div>
+      {{- end -}}
+
+      {{- /* --- the other rows, all the same shape -------------------------- */ -}}
+      {{- range $row := (slice
+            (dict "label" "Free &amp; legal" "items" ($b.free | default slice))
+            (dict "label" "Author" "items" ($b.author_links | default slice))
+            (dict "label" "Watch &amp; read" "items" ($b.media | default slice))
+            (dict "label" "Ideas in it" "items" ($b.concepts | default slice))) -}}
+        {{- with $row.items -}}
+        <div class="book-row">
+          <span class="book-row-label">{{ $row.label | safeHTML }}</span>
+          <span class="book-row-links">
+            {{- range . -}}
+            <a class="book-chip" href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a>
+            {{- end -}}
+          </span>
+        </div>
+        {{- end -}}
+      {{- end -}}
+    </div>
+  </article>
+{{- end -}}
+</div>
+{{- end -}}

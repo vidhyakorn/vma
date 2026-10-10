@@ -32,6 +32,7 @@ content\
     _index.md                Overview
     progress.md              the timeline
     outputs.md               papers and essays tagged ndls
+    ndls_books.md            the reading list (shown at /ndls/books/)
   blog\                      Writing — essays, dated, newest first
   posts\_index.md            the "More →" page: everything, newest first
   about\index.md             About, with your photo and CV
@@ -274,6 +275,7 @@ project rather than a list of papers. It has three pages:
 | Overview | `content\ndls\_index.md` | what the project is and why |
 | Progress | `content\ndls\progress.md` | the timeline, edited by hand |
 | Outputs | `content\ndls\outputs.md` | everything tagged `ndls`, gathered automatically |
+| Books Review | `content\ndls\ndls_books.md` | the reading list — see below |
 
 ### Adding something to Outputs
 
@@ -311,6 +313,97 @@ Each entry on the timeline is one block:
 
 Put the newest entry at the top. `date` is free text, so "September 2026",
 "Now" and "Later" are all fine.
+
+### The reading list
+
+The books themselves are **not** in `ndls_books.md` — that page holds one
+line, `{{</* book-list project="ndls" */>}}`, and everything else lives in
+`data\books.yaml`. Adding a book means copying one block there and filling it
+in. Leave any line out and that row simply isn't shown.
+
+```yaml
+  - slug: body-keeps-the-score
+    title: "The Body Keeps the Score"
+    subtitle: "Mind, Brain and Body in the Transformation of Trauma"
+    author: "Bessel van der Kolk"
+    year: 2014
+    isbn: "9780143127741"
+    cover: ""              # a file in static\img\books\, or an address on the web
+    projects: [ndls]       # which project pages it appears on
+    status: read           # read / reading / queued
+    note: >
+      Why it matters to the project, in your own words.
+    buy:
+      asiabooks: "https://www.asiabooks.com/th/…"
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9780143127741"
+    author_links:
+      - { label: "His own site", url: "https://…" }
+    media:
+      - { label: "A talk worth watching", url: "https://youtu.be/…" }
+    concepts:
+      - { label: "Polyvagal theory", url: "https://…" }
+```
+
+**Covers.** Either put a picture in `static\img\books\` and write
+`cover: "/img/books/name.jpg"`, or use Open Library, which serves covers for
+exactly this purpose:
+`cover: "https://covers.openlibrary.org/b/isbn/9780143127741-L.jpg"`.
+With no cover you get a plain panel with the first letter of the title.
+
+**Bookshop buttons.** Open the book's page in the shop and paste the address.
+A shop you leave blank falls back to a search built from the ISBN, if one is
+set up for it in `hugo.toml` under `[params.books.search]` — Amazon has one;
+Asia Books and Kinokuniya are blank because I could not confirm their search
+address, so paste a direct link for those. The shops, and the order their
+buttons appear in, are the `stores:` list at the top of `data\books.yaml`.
+
+**Free copies — legal ones only.** Open Library's lending programme, a library
+catalogue, an open-access publisher, or a copy the author has posted
+themselves. Not a pirate PDF: it would expose you, and it is the kind of thing
+that gets a site delisted.
+
+### Earning from the bookshop links
+
+Nothing is tracked until you put a code in `hugo.toml`, under
+`[params.books.affiliate]`. Until then the links are ordinary links and no
+disclosure is shown.
+
+```toml
+[params.books.affiliate]
+  amazon = ''        # your Amazon Associates tag, e.g. 'vidhyakorn-20'
+  asiabooks = ''     # a network deeplink template (see below)
+  kinokuniya = ''
+```
+
+Two shapes are handled, and the site works out which you have given it:
+
+- **A bare code** is added to the shop's own address as `?tag=CODE`. This is
+  how Amazon Associates works.
+- **A template containing `{url}`** wraps the shop's address instead, e.g.
+  `'https://invol.co/aff_m?offer_id=1&aff_id=2&url={url}'`. This is how
+  affiliate networks work, and it is what you will be given for Thai shops.
+
+As soon as one code is filled in, two things happen by themselves: the line in
+`[params.books] disclosure` appears above the list, and every tracked link is
+marked `rel="sponsored nofollow"`. Both are required — the first by consumer
+law and by Amazon's own terms, the second by Google, which penalises sites
+that pass link credit to paid links. Don't remove either.
+
+Where to sign up, as far as I could establish:
+
+| Shop | Programme |
+|---|---|
+| Amazon | [Amazon Associates](https://affiliate-program.amazon.com/) — a US account works from Thailand; links point at amazon.com |
+| Kinokuniya (TH) | through a network — [Involve Asia](https://involve.asia/) or [FlexOffers](https://www.flexoffers.com/) both list it |
+| Asia Books | I could not find a programme. Keep the plain link; it is still the easiest place for a Thai reader to buy |
+
+Amazon's agreement also requires that you keep the disclosure near the links
+and that you not quote their prices on your own page. The page does neither,
+so leave it that way.
 
 ### The logo
 

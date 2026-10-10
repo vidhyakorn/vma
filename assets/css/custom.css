@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, h6,
    LINKS — black text, green underline. The colour is in the line, never in
    the words, so every link stays readable.
    =========================================================================== */
-.content a:not(.hextra-card):not(.pub-btn):not(.cv-btn):not(.not-prose) {
+.content a:not(.hextra-card):not(.pub-btn):not(.cv-btn):not(.book-chip):not(.not-prose) {
   color: var(--ink);
   text-decoration: underline;
   text-decoration-color: var(--accent);
@@ -134,7 +134,7 @@ h1, h2, h3, h4, h5, h6,
   text-underline-offset: 3px;
   transition: background 0.15s;
 }
-.content a:not(.hextra-card):not(.pub-btn):not(.cv-btn):not(.not-prose):hover {
+.content a:not(.hextra-card):not(.pub-btn):not(.cv-btn):not(.book-chip):not(.not-prose):hover {
   background: var(--accent-wash);
 }
 
@@ -695,3 +695,147 @@ main#content h1:not(.site-headline) {
 }
 .content .milestone-body > :first-child { margin-top: 0; }
 .content .milestone-body > :last-child { margin-bottom: 0; }
+
+/* ===========================================================================
+   BOOKS — the reading list. One panel per book: cover on the left, then the
+   note and rows of links. Sizes here change every book at once.
+   =========================================================================== */
+.content .book-disclosure {
+  font-size: 0.82rem;
+  color: var(--muted);
+  background: var(--wash);
+  border-left: 3px solid var(--accent);
+  padding: 0.6rem 0.9rem;
+  margin: 1.5rem 0;
+}
+
+.content .book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+}
+
+.content .book {
+  display: flex;
+  gap: 1.1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--wash);
+}
+
+.content .book-cover {
+  flex: none;
+  width: 92px;
+  height: 138px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #E6E6E6;
+}
+.dark .content .book-cover { background: #2B2B2B; }
+/* No cover: the first letter of the title on a plain panel. */
+.content .book-cover-blank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.content .book-main { min-width: 0; }
+
+.content .book-title {
+  font-family: var(--font-heading);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--ink);
+}
+.content .book-subtitle {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+.content .book-byline {
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin: 0.35rem 0 0;
+}
+.content .book-status {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}
+.content .book-status-read { color: var(--accent-text); }
+
+.content .book-note {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0.6rem 0 0;
+}
+.content .book-note p { margin: 0; }
+
+/* --- the link rows ------------------------------------------------------- */
+.content .book-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.5rem;
+  margin-top: 0.7rem;
+}
+.content .book-row-label {
+  flex: none;
+  width: 6.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.content .book-row-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.content .book-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  padding: 0.18rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-page, transparent);
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  line-height: 1.35;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.content .book-chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  color: var(--accent-text);
+}
+.content .book-chip-hint {
+  font-size: 0.64rem;
+  color: var(--muted);
+}
+.content .book-chip:hover .book-chip-hint { color: var(--accent-text); }
+
+@media (max-width: 640px) {
+  .content .book { flex-direction: column; }
+  .content .book-cover { width: 76px; height: 114px; }
+  .content .book-row-label { width: 100%; }
+}

@@ -164,6 +164,31 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
       inputPosition = 'top'
       lang = 'en'
 
+  # ---------------------------------------------------------------------------
+  # The reading list (data/books.yaml, shown by the book-list shortcode).
+  # ---------------------------------------------------------------------------
+  [params.books]
+    # Shown above the list, but only once at least one code below is filled in.
+    disclosure = "Some bookshop links below are affiliate links: if you buy through one I earn a small commission, at no extra cost to you. It changes nothing about which books are here or what I say about them."
+
+    # Affiliate codes. Leave a shop blank and its links stay plain and untracked.
+    #   a bare code        -> added to the shop's own address as ?tag=CODE
+    #                         (this is how Amazon Associates works)
+    #   a template with {url} -> the shop's address is wrapped in it
+    #                         (this is how networks such as Involve Asia work,
+    #                          e.g. 'https://invol.co/aff_m?offer_id=1&aff_id=2&url={url}')
+    [params.books.affiliate]
+      amazon = ''
+      asiabooks = ''
+      kinokuniya = ''
+
+    # Where to search a shop when a book has no direct link of its own.
+    # {isbn} is replaced with the book's ISBN. Blank = no button for that shop.
+    [params.books.search]
+      amazon = 'https://www.amazon.com/s?k={isbn}'
+      asiabooks = ''
+      kinokuniya = ''
+
   [params.navbar]
     # The signature image replaces the site name in the top bar. It links to
     # the homepage, as the name did. vmd-dark.png is the same signature in

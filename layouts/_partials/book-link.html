@@ -1,0 +1,40 @@
+{{/* book-link.html — the address to send a reader to for one shop.
+
+     Takes  (dict "store" "amazon" "url" "<the book's page>" "isbn" "978…")
+     and returns a dict:  { url, affiliate }  — affiliate is true when the
+     address carries a tracking code, so the link can be marked rel="sponsored"
+     and the page can show its disclosure.
+
+     Two kinds of affiliate setup are handled, both configured in hugo.toml
+     under [params.books.affiliate]:
+       a bare code         → added to the shop's own address as ?tag=…
+                             (how Amazon Associates works)
+       a template with {url} → the whole address is wrapped in it
+                             (how affiliate networks such as Involve Asia work)
+     Nothing configured for a shop → a plain link, untracked. */}}
+{{- $store := .store -}}
+{{- $url := .url | default "" -}}
+{{- $isbn := .isbn | default "" -}}
+{{- $books := site.Params.books | default dict -}}
+
+{{- /* No direct link: fall back to a search on that shop, if one is set up. */ -}}
+{{- if and (not $url) $isbn -}}
+  {{- $tpl := index ($books.search | default dict) $store -}}
+  {{- with $tpl }}{{ $url = replace . "{isbn}" $isbn }}{{ end -}}
+{{- end -}}
+
+{{- $affiliate := false -}}
+{{- if $url -}}
+  {{- $code := index ($books.affiliate | default dict) $store -}}
+  {{- with $code -}}
+    {{- if strings.Contains . "{url}" -}}
+      {{- $url = replace . "{url}" (urlquery $url) -}}
+      {{- $affiliate = true -}}
+    {{- else -}}
+      {{- $sep := cond (strings.Contains $url "?") "&" "?" -}}
+      {{- $url = printf "%s%stag=%s" $url $sep . -}}
+      {{- $affiliate = true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return (dict "url" $url "affiliate" $affiliate) -}}
