@@ -405,6 +405,67 @@ Amazon's agreement also requires that you keep the disclosure near the links
 and that you not quote their prices on your own page. The page does neither,
 so leave it that way.
 
+### Registering — the actual steps
+
+**Before you apply.** Both programmes look at the site before they approve it,
+and both want to see something real: roughly ten pages or posts, and something
+published in the last month or two. The site clears that, but a reading list
+with one book on it is the weakest page on it — put five or six books in
+`data\books.yaml` first. It costs an evening and it is the difference between
+being waved through and being asked to reapply.
+
+**Amazon Associates** — [affiliate-program.amazon.com](https://affiliate-program.amazon.com/)
+
+1. Sign up with your ordinary Amazon account, or make one.
+2. Give the payee name and address — the person who gets paid.
+3. Add `https://vidhyakorn.github.io/vma/` as your website. You can add up to
+   50 later (LinkedIn, a YouTube channel) but one real site is enough.
+4. Choose your **store ID**. This is the tag: pick something like
+   `vidhyakorn-20`. It is what goes in `[params.books.affiliate] amazon`.
+5. Say what the site is about and what you will link to — books, in your case.
+6. Do the tax interview. Living in Thailand you fill in a **W-8BEN**, which is
+   the form that says you are not a US taxpayer. It is three screens.
+7. You get the tag at once and can start using it while they review.
+
+   Then the catch: you must make **three qualifying sales within 180 days**, or
+   the account is closed. You can reapply afterwards. Never buy through your
+   own link to make the number up — that is the one thing they close accounts
+   for permanently.
+
+   On getting paid: direct deposit is not offered to Thai banks. That leaves an
+   Amazon.com gift card (low threshold, and useful if you buy books anyway), a
+   cheque (high threshold, and they take a fee), or a USD-receiving account
+   such as Payoneer or Wise, which gives you US account details Amazon will pay
+   into. Check the current thresholds on the payment settings page — they
+   change.
+
+**Kinokuniya, through a network** — [Involve Asia](https://involve.asia/)
+
+1. Join as a publisher. It is free, it is built for Southeast Asia, and there
+   is no follower or traffic minimum, though they want a public channel with
+   about ten posts and recent activity.
+2. Once you are approved, open the **Advertiser Directory** and apply to
+   **Kinokuniya (TH)**. Some offers are instant; some are reviewed by hand.
+3. When that is approved, use the **Create Deeplink** tool on any Kinokuniya
+   book page. You get back an address shaped like
+   `https://invol.co/aff_m?offer_id=123&aff_id=456&source=…&url=https%3A%2F%2Fthailand.kinokuniya.com%2F…`
+4. **Take that address, delete everything after `url=`, and put `{url}` there
+   instead.** That is your template — paste the whole thing into
+   `[params.books.affiliate] kinokuniya`. The site then builds the deeplink for
+   every book by itself, and you never touch their tool again.
+
+[FlexOffers](https://www.flexoffers.com/affiliate-programs/kinokuniya-th-affiliate-program/)
+carries Kinokuniya too, and works the same way. Only join one — running the
+same shop through two networks gets both suspicious.
+
+**Asia Books.** No programme I could find. The plain link stays, and it is
+still where a Thai reader will actually buy. Worth an email to them asking;
+shops that size sometimes run something informal.
+
+**Tax.** Affiliate commission is assessable income in Thailand and goes on your
+annual return, foreign-paid or not. I am not a tax adviser — if it grows past
+pocket money, ask one.
+
 ### The logo
 
 `static\img\ndls-logo.png`, shown by `{{</* ndls-mark */>}}` at the top of the
