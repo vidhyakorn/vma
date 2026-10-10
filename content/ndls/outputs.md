@@ -2,7 +2,7 @@
 title: "Outputs"
 description: "Papers, preprints and essays from the NDLS project."
 weight: 2
-feedExclude: false
+feedExclude: true
 ---
 
 Everything written out of this project — papers, preprints and essays — newest

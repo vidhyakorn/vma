@@ -10,6 +10,7 @@ theme = 'hextra'
 
 enableRobotsTXT = true
 enableInlineShortcodes = true
+enableGitInfo = true   # populates .Lastmod from git; feed sorts by this
 
 # Obsidian note templates live in content/_templates/ so they are visible in
 # the vault, but they are not pages and must never be published.

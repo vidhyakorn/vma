@@ -20,4 +20,4 @@
   {{- if .Params.feedExclude -}}{{- continue -}}{{- end -}}
   {{- $pages = $pages | append . -}}
 {{- end -}}
-{{- return (sort $pages "Date" "desc") -}}
+{{- return (sort $pages "Lastmod" "desc") -}}

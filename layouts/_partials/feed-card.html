@@ -25,7 +25,7 @@
   <div class="feed-card-body">
     <div class="feed-card-meta">
       {{- with $kind }}<span class="feed-tag">{{ . }}</span>{{ end -}}
-      {{- with $page.Date }}<time class="feed-card-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2 Jan 2006" }}</time>{{ end -}}
+      {{- $d := $page.Lastmod -}}{{- if $d.IsZero }}{{- $d = $page.Date -}}{{- end -}}{{- with $d }}<time class="feed-card-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2 Jan 2006" }}</time>{{ end -}}
     </div>
     <h3 class="feed-card-title">{{ $title }}</h3>
     {{- with $sub }}<p class="feed-card-sub">{{ . }}</p>{{ end -}}
