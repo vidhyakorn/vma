@@ -2,7 +2,7 @@
 title: "Progress"
 description: "What is built, what is underway, and what comes next."
 weight: 1
-feedExclude: true
+feedExclude: false
 ---
 
 An honest running log of where the project actually is. Newest first.

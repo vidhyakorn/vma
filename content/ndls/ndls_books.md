@@ -5,7 +5,7 @@ weight: 3
 # The file is ndls_books.md, but the address is /ndls/books/ — underscores read
 # badly in a web address.
 slug: "books"
-feedExclude: true
+feedExclude: false
 ---
 
 >*Getting to know more about how diverse human are and they suffer and thrive through reading books.
