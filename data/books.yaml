@@ -79,3 +79,466 @@ books:
         url: "https://en.wikipedia.org/wiki/Interoception"
       - label: "EMDR"
         url: "https://en.wikipedia.org/wiki/Eye_movement_desensitization_and_reprocessing"
+
+  - slug: scattered-minds
+    title: "Scattered Minds"
+    subtitle: "The Origins and Healing of Attention Deficit Disorder"
+    author: "Gabor Maté"
+    year: 1999
+    isbn: "9781785042218"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      Maté's case that ADHD is less an inherited defect than a developmental
+      adaptation — laid down early, in the relationship between a child and the
+      people around them. The causal claim is contested and the evidence is
+      clinical rather than epidemiological, which is exactly why it is useful
+      here: it is the strongest available statement of the position a
+      life-course model has to be able to represent and then test, instead of
+      assuming away.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9781785042218"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9781785042218"
+    author_links:
+      - label: "Gabor Maté"
+        url: "https://drgabormate.com/"
+      - label: "His books"
+        url: "https://www.worldofbooks.com/en-gb/collections/author-books-by-gabor-mat"
+    media:
+      - label: "Publisher's page"
+        url: "https://www.penguin.co.uk/books/311231/scattered-minds-by-mate-gabor/9781785042218"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Gabor+Mate+Scattered+Minds"
+    concepts:
+      - label: "ADHD"
+        url: "https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder"
+      - label: "Attachment theory"
+        url: "https://en.wikipedia.org/wiki/Attachment_theory"
+      - label: "Adverse childhood experiences"
+        url: "https://en.wikipedia.org/wiki/Adverse_childhood_experiences"
+      - label: "Medicalisation"
+        url: "https://en.wikipedia.org/wiki/Medicalization"
+
+  - slug: adhd-2-0
+    title: "ADHD 2.0"
+    subtitle: "New Science and Essential Strategies for Thriving with Distraction, from Childhood through Adulthood"
+    author: "Edward M. Hallowell and John J. Ratey"
+    year: 2021
+    isbn: "9780399178740"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      The short, current statement from the two clinicians who did most to put
+      adult ADHD into general circulation: the task-positive and default mode
+      networks, the cerebellum, and what follows for medication, exercise and
+      daily structure. Useful to me mainly as a map of which mechanisms are now
+      taken seriously enough to be worth putting in a model.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9780399178740"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9780399178740"
+    author_links:
+      - label: "Edward Hallowell"
+        url: "https://drhallowell.com/"
+      - label: "His books"
+        url: "https://www.worldofbooks.com/en-gb/collections/author-books-by-edward-m-hallowell"
+    media:
+      - label: "Publisher's page"
+        url: "https://www.penguinrandomhouse.com/books/isbn/9780399178740"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Hallowell+Ratey+ADHD+2.0"
+    concepts:
+      - label: "Default mode network"
+        url: "https://en.wikipedia.org/wiki/Default_mode_network"
+      - label: "Executive functions"
+        url: "https://en.wikipedia.org/wiki/Executive_functions"
+      - label: "Hyperfocus"
+        url: "https://en.wikipedia.org/wiki/Hyperfocus"
+      - label: "Methylphenidate"
+        url: "https://en.wikipedia.org/wiki/Methylphenidate"
+
+  - slug: adhd-is-awesome
+    title: "ADHD is Awesome"
+    subtitle: "A Guide to (Mostly) Thriving with ADHD"
+    author: "Penn Holderness and Kim Holderness"
+    year: 2024
+    isbn: "9781400338610"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      Not a clinical book and not pretending to be one: a married couple, one
+      with ADHD and one without, on what the day actually looks like — systems,
+      arguments, repair. It is here because a capability account has to be
+      answerable to this level of description, where the question is not what a
+      diagnosis predicts but what a household manages to do.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9781400338610"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9781400338610"
+    author_links:
+      - label: "Penn Holderness"
+        url: "https://www.harpercollinsfocus.com/author/HCCP.139495749/penn-holderness"
+      - label: "Kim Holderness"
+        url: "https://www.harpercollinsfocus.com/author/HCCP.139495748/kim-holderness"
+    media:
+      - label: "The book, at Waterstones"
+        url: "https://www.waterstones.com/book/adhd-is-awesome/penn-holderness/kim-holderness/9781400338610"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Holderness+ADHD+is+Awesome"
+    concepts:
+      - label: "Neurodiversity"
+        url: "https://en.wikipedia.org/wiki/Neurodiversity"
+      - label: "Emotional self-regulation"
+        url: "https://en.wikipedia.org/wiki/Emotional_self-regulation"
+      - label: "Masking"
+        url: "https://en.wikipedia.org/wiki/Masking_(personality)"
+
+  - slug: hunter-in-a-farmers-world
+    title: "ADHD: A Hunter in a Farmer's World"
+    subtitle: "Thom Hartmann, with a foreword by Michael Popkin"
+    author: "Thom Hartmann"
+    year: 1993
+    isbn: "9781620558980"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      The hunter-farmer hypothesis: that the trait cluster was adaptive for
+      foraging and only becomes a disorder in a settled, timetabled society.
+      As evolutionary history it is speculative and largely untested. As a
+      framing device it is the clearest popular statement of the idea NDLS is
+      built on — that the pathology is in the fit between a person and a
+      setting, not in the person alone. Read it for the frame, not the
+      evidence. This 2019 edition is a revision of his 1993 book.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9781620558980"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9781620558980"
+    author_links:
+      - label: "Thom Hartmann"
+        url: "https://www.simonandschuster.com/authors/Thom-Hartmann/460357166"
+      - label: "Michael Popkin"
+        url: "https://www.simonandschuster.com/authors/Michael-Popkin/162065578"
+    media:
+      - label: "Publisher's page"
+        url: "https://www.innertraditions.com/books/adhd"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Thom+Hartmann+hunter+farmer+ADHD"
+    concepts:
+      - label: "Evolutionary mismatch"
+        url: "https://en.wikipedia.org/wiki/Evolutionary_mismatch"
+      - label: "Social model of disability"
+        url: "https://en.wikipedia.org/wiki/Social_model_of_disability"
+      - label: "Neurodiversity"
+        url: "https://en.wikipedia.org/wiki/Neurodiversity"
+
+  - slug: taking-charge-of-adhd
+    title: "Taking Charge of ADHD"
+    subtitle: "The Complete, Authoritative Guide for Parents — fourth edition"
+    author: "Russell A. Barkley"
+    year: 1995
+    isbn: "9781462542673"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      The evidence-based counterweight to most of this list. Barkley is the
+      researcher who made the case that ADHD is primarily a disorder of
+      executive function and self-regulation, and this is him writing for
+      parents without softening what the trials actually show. Where he and
+      Maté disagree is the most productive argument in the field, and a model
+      that cannot hold both positions open is not yet a model.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9781462542673"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9781462542673"
+    author_links:
+      - label: "Russell A. Barkley"
+        url: "https://www.russellbarkley.org/"
+      - label: "At his publisher"
+        url: "https://www.guilford.com/author/Russell-A-Barkley"
+    media:
+      - label: "Publisher's page"
+        url: "https://www.guilford.com/books/Taking-Charge-of-ADHD/Russell-Barkley/9781462542673"
+      - label: "Lectures"
+        url: "https://www.youtube.com/results?search_query=Russell+Barkley+ADHD+lecture"
+    concepts:
+      - label: "Executive functions"
+        url: "https://en.wikipedia.org/wiki/Executive_functions"
+      - label: "Parent management training"
+        url: "https://en.wikipedia.org/wiki/Parent_management_training"
+      - label: "Delayed gratification"
+        url: "https://en.wikipedia.org/wiki/Delayed_gratification"
+      - label: "Behaviour modification"
+        url: "https://en.wikipedia.org/wiki/Behavior_modification"
+
+  - slug: driven-to-distraction
+    title: "Driven to Distraction"
+    subtitle: "Recognizing and Coping with Attention Deficit Disorder"
+    author: "Edward M. Hallowell and John J. Ratey"
+    year: 1994
+    isbn: "9780307743152"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      The book that put adult ADHD into general circulation in 1994, built out
+      of case vignettes rather than statistics. Worth reading as a historical
+      document as much as a clinical one: a great deal of how the condition is
+      now described in ordinary speech — and therefore how people report
+      themselves in surveys — starts here.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9780307743152"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9780307743152"
+    author_links:
+      - label: "Edward Hallowell"
+        url: "https://drhallowell.com/"
+    media:
+      - label: "Publisher's page"
+        url: "https://www.penguinrandomhouse.com/books/209384/driven-to-distraction-revised-by-hallowell-edward-m-md/9780307743152"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Hallowell+Ratey+Driven+to+Distraction"
+    concepts:
+      - label: "ADHD"
+        url: "https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder"
+      - label: "History of ADHD"
+        url: "https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder_controversies"
+      - label: "Executive functions"
+        url: "https://en.wikipedia.org/wiki/Executive_functions"
+
+  - slug: delivered-from-distraction
+    title: "Delivered from Distraction"
+    subtitle: "Getting the Most out of Life with Attention Deficit Disorder"
+    author: "Edward M. Hallowell and John J. Ratey"
+    year: 2005
+    isbn: "9780345442314"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      The sequel, eleven years on and more practical than diagnostic: what to
+      do once the label is in hand. The shift in emphasis between the two books
+      is itself informative — from arguing the condition exists to arguing about
+      what a good life with it looks like, which is the move a capability
+      framework is trying to make formal.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9780345442314"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9780345442314"
+    author_links:
+      - label: "Edward Hallowell"
+        url: "https://drhallowell.com/"
+    media:
+      - label: "Publisher's page"
+        url: "https://www.penguinrandomhouse.com/books/73941/delivered-from-distraction-by-edward-m-hallowell-md-and-john-j-ratey-md/"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Hallowell+Delivered+from+Distraction"
+    concepts:
+      - label: "Capability approach"
+        url: "https://en.wikipedia.org/wiki/Capability_approach"
+      - label: "Executive functions"
+        url: "https://en.wikipedia.org/wiki/Executive_functions"
+      - label: "Hyperfocus"
+        url: "https://en.wikipedia.org/wiki/Hyperfocus"
+
+  - slug: unlocking-the-adhd-advantage
+    title: "Unlocking the ADHD Advantage"
+    subtitle: "Why Your Brain Being Wired Differently Is Your Superpower"
+    author: "Anders Hansen"
+    year: 2017
+    isbn: "9780593885819"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      Hansen, a Swedish psychiatrist, making the adaptive case again — and
+      written from inside a country whose registry data could actually test it.
+      Published in Swedish in 2017 as Fördel adhd; the UK edition is called
+      The ADHD Advantage (ISBN 9781785044946), which is the one Thai shops are
+      likelier to stock.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9780593885819"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9780593885819"
+    author_links:
+      - label: "At his publisher"
+        url: "https://penguinrandomhouse.com/books/775785/unlocking-the-adhd-advantage-by-anders-hansen"
+    media:
+      - label: "The UK edition"
+        url: "https://www.penguin.co.uk/books/460948/the-adhd-advantage-by-hansen-anders/9781785044946"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Anders+Hansen+ADHD"
+    concepts:
+      - label: "Evolutionary mismatch"
+        url: "https://en.wikipedia.org/wiki/Evolutionary_mismatch"
+      - label: "Neurodiversity"
+        url: "https://en.wikipedia.org/wiki/Neurodiversity"
+      - label: "Dopamine"
+        url: "https://en.wikipedia.org/wiki/Dopamine"
+
+  - slug: dopamine-nation
+    title: "Dopamine Nation"
+    subtitle: "Finding Balance in the Age of Indulgence"
+    author: "Anna Lembke"
+    year: 2021
+    isbn: "9781524746742"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      Not an ADHD book, which is why it earns its place: an addiction
+      psychiatrist on what cheap, constant reward does to the machinery that
+      everything else on this list depends on. If the environment is doing part
+      of the causal work, this is the clearest account of the part it does
+      through the reward system rather than through schools and families.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9781524746742"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9781524746742"
+    author_links:
+      - label: "Anna Lembke"
+        url: "https://en.wikipedia.org/wiki/Anna_Lembke"
+    media:
+      - label: "Publisher's page"
+        url: "https://www.penguinrandomhouse.com/books/624957/dopamine-nation-by-anna-lembke-md/9781524746742/"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Anna+Lembke+Dopamine+Nation"
+    concepts:
+      - label: "Dopamine"
+        url: "https://en.wikipedia.org/wiki/Dopamine"
+      - label: "Reward system"
+        url: "https://en.wikipedia.org/wiki/Reward_system"
+      - label: "Behavioural addiction"
+        url: "https://en.wikipedia.org/wiki/Behavioral_addiction"
+      - label: "Hedonic treadmill"
+        url: "https://en.wikipedia.org/wiki/Hedonic_treadmill"
+
+  - slug: why-am-i-like-this
+    title: "Why Am I Like This?"
+    subtitle: "My Brain Isn't Broken (and Neither Is Yours)"
+    author: "Gemma Styles"
+    year: 2024
+    isbn: "9781804992708"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      Part memoir, part interviews with clinicians, on mental health in a life
+      lived partly online. The value for a modelling project is the ordinary
+      texture it records — how a diagnosis arrives late, what it changes and
+      what it doesn't — which is the kind of thing survey instruments are
+      designed to miss.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9781804992708"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9781804992708"
+    author_links: []
+    media:
+      - label: "Publisher's page"
+        url: "https://www.penguin.co.uk/books/457779/why-am-i-like-this-by-styles-gemma/9781804992708"
+      - label: "Interviews"
+        url: "https://www.youtube.com/results?search_query=Gemma+Styles+Why+Am+I+Like+This"
+    concepts:
+      - label: "Neurodiversity"
+        url: "https://en.wikipedia.org/wiki/Neurodiversity"
+      - label: "Masking"
+        url: "https://en.wikipedia.org/wiki/Masking_(personality)"
+      - label: "Mental health"
+        url: "https://en.wikipedia.org/wiki/Mental_health"
+
+  - slug: nine-minds
+    title: "Nine Minds"
+    subtitle: "Inner Lives on the Spectrum"
+    author: "Daniel Tammet"
+    year: 2024
+    isbn: "9781800811133"
+    cover: ""
+    projects: [ndls]
+    status: read
+    note: >
+      Nine portraits of autistic people — a mathematician, a surgeon, a poet —
+      written by an autistic author who refuses to make any of them stand for
+      the category. The most direct challenge on this list to what a model does
+      when it represents a population: nine lives that a single parameter would
+      flatten, and the argument for why that flattening costs something.
+    buy:
+      asiabooks: ""
+      kinokuniya: ""
+      amazon: ""
+    free:
+      - label: "Borrow on Open Library"
+        url: "https://openlibrary.org/isbn/9781800811133"
+      - label: "Find it in a library"
+        url: "https://search.worldcat.org/search?q=bn%3A9781800811133"
+    author_links:
+      - label: "Daniel Tammet"
+        url: "https://en.wikipedia.org/wiki/Daniel_Tammet"
+    media:
+      - label: "Publisher's page"
+        url: "https://profilebooks.com/work/nine-minds/"
+      - label: "Talks and interviews"
+        url: "https://www.youtube.com/results?search_query=Daniel+Tammet+Nine+Minds"
+    concepts:
+      - label: "Autism spectrum"
+        url: "https://en.wikipedia.org/wiki/Autism_spectrum"
+      - label: "Double empathy problem"
+        url: "https://en.wikipedia.org/wiki/Double_empathy_problem"
+      - label: "Savant syndrome"
+        url: "https://en.wikipedia.org/wiki/Savant_syndrome"
+      - label: "Neurodiversity"
+        url: "https://en.wikipedia.org/wiki/Neurodiversity"

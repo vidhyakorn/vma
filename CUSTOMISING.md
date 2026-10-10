@@ -356,9 +356,18 @@ With no cover you get a plain panel with the first letter of the title.
 
 **Bookshop buttons.** Open the book's page in the shop and paste the address.
 A shop you leave blank falls back to a search built from the ISBN, if one is
-set up for it in `hugo.toml` under `[params.books.search]` — Amazon has one;
-Asia Books and Kinokuniya are blank because I could not confirm their search
-address, so paste a direct link for those. The shops, and the order their
+set up for it in `hugo.toml` under `[params.books.search]`. Amazon has one.
+Asia Books and Kinokuniya are blank because their sites would not load for me
+to check — but you can fill them in thirty seconds, and then every book gets a
+button for that shop without any more work:
+
+1. Open the shop and search for any ISBN, e.g. `9781785042218`.
+2. Copy the address of the results page.
+3. Replace the ISBN in it with `{isbn}` and paste the result into
+   `[params.books.search]`.
+
+Until then, those two shops only show a button for a book you have pasted a
+direct link for. The shops, and the order their
 buttons appear in, are the `stores:` list at the top of `data\books.yaml`.
 
 **Free copies — legal ones only.** Open Library's lending programme, a library
