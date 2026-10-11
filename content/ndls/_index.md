@@ -7,9 +7,10 @@ sidebar:
   open: true
 ---
 
-### **A Capability-focused Dynamic Bio-Psycho-Social Modelling Framework Social Health and Wel-Being of Persons with Neurodevelopmental Conditions (NDCs).**
+#### **A Capability-focused Dynamic Bio-Psycho-Social Modelling Framework for Social, Health and Well-Being of Persons with Neurodevelopmental Conditions (NDCs).**
 <figure style="float: left; max-width: 200px; margin: 0 20px 20px 0;"> <img src="ndls-logo.png" alt="ndls" style="width: 80%; height: auto; display: block;"> <figcaption style="font-size: 0.9em; color: #555; text-align: center; margin-top: 5px;"> NDLS logo </figcaption> </figure>
-<div style="text-align: justify;">
+<div style="text-align: justify; line-height: 1.6;">
+<br><br>
 NDLS treats <a href="https://www.psychiatry.org/patients-families/neurodevelopment-disorders" target="_blank"> Neurodevelopmental Conditions (NDC) </a> — ADHD, autism, Down syndrome,
 learning disabilities — not as fixed labels but as a continually evolving (struggling, surviving, thriving and flourishing) in a dynamically interconnected
 systems that take shape across their whole life. Persons with NDC are autonomous
@@ -20,7 +21,7 @@ Framed within <a href="[https://www.psychiatry.org/patients-families/neurodevelo
  Primary methodological application will be in modeling and simulation to provide simulated data for economic evaluation. Testing of the framework against traditional data and instrument will be in first phase.
 </div>
 
-### Work Package
+#### Work Package
 
 {{< cards cols="5" >}}
   {{< card title="WP1: Conceptualization and Frameworks" subtitle="Literature review of published works and theories to conceptualize as propositions and equations." >}}
@@ -30,7 +31,7 @@ Framed within <a href="[https://www.psychiatry.org/patients-families/neurodevelo
   {{< card title="WP5: Health Economic Evaluation 2 (Thai NDC Cost-Capabilities Evaluation)" subtitle="Collecting data and value using economic instruments such as Best-Worst Scaling (BWS) discrete choice experiments, Time Trade-Off (TTO), and EQ-5D. Then construct NDC-Cost-Capabilities Model, based on Thai setting. Finally perform comprehensive modeling and evaluation." >}}
 {{< /cards >}}
 
-### Where it stands
+#### Where it stands
 
 {{< cards cols="2" >}}
   {{< card title="Progress" href="progress/" subtitle="Literature review of published works and theories to conceptualize as propositions and equations." >}}
