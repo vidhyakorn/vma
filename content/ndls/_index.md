@@ -8,7 +8,7 @@ sidebar:
 ---
 
 #### **A Capability-focused Dynamic Bio-Psycho-Social Modelling Framework for Social, Health and Well-Being of Persons with Neurodevelopmental Conditions (NDCs).**
-<figure style="float: left; max-width: 200px; margin: 0 20px 20px 0;"> <img src="ndls-logo.png" alt="ndls" style="width: 80%; height: auto; display: block;"> <figcaption style="font-size: 0.9em; color: #555; text-align: center; margin-top: 5px;"> NDLS logo </figcaption> </figure>
+{{< ndls-mark src="/img/ndls-logo.mp4" >}}
 <div style="text-align: justify; line-height: 1.6;">
 <br><br>
 NDLS treats <a href="https://www.psychiatry.org/patients-families/neurodevelopment-disorders" target="_blank"> Neurodevelopmental Conditions (NDC) </a> — ADHD, autism, Down syndrome,
