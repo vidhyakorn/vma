@@ -637,7 +637,8 @@ main#content h1:not(.site-headline) {
 .dark .content .ndls-mark {
   border-color: rgba(255, 255, 255, 0.14);
 }
-.content .ndls-mark img {
+.content .ndls-mark img,
+.content .ndls-mark video {
   width: 110px;
   height: 110px;
   margin: 0;

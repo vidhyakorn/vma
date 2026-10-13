@@ -13,11 +13,30 @@
 {{- $alt := .Get "alt" | default "NeuroDiversity LifeSpace" -}}
 <figure class="ndls-mark not-prose">
 {{- if strings.HasSuffix $src ".mp4" -}}
-  <video src="{{ $src | relURL }}"
-         autoplay loop muted playsinline
-         width="160" height="160"
+  {{- $vsrc := $src | relURL -}}
+  <video id="ndls-logo-video"
+         src="{{ $vsrc }}"
+         autoplay loop muted playsinline preload="auto"
+         width="110" height="110"
          aria-label="{{ $alt }}"
-         style="border-radius:inherit;width:160px;height:160px;object-fit:cover;display:block;"></video>
+         style="border-radius:10px;width:110px;height:110px;object-fit:cover;display:block;"></video>
+  <script>
+    (function(){
+      var v = document.getElementById('ndls-logo-video');
+      if (!v) return;
+      v.muted = true;
+      var p = v.play();
+      if (p !== undefined) {
+        p.catch(function() {
+          // autoplay blocked — attempt after first user interaction
+          document.addEventListener('click', function once() {
+            v.play();
+            document.removeEventListener('click', once);
+          }, { once: true });
+        });
+      }
+    })();
+  </script>
 {{- else -}}
   {{- $img := resources.Get (strings.TrimPrefix "/" $src) -}}
   {{- $url := $src | relURL -}}
