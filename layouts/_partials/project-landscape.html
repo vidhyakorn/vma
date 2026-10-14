@@ -1,49 +1,41 @@
 {{/*
-  project-landscape.html — horizontal three-panel research badge.
+  project-landscape.html — horizontal row of three equal green panels.
 
-  Layout (left→right):
-    NDLS (green)  ──► overlaps left side of Modelling
-                        MODELLING (amber, tallest + narrowest spine)
-                       CALY-THA (blue) ◄── overlaps right side of Modelling
-
-  NDLS and CALY-THA are wider but shorter than Modelling.
-  Their inner edges overlap into the Modelling panel; mix-blend-mode:multiply
-  on the container creates distinct blend colours at the intersections:
-    NDLS × Modelling  →  olive-green  ≈ rgb(132 152 53)  (left zone)
-    CALY × Modelling  →  khaki        ≈ rgb(122 127 79)  (right zone)
-
-  HTML order: NDLS, CALY, then Modelling last so the amber spine
-  sits on top (z-index:2 in CSS keeps it in front of both wings).
+  Order left → right:  NDLS  |  Modelling  |  CALY-THA
+  Colours (different tones of green, all with white text):
+    NDLS        #1B4332  dark forest green
+    Modelling   #2D6A4F  deep emerald
+    CALY-THA    #40916C  medium green
 */}}
 
 <figure class="prj-landscape-wrap not-prose" aria-label="Research project overview">
   <p class="prj-landscape-label">Research Portfolio</p>
 
   <div class="prj-landscape">
-    {{/* ── NDLS — top-left ──────────────────────────────────────── */}}
+    {{/* ── NDLS — dark green, left ──────────────────────────────── */}}
     <div class="prj-panel prj-panel--ndls">
       <a href="{{ relLangURL "ndls/" }}" class="prj-panel-link">
         <span class="prj-panel-code">NDLS</span>
         <span class="prj-panel-name">NeuroDiversity LifeSpace</span>
-        <span class="prj-panel-status prj-panel-status--active">● Active</span>
+        <span class="prj-panel-status">● Active</span>
       </a>
     </div>
 
-    {{/* ── CALY-THA — top-right ─────────────────────────────────── */}}
-    <div class="prj-panel prj-panel--caly">
-      <a href="{{ relLangURL "research/projects/caly-tha/" }}" class="prj-panel-link">
-        <span class="prj-panel-code">CALY-THA</span>
-        <span class="prj-panel-name">Capability-Adjusted Life Years</span>
-        <span class="prj-panel-status prj-panel-status--dev">◑ In development</span>
-      </a>
-    </div>
-
-    {{/* ── Modelling — bottom-centre ────────────────────────────── */}}
+    {{/* ── Modelling — medium green, centre ────────────────────── */}}
     <div class="prj-panel prj-panel--mod">
       <a href="{{ relLangURL "research/projects/modelling/" }}" class="prj-panel-link">
         <span class="prj-panel-code">Models</span>
         <span class="prj-panel-name">Simulation & Tools</span>
-        <span class="prj-panel-status prj-panel-status--support">◎ Supporting</span>
+        <span class="prj-panel-status">◎ Supporting</span>
+      </a>
+    </div>
+
+    {{/* ── CALY-THA — lighter green, right ─────────────────────── */}}
+    <div class="prj-panel prj-panel--caly">
+      <a href="{{ relLangURL "research/projects/caly-tha/" }}" class="prj-panel-link">
+        <span class="prj-panel-code">CALY-THA</span>
+        <span class="prj-panel-name">Capability-Adjusted Life Years</span>
+        <span class="prj-panel-status">◑ In development</span>
       </a>
     </div>
   </div>

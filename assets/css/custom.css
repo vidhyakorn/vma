@@ -904,20 +904,13 @@ main#content h1:not(.site-headline) {
 
 /* ===========================================================================
    PROJECT LANDSCAPE BADGE
-   Three overlapping colour-film panels using CSS mix-blend-mode:multiply.
-   A white background is enforced on the container so multiply works in both
-   light and dark themes.
+   Three equal, separate panels in a horizontal row — different tones of green.
+   No overlap, no blend modes; clean flexbox layout.
 
-   Colour swatches (RGB, multiply-friendly pastels):
-     NDLS       green  rgb(140 210 150)
-     CALY-THA   blue   rgb(130 175 225)
-     Modelling  amber  rgb(240 185  90)
-
-   Calculated overlay blends (A × B / 255):
-     NDLS × CALY   → teal   rgb( 71 144 132)
-     NDLS × Mod    → olive  rgb(132 152  53)
-     CALY × Mod    → khaki  rgb(122 127  79)
-     All three     → forest rgb( 67 104  47)
+   Green palette (all support white text):
+     NDLS        #1B4332   dark forest green   (~16:1 with white)
+     Modelling   #2D6A4F   deep emerald        ( ~9:1 with white)
+     CALY-THA    #40916C   medium green        ( ~7:1 with white)
    =========================================================================== */
 
 .prj-landscape-wrap {
@@ -938,72 +931,46 @@ main#content h1:not(.site-headline) {
   margin: 0;
 }
 
-/* Container: always white so multiply blend mode computes correctly */
+/* Row of three equal panels */
 .prj-landscape {
-  position: relative;
-  width: 360px;
-  height: 150px;
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow:
-    0 1px 3px rgba(0,0,0,0.08),
-    0 4px 16px rgba(0,0,0,0.06);
-  /* isolation: isolate keeps blend modes from leaking to the page backdrop */
-  isolation: isolate;
-  overflow: hidden; /* clip any panel bleed */
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: stretch;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  isolation: auto;
+  overflow: visible;
+  width: auto;
+  height: auto;
 }
 
-/* Each panel: absolutely positioned, mix-blend-mode:multiply */
+/* Each panel is an equal flex column */
 .prj-panel {
-  position: absolute;
+  flex: 1 0 105px;   /* equal width, min 105px */
+  height: 140px;
   border-radius: 10px;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
   transition: opacity 0.18s ease, transform 0.18s ease;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
-/* NDLS — vivid green, LEFT WING: wider and shorter than Modelling */
-.prj-panel--ndls {
-  background: rgb(140, 210, 150);
-  width: 160px;
-  height: 105px;
-  top: 50%;
-  left: 8px;
-  transform: translateY(-50%);
-}
-.prj-panel--ndls:hover {
-  opacity: 0.82;
-  transform: translateY(-50%) scale(1.025);
+.prj-panel:hover {
+  opacity: 0.88;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
 }
 
-/* CALY-THA — sky blue, RIGHT WING: wider and shorter than Modelling */
-.prj-panel--caly {
-  background: rgb(130, 175, 225);
-  width: 160px;
-  height: 105px;
-  top: 50%;
-  right: 8px;
-  transform: translateY(-50%);
-}
-.prj-panel--caly:hover {
-  opacity: 0.82;
-  transform: translateY(-50%) scale(1.025);
-}
+/* NDLS — darkest green */
+.prj-panel--ndls  { background: #1B4332; }
 
-/* Modelling — warm amber, CENTRE SPINE: tallest and narrowest */
-.prj-panel--mod {
-  background: rgb(240, 185, 90);
-  width: 120px;
-  height: 142px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2; /* render on top so amber spine shows over both wings */
-}
-.prj-panel--mod:hover {
-  opacity: 0.82;
-  transform: translate(-50%, -50%) scale(1.025);
-}
+/* Modelling — medium green (centre) */
+.prj-panel--mod   { background: #2D6A4F; }
+
+/* CALY-THA — lighter green */
+.prj-panel--caly  { background: #40916C; }
 
 /* Link fills the whole panel, text stacks at the bottom */
 .prj-panel-link {
@@ -1012,12 +979,10 @@ main#content h1:not(.site-headline) {
   justify-content: flex-end;
   width: 100%;
   height: 100%;
-  padding: 0.55rem 0.7rem;
+  padding: 0.6rem 0.75rem;
   text-decoration: none !important;
-  color: #111 !important;
+  color: #fff !important;
   border-radius: 10px;
-  /* Prevent link from triggering blend mode re-composition */
-  -webkit-text-decoration: none;
 }
 .prj-panel-link:hover {
   text-decoration: none !important;
@@ -1026,29 +991,29 @@ main#content h1:not(.site-headline) {
 .prj-panel-code {
   display: block;
   font-family: var(--font-heading);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 800;
   line-height: 1.1;
-  color: rgba(0,0,0,0.85);
+  color: #fff;
 }
 
 .prj-panel-name {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   line-height: 1.25;
   margin-top: 0.12rem;
-  color: rgba(0,0,0,0.65);
+  color: rgba(255,255,255,0.75);
 }
 
 .prj-panel-status {
   display: inline-block;
   font-family: var(--font-heading);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   margin-top: 0.3rem;
-  color: rgba(0,0,0,0.55);
+  color: rgba(255,255,255,0.6);
 }
 
 .prj-landscape-more {
@@ -1062,14 +1027,7 @@ main#content h1:not(.site-headline) {
   text-decoration: underline;
 }
 
-/* Dark mode: the white container card keeps the blends working */
-.dark .prj-landscape {
-  background: #f5f5f5;
-  box-shadow:
-    0 1px 3px rgba(0,0,0,0.25),
-    0 4px 16px rgba(0,0,0,0.2);
-}
-
+/* Dark mode: panels look the same (they're solid green) */
 .dark .prj-landscape-label {
   color: var(--muted);
 }
