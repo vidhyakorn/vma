@@ -1006,15 +1006,6 @@ main#content h1:not(.site-headline) {
   color: rgba(255,255,255,0.75);
 }
 
-.prj-panel-status {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  margin-top: 0.3rem;
-  color: rgba(255,255,255,0.6);
-}
 
 .prj-landscape-more {
   font-family: var(--font-heading);
@@ -1123,9 +1114,9 @@ main#content h1:not(.site-headline) {
 .prj-panel-code {
   display: block;
   font-family: var(--font-heading);
-  font-size: 0.92rem;
+  font-size: 1.08rem;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
   color: #2A5C40;
 }
 
@@ -1138,15 +1129,6 @@ main#content h1:not(.site-headline) {
   color: rgba(31,61,43,0.62);
 }
 
-.prj-panel-status {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 0.60rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  margin-top: 0.28rem;
-  color: rgba(31,61,43,0.46);
-}
 
 .prj-landscape-more {
   font-family: var(--font-heading);
