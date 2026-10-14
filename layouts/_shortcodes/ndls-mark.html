@@ -13,7 +13,7 @@
 {{- $alt := .Get "alt" | default "NeuroDiversity LifeSpace" -}}
 <figure class="ndls-mark not-prose">
 {{- if strings.HasSuffix $src ".mp4" -}}
-  {{- $vsrc := $src | relURL -}}
+  {{- $vsrc := $src | strings.TrimPrefix "/" | absURL -}}
   <video id="ndls-logo-video"
          src="{{ $vsrc }}"
          autoplay loop muted playsinline preload="auto"
@@ -39,7 +39,7 @@
   </script>
 {{- else -}}
   {{- $img := resources.Get (strings.TrimPrefix "/" $src) -}}
-  {{- $url := $src | relURL -}}
+  {{- $url := $src | strings.TrimPrefix "/" | absURL -}}
   {{- with $img -}}
     {{- with try (.Resize "320x webp q85") -}}
       {{- with .Value }}{{ $url = .RelPermalink }}{{ end -}}
