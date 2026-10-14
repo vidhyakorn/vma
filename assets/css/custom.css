@@ -1030,4 +1030,141 @@ main#content h1:not(.site-headline) {
 /* Dark mode: panels look the same (they're solid green) */
 .dark .prj-landscape-label {
   color: var(--muted);
+}/* === PROJECT LANDSCAPE BADGE ===
+   Toned-down sage-green panels with coloured top-stripe accent.
+   Light backgrounds in light mode; dark in dark mode.
+   =========================================================================== */
+
+.prj-landscape-wrap {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
 }
+
+.prj-landscape-label {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Row of three equal panels */
+.prj-landscape {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: stretch;
+  background: none;
+  overflow: visible;
+  width: auto;
+  height: auto;
+}
+
+/* Each panel */
+.prj-panel {
+  flex: 1 0 88px;
+  height: 100px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  cursor: pointer;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08),
+              inset 0 0 0 1px rgba(0,0,0,0.06);
+}
+
+/* Top accent stripe — graphic element */
+.prj-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  z-index: 1;
+}
+
+.prj-panel:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12),
+              inset 0 0 0 1px rgba(0,0,0,0.06);
+}
+
+/* Muted sage-green tones (light mode) */
+.prj-panel--ndls { background: #E6EFEA; }
+.prj-panel--ndls::before { background: #4A7C59; }
+
+.prj-panel--mod  { background: #EAF2EC; }
+.prj-panel--mod::before  { background: #6B9E7F; }
+
+.prj-panel--caly { background: #EEF5F0; }
+.prj-panel--caly::before { background: #8DB8A0; }
+
+/* Link fills the whole panel, text stacks at the bottom */
+.prj-panel-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 0.65rem;
+  text-decoration: none !important;
+  color: #1F3D2B !important;
+  border-radius: 8px;
+}
+.prj-panel-link:hover {
+  text-decoration: none !important;
+}
+
+.prj-panel-code {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1F3D2B;
+}
+
+.prj-panel-name {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  line-height: 1.25;
+  margin-top: 0.1rem;
+  color: rgba(31,61,43,0.62);
+}
+
+.prj-panel-status {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.54rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+  color: rgba(31,61,43,0.46);
+}
+
+.prj-landscape-more {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--accent-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.prj-landscape-more:hover {
+  text-decoration: underline;
+}
+
+/* Dark-mode overrides */
+.dark .prj-landscape-label { color: var(--muted); }
+.dark .prj-panel--ndls { background: #1C312A; box-shadow: 0 1px 5px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.05); }
+.dark .prj-panel--mod  { background: #1E3A2E; box-shadow: 0 1px 5px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.05); }
+.dark .prj-panel--caly { background: #1F3D31; box-shadow: 0 1px 5px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.05); }
+.dark .prj-panel-link  { color: rgba(220,240,230,0.88) !important; }
+.dark .prj-panel-code  { color: rgba(220,240,230,0.88); }
+.dark .prj-panel-name  { color: rgba(220,240,230,0.55); }
+.dark .prj-panel-status{ color: rgba(220,240,230,0.38); }
