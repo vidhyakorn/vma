@@ -1108,10 +1108,10 @@ main#content h1:not(.site-headline) {
 .prj-panel-link {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
-  padding: 0.5rem 0.65rem;
+  padding: 0.75rem 0.65rem 0.5rem;
   text-decoration: none !important;
   color: #1F3D2B !important;
   border-radius: 8px;
@@ -1123,28 +1123,28 @@ main#content h1:not(.site-headline) {
 .prj-panel-code {
   display: block;
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   font-weight: 800;
   line-height: 1.1;
-  color: #1F3D2B;
+  color: #2A5C40;
 }
 
 .prj-panel-name {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.58rem;
+  font-size: 0.66rem;
   line-height: 1.25;
-  margin-top: 0.1rem;
+  margin-top: 0.12rem;
   color: rgba(31,61,43,0.62);
 }
 
 .prj-panel-status {
   display: inline-block;
   font-family: var(--font-heading);
-  font-size: 0.54rem;
+  font-size: 0.60rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  margin-top: 0.25rem;
+  margin-top: 0.28rem;
   color: rgba(31,61,43,0.46);
 }
 
@@ -1165,6 +1165,6 @@ main#content h1:not(.site-headline) {
 .dark .prj-panel--mod  { background: #1E3A2E; box-shadow: 0 1px 5px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.05); }
 .dark .prj-panel--caly { background: #1F3D31; box-shadow: 0 1px 5px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.05); }
 .dark .prj-panel-link  { color: rgba(220,240,230,0.88) !important; }
-.dark .prj-panel-code  { color: rgba(220,240,230,0.88); }
+.dark .prj-panel-code  { color: rgba(160,230,195,0.9); }
 .dark .prj-panel-name  { color: rgba(220,240,230,0.55); }
 .dark .prj-panel-status{ color: rgba(220,240,230,0.38); }
