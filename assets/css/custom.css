@@ -854,3 +854,212 @@ main#content h1:not(.site-headline) {
   .content .book-cover { width: 76px; height: 114px; }
   .content .book-row-label { width: 100%; }
 }
+
+/* ===========================================================================
+   HERO TWO-COLUMN SPLIT
+   .site-hero is now a grid: left text column + right project-landscape badge.
+   On narrow viewports both collapse to a single column (badge hidden on mobile
+   to preserve the text-first reading order).
+   =========================================================================== */
+
+/* Override the old flex column into a two-column grid */
+.site-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  /* Keep existing padding */
+}
+
+.site-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+.site-hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* On small screens, revert to single column and hide the badge */
+@media (max-width: 640px) {
+  .site-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .site-hero-right {
+    display: none;
+  }
+}
+
+/* On medium screens keep both columns but narrower gap */
+@media (min-width: 641px) and (max-width: 900px) {
+  .site-hero {
+    gap: 1.5rem;
+  }
+}
+
+/* ===========================================================================
+   PROJECT LANDSCAPE BADGE
+   Three overlapping colour-film panels using CSS mix-blend-mode:multiply.
+   A white background is enforced on the container so multiply works in both
+   light and dark themes.
+
+   Colour swatches (RGB, multiply-friendly pastels):
+     NDLS       green  rgb(140 210 150)
+     CALY-THA   blue   rgb(130 175 225)
+     Modelling  amber  rgb(240 185  90)
+
+   Calculated overlay blends (A × B / 255):
+     NDLS × CALY   → teal   rgb( 71 144 132)
+     NDLS × Mod    → olive  rgb(132 152  53)
+     CALY × Mod    → khaki  rgb(122 127  79)
+     All three     → forest rgb( 67 104  47)
+   =========================================================================== */
+
+.prj-landscape-wrap {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.prj-landscape-label {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Container: always white so multiply blend mode computes correctly */
+.prj-landscape {
+  position: relative;
+  width: 290px;
+  height: 210px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.08),
+    0 4px 16px rgba(0,0,0,0.06);
+  /* isolation: isolate keeps blend modes from leaking to the page backdrop */
+  isolation: isolate;
+  overflow: hidden; /* clip any panel bleed */
+}
+
+/* Each panel: absolutely positioned, mix-blend-mode:multiply */
+.prj-panel {
+  position: absolute;
+  width: 175px;
+  height: 118px;
+  border-radius: 10px;
+  mix-blend-mode: multiply;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  cursor: pointer;
+}
+
+.prj-panel:hover {
+  opacity: 0.82;
+  transform: scale(1.025);
+  z-index: 10;
+}
+
+/* NDLS — vivid green, top-left */
+.prj-panel--ndls {
+  background: rgb(140, 210, 150);
+  top: 12px;
+  left: 10px;
+}
+
+/* CALY-THA — sky blue, top-right */
+.prj-panel--caly {
+  background: rgb(130, 175, 225);
+  top: 12px;
+  right: 10px;
+}
+
+/* Modelling — warm amber, bottom-centre */
+.prj-panel--mod {
+  background: rgb(240, 185, 90);
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.prj-panel--mod:hover {
+  transform: translateX(-50%) scale(1.025);
+}
+
+/* Link fills the whole panel, text stacks at the bottom */
+.prj-panel-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 0.55rem 0.7rem;
+  text-decoration: none !important;
+  color: #111 !important;
+  border-radius: 10px;
+  /* Prevent link from triggering blend mode re-composition */
+  -webkit-text-decoration: none;
+}
+.prj-panel-link:hover {
+  text-decoration: none !important;
+}
+
+.prj-panel-code {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: rgba(0,0,0,0.85);
+}
+
+.prj-panel-name {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  line-height: 1.25;
+  margin-top: 0.12rem;
+  color: rgba(0,0,0,0.65);
+}
+
+.prj-panel-status {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-top: 0.3rem;
+  color: rgba(0,0,0,0.55);
+}
+
+.prj-landscape-more {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--accent-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.prj-landscape-more:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode: the white container card keeps the blends working */
+.dark .prj-landscape {
+  background: #f5f5f5;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.25),
+    0 4px 16px rgba(0,0,0,0.2);
+}
+
+.dark .prj-landscape-label {
+  color: var(--muted);
+}

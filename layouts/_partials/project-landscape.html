@@ -1,0 +1,53 @@
+{{/*
+  project-landscape.html — visual badge for the three-project research portfolio.
+
+  Three semi-transparent colour panels overlap like colour-correction gels /
+  Josef Albers acetate sheets; the CSS mix-blend-mode:multiply makes the
+  intersection areas show distinct blended colours without any SVG.
+
+  Colours (pastel-saturated so multiply results stay legible):
+    NDLS         green  rgb(140 210 150)
+    CALY-THA     blue   rgb(130 175 225)
+    Modelling    amber  rgb(240 185  90)
+
+  Overlap blends (multiply):
+    NDLS × CALY  →  teal    ≈ rgb(71 144 132)
+    NDLS × Mod   →  olive   ≈ rgb(132 152 53)
+    CALY × Mod   →  khaki   ≈ rgb(122 127 79)
+    All three    →  forest  ≈ rgb(67 104 47)
+*/}}
+
+<figure class="prj-landscape-wrap not-prose" aria-label="Research project overview">
+  <p class="prj-landscape-label">Research Portfolio</p>
+
+  <div class="prj-landscape">
+    {{/* ── NDLS — top-left ──────────────────────────────────────── */}}
+    <div class="prj-panel prj-panel--ndls">
+      <a href="{{ relLangURL "ndls/" }}" class="prj-panel-link">
+        <span class="prj-panel-code">NDLS</span>
+        <span class="prj-panel-name">NeuroDiversity LifeSpace</span>
+        <span class="prj-panel-status prj-panel-status--active">● Active</span>
+      </a>
+    </div>
+
+    {{/* ── CALY-THA — top-right ─────────────────────────────────── */}}
+    <div class="prj-panel prj-panel--caly">
+      <a href="{{ relLangURL "research/projects/caly-tha/" }}" class="prj-panel-link">
+        <span class="prj-panel-code">CALY-THA</span>
+        <span class="prj-panel-name">Capability-Adjusted Life Years</span>
+        <span class="prj-panel-status prj-panel-status--dev">◑ In development</span>
+      </a>
+    </div>
+
+    {{/* ── Modelling — bottom-centre ────────────────────────────── */}}
+    <div class="prj-panel prj-panel--mod">
+      <a href="{{ relLangURL "research/projects/modelling/" }}" class="prj-panel-link">
+        <span class="prj-panel-code">Models</span>
+        <span class="prj-panel-name">Simulation & Tools</span>
+        <span class="prj-panel-status prj-panel-status--support">◎ Supporting</span>
+      </a>
+    </div>
+  </div>
+
+  <a class="prj-landscape-more" href="{{ relLangURL "research/projects/" }}">Full research portfolio →</a>
+</figure>

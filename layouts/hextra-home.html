@@ -15,8 +15,9 @@
   <main id="content" class="hx:w-full hx:break-words hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:pb-8 hx:pt-8 hx:md:pt-12 hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-left),1.5rem)]">
     <div class="site-home">
 
-      {{/* ---------------- hero ---------------- */}}
+      {{/* ---------------- hero (two-column: text left, project badge right) */}}
       <section class="site-hero">
+        <div class="site-hero-left">
         {{- with $h.badge -}}
         {{- $bl := $h.badgeLink | default "" -}}
         <a {{ with $bl }}href="{{ relLangURL (strings.TrimPrefix "/" .) }}"{{ end }}
@@ -43,6 +44,10 @@
           {{- . -}}
         </a>
         {{- end -}}
+        </div>{{/* /site-hero-left */}}
+        <div class="site-hero-right">
+          {{- partial "project-landscape.html" . -}}
+        </div>
       </section>
 
       {{/* ---------------- what's new ---------------- */}}
