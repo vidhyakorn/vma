@@ -1,20 +1,19 @@
 {{/*
-  project-landscape.html — visual badge for the three-project research portfolio.
+  project-landscape.html — horizontal three-panel research badge.
 
-  Three semi-transparent colour panels overlap like colour-correction gels /
-  Josef Albers acetate sheets; the CSS mix-blend-mode:multiply makes the
-  intersection areas show distinct blended colours without any SVG.
+  Layout (left→right):
+    NDLS (green)  ──► overlaps left side of Modelling
+                        MODELLING (amber, tallest + narrowest spine)
+                       CALY-THA (blue) ◄── overlaps right side of Modelling
 
-  Colours (pastel-saturated so multiply results stay legible):
-    NDLS         green  rgb(140 210 150)
-    CALY-THA     blue   rgb(130 175 225)
-    Modelling    amber  rgb(240 185  90)
+  NDLS and CALY-THA are wider but shorter than Modelling.
+  Their inner edges overlap into the Modelling panel; mix-blend-mode:multiply
+  on the container creates distinct blend colours at the intersections:
+    NDLS × Modelling  →  olive-green  ≈ rgb(132 152 53)  (left zone)
+    CALY × Modelling  →  khaki        ≈ rgb(122 127 79)  (right zone)
 
-  Overlap blends (multiply):
-    NDLS × CALY  →  teal    ≈ rgb(71 144 132)
-    NDLS × Mod   →  olive   ≈ rgb(132 152 53)
-    CALY × Mod   →  khaki   ≈ rgb(122 127 79)
-    All three    →  forest  ≈ rgb(67 104 47)
+  HTML order: NDLS, CALY, then Modelling last so the amber spine
+  sits on top (z-index:2 in CSS keeps it in front of both wings).
 */}}
 
 <figure class="prj-landscape-wrap not-prose" aria-label="Research project overview">

@@ -941,8 +941,8 @@ main#content h1:not(.site-headline) {
 /* Container: always white so multiply blend mode computes correctly */
 .prj-landscape {
   position: relative;
-  width: 290px;
-  height: 210px;
+  width: 360px;
+  height: 150px;
   background: #ffffff;
   border-radius: 14px;
   box-shadow:
@@ -956,43 +956,53 @@ main#content h1:not(.site-headline) {
 /* Each panel: absolutely positioned, mix-blend-mode:multiply */
 .prj-panel {
   position: absolute;
-  width: 175px;
-  height: 118px;
   border-radius: 10px;
   mix-blend-mode: multiply;
   transition: opacity 0.18s ease, transform 0.18s ease;
   cursor: pointer;
 }
 
-.prj-panel:hover {
-  opacity: 0.82;
-  transform: scale(1.025);
-  z-index: 10;
-}
-
-/* NDLS — vivid green, top-left */
+/* NDLS — vivid green, LEFT WING: wider and shorter than Modelling */
 .prj-panel--ndls {
   background: rgb(140, 210, 150);
-  top: 12px;
-  left: 10px;
+  width: 160px;
+  height: 105px;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+}
+.prj-panel--ndls:hover {
+  opacity: 0.82;
+  transform: translateY(-50%) scale(1.025);
 }
 
-/* CALY-THA — sky blue, top-right */
+/* CALY-THA — sky blue, RIGHT WING: wider and shorter than Modelling */
 .prj-panel--caly {
   background: rgb(130, 175, 225);
-  top: 12px;
-  right: 10px;
+  width: 160px;
+  height: 105px;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+}
+.prj-panel--caly:hover {
+  opacity: 0.82;
+  transform: translateY(-50%) scale(1.025);
 }
 
-/* Modelling — warm amber, bottom-centre */
+/* Modelling — warm amber, CENTRE SPINE: tallest and narrowest */
 .prj-panel--mod {
   background: rgb(240, 185, 90);
-  bottom: 12px;
+  width: 120px;
+  height: 142px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  z-index: 2; /* render on top so amber spine shows over both wings */
 }
 .prj-panel--mod:hover {
-  transform: translateX(-50%) scale(1.025);
+  opacity: 0.82;
+  transform: translate(-50%, -50%) scale(1.025);
 }
 
 /* Link fills the whole panel, text stacks at the bottom */
