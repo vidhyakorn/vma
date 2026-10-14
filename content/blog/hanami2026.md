@@ -12,41 +12,87 @@ aliases:
   - /posts/articles/hanami2026/
 ---
 
-{{< figure src="/img/hanami2026-img.png"
-           alt="cycle of EDI and Capabilities Approach"
-           caption="cycle of EDI and Capabilities Approach."
-           width="520" >}}
-
 
 > I wrote this article to recognize October as ADHD and Neurodiversity Awareness Month, inspired by the recent conversations surrounding UK Channel 4’s documentary, [‘_The Great Myth of ADHD’_](https://youtu.be/Kg4Fq3VVuzs?si=H3LRh9RZQPir7Mvz). A special thank you to Assoc. Prof. Wirichada Pan-ngum (Pan) and the whole MAEMOD squad for their ongoing support, as well as the EDI committee for their official endorsement in publishing this article on MORU News.
+## ‘Hanami’: A ‘Cherry Blossom Viewing’; What the Science of Spring Can Teach Us About Human Flourishing.
 
-<!---div style="text-align: justify;">
-Every spring in Japan, millions gather under falling sakura petals for Hanami, a tradition of flower viewing that dates to 812 CE in Kyoto. Originally, observers practiced patience, treating the trees as ‘natural biological markers’ to guide ‘society's rhythms, such as the timing for spring rice planting. By 1955, the Japan Meteorological Agency transformed this ancient tradition into a data-driven science by monitoring 58 ideal trees across the country. Today, sophisticated biometeorological modeling tracks winter "chilling hours" and spring "growing degree-days" to forecast blooms down to the hour using satellite data and crowdsourced apps. The forecasting app and hundreds of managed subsidiaries are given to people with disabilities and elderly, to join the ‘Hanami’. Yet, the true essence of Hanami is not found in algorithmic control or digital screens, but in the lived human experience of shared appreciation, laughter, and reflection beneath the blossoming canopy.
+<div style="text-align: justify;">
+**Act 1: A Tradition of Watching the Blossoms**
 
-This tradition made me reflect how scientific can serve lived human experience and that perfectly illustrates the ‘Capability Approach’, I have recently read. From the approach, ‘the commodities’ whether a forecasting app, a monetary subsidy, or special lanes and space infrastructure for the disabled or from the approach, could be called ‘people with conversion deficits’, are merely a ‘vector of commodities’ that possess as an instrument (or a tool called ‘equity’), rather than being ‘end valued’. Individuals used these commodities through personal, social, and environmental ‘conversion factors to build a capability set (where called a real ‘equality’). This set represents a person's ‘real freedom’, as to enable one to choose functioning, which are actualized states of being and doing (freedom to choose to do or be something or not), such as being socially connected, rested, being quiet. Achieving these ‘valued ways of life’ leads to ‘true human flourishing ‘or ‘eudaimonia’ as a goal, which in turn empowers citizens to contribute economically and civically to sustain the societal loop.
+Every spring in Japan, from the warm south to the cooler north, cherry trees open their blossoms, and millions of people gather beneath the falling sakura petals for a centuries-old custom called 'Hanami', or flower viewing. Parks fill with picnics and poetry, office parties and family reunions, all held in the brief window before the petals scatter.
 
-While another idea of ‘commodity’ such as the recent discourse in the UK surrounding whether ADHD is over-diagnosed or a mere social constructed. Remind me of think, are we asking wrong questions for human conditions. Fixating on whether neurodivergence is a genuine biological defect or a drain on healthcare budgets points policy in the wrong direction entirely. All diseases are ‘constructed’ for societal purposes and that modern medicine is basically based on commodities against the disease (probably not for human flourishing).  From the Capability Approach we can see that the real issue is not whether an individual's brain size or function fits a standardized diagnostic label, but whether rigid educational, social expectations, workplace environments, and social institutions impose severe ‘conversion-deficit’ or not being accommodated the way human diversity flourishing. Within unsupportive environment demanding one way of cognitive processing, it creates a barrier that strips neurodivergent individuals of their ‘real capabilities to live, learn, work, and maintain self-respect. Rather than using the term "disability," framing this as a conversion factor deficit neutralizes negative ableist attitudes and highlights how society converts biological variation into a limitation of real-life opportunities.
+The custom reaches back to around 812 CE in Kyoto. Farmers once read the timing of the bloom as a natural calendar, a sign that warmth had arrived and that the rice fields were ready to be ploughed. Before long, the imperial court began gathering to admire the blossoms as well, turning a seasonal signal into an art of living. To watch the cherry trees was to practice patience, to stay in rhythm with the land, and to appreciate life as it quietly unfolded.
 
-- biomedical model
-- what we can do while waiting for what we believe is needed while the suffering is discern. 
-- are there any other health and disease that biomarker are gatekeeper.
-- reductionism, diagnosis, medicine, 
-- definition of health and disease as a broader way, especially when it comes to vulnerable population
-- biomarker should not be only indicator of treatment, risk should be
+The blossoms carry a deeper meaning, because they last only a week or so before they fall. The sakura became Japan's great symbol of impermanence, what the Japanese call 'mono no aware', the gentle tenderness of knowing that beautiful things do not stay forever. In this sense, Hanami is a yearly rehearsal in cherishing life precisely because it is so fleeting.
 
-Just as cherry trees do not bloom on the same calendar day or under identical environmental conditions, humans require different environments rather than forced uniformity to reach their full potential. This challenges traditional Equality, Diversity, and Inclusion (EDI) frameworks that often suffer from "resource fetishism," mistakenly if justice means offering identical rules, uniform budget allocations, or standardized training to everyone. True distributive equity requires providing differentiated, reasonable accommodations to overcome conversion deficits, ensuring every individual possesses equal real capabilities.
+Over the centuries, the tradition spread from high society to ordinary families until it became a shared cultural milestone. Today, whole communities wait for the bloom the way others wait for a holiday, and public broadcasters and newspapers follow its progress as a matter of national interest.
 
-Ultimately, science and policy should not act as rigid gatekeepers determining who is eligible for support. Instead, society must cultivate a supportive environment where every individual has the substantive freedom to bloom in their own uniquely valued way.
+**Act 2: The Science and the Care Behind the Bloom**
+
+In time, that ancient ritual also became a science. In 1955, the Japan Meteorological Agency began monitoring 58 'ideal trees' across the country to mark the official opening of each season. Today, detailed forecasting models track winter 'chilling hours' and spring 'growing degree-days' to predict the blooms almost to the hour, drawing on satellite data and crowdsourced reports from mobile apps.
+
+A whole network of support has grown up around the tradition. Forecasting apps, carefully managed parks, and local services all help people take part in the season. Just as importantly, many of these services are designed so that people with disabilities and the elderly can still make their way to the blossoms and enjoy the day.
+
+Programs such as the 'Universal Tourism Concierge', 'Certified Travel Assistants', and 'Station Assistants', backed by several government agencies, train welfare workers who can be hired to accompany elderly or disabled travelers on outings, including Hanami tours, making sure their medical and mobility needs are met along the way.
+
+Many towns add their own community schemes, such as the well-loved Fureai Kippu (Caring Relationship Tickets) system or local reward points like Jozurusan Pay. Through these, volunteers earn credits by helping elderly neighbors go for a walk, run errands, or visit a nearby park to see the cherry blossoms.
+
+And yet the true heart of Hanami is not the precision of a forecast or the glow of a phone screen. It is the moment a person steps outside and sits down with others beneath the blossoming tree, sharing the quiet appreciation, the laughter, and the reflection on how precious life is.
+
+“Even a sea bream loses its flavor when eaten alone.” – an old Japanese saying
+
+**Act 3: What Are People Able to Do and to Be?**
+
+This blend of science and shared humanity made me reflect on what social and health policy is really for. It brought to mind the Capability Approach, a framework in economics and philosophy developed by the Nobel laureate Amartya Sen and the philosopher Martha Nussbaum. At its heart sits one deceptively simple question: what are people actually able to do and to be?
+
+Instead of measuring success by the total amount of happiness or efficiency a society produces when it shares out public resources, the approach puts the individual first. The real question is not how much a society produces, but what each person is genuinely free to do and to become.
+
+This matters most where resources are scarce. When efficiency and cost-effectiveness always come first, people can quietly be reduced to units of production and consumption, valued mainly for what they can spend. Policies then reward compliance over dignity, and those seen as 'non-productive' become invisible, noticed only when they can be made useful again. That is the logic of ableism, not of genuine well-being. Longer lives, better healthcare, and new technologies are all worth celebrating, but only insofar as they widen the real opportunities, the capabilities, of a real human life (Sen, 1999; Davies, 2015; Fine, 2002; Marcuse, 1955).
+
+**Act 4: Turning Resources into Real Freedom**
+
+Seen through this lens, the tools of Hanami fall into place. A bloom-forecasting app, a monetary subsidy, a reserved and accessible space, the Universal Tourism program, the government-backed assistants: all of these are what the approach calls a vector of socioeconomic commodities. They are instruments, nothing more. In principle, everyone has an equal opportunity to attend Hanami, since no one is stopped from going.
+
+But an elderly or disabled person, or someone whose senses and thinking work differently, may still find it hard to take part. This is where the specially designed subsidies and assistance come in. They are a form of equity, offered to particular people so that they too can join in, both physically and financially, if sitting beneath the blossoms is something they truly value. And if it is not what they value, choosing to stay home is perfectly fine.
+
+What actually turns a resource into a real opportunity, or capability, are three kinds of conversion factors: personal ones, such as a person's body and mind; social ones, such as laws, norms, and prejudices; and environmental ones, such as how the physical world is designed. The same subsidy, the same app, and the same classroom can unlock very different lives depending on how well these factors line up.
+
+Together, these conversion factors build what is called a person's capability set. Martha Nussbaum took the idea one step further, proposing a core list of ten central capabilities that any society committed to human dignity should protect for everyone.
+
+Her list runs from the most basic to the most social: (1) life; (2) bodily health; (3) bodily integrity and safety from harm; (4) the free use of our senses, imagination, and thought; (5) the full range of human emotions; (6) practical reason, the freedom to reflect and plan one's own life; (7) affiliation, living among others as an equal and free from humiliation; (8) a caring relationship with other species and the natural world; (9) play, rest, and laughter; and (10) control over one's environment, from a real voice in political life to fair terms at work.
+
+This is where real equality truly lives: in the genuine freedom to choose what to be and to do according to what one values, whether that means being socially connected, being well rested, being able to learn, or simply being at peace in the quiet.
+
+**Act 5: Asking a Better Question About ADHD**
+
+With that lens in hand, turn to the recent debate around the documentary 'The Great Myth of ADHD', which asks whether attention-deficit/hyperactivity disorder (ADHD) is a real medical condition, an over-diagnosed label, or simply a social construct. The more I follow the argument, the more I suspect we are asking the wrong question about the human condition altogether.
+
+Fixating on whether neurodivergence is a 'real' biomedical condition, a pharmaceutical invention, or a drain on healthcare budgets points policy in exactly the wrong direction. In an important sense, all diseases are 'constructed', since they are categories we draw up for social purposes and manage through medicine as a social institution. Modern medicine, for all its gifts, is built largely around products such as drugs and devices aimed at fighting disease and avoiding death, rather than, in the first place, at helping people flourish.
+
+Through the lens of the Capability Approach, the real issue is not whether a person's brain size, activity, or wiring matches a standard diagnostic label, a way of thinking that uncomfortably echoes the logic of eugenics. The real issue is whether a person has the support and the freedom to live a life they have reason to value. Narrow social norms, rigid schools, uncomfortable workplaces, and unrealistic demands can place a heavy conversion deficit on people who simply live and process the world in their own way.
+
+Picture a child who is sensitive, easily overwhelmed, bursting with energy, and in love with exploring the world, yet whose mind has never quite been made room for. The timed exam, the silent open-plan office, the flickering fluorescent light, the single 'correct' way to sit still and pay attention: each is an environment built for only one kind of mind. For this child, the room is too small and the world is too narrow. The dysfunction lies in the setting, not in the child or the adult who is neurodivergent.
+
+When an environment demands one single way of thinking, behaving, and performing, a barrier quietly forms. It strips neurodivergent people of their real capabilities to live, learn, work, reach their potential, and keep their self-respect. The limit is not created by the brain alone. It grows out of the mismatch between a person and the society around them.
+
+Whether or not ADHD proves biomedically valid, and that is a fair question for ongoing research, the language we choose still matters. Instead of reaching first for words like 'deficit' or 'disorder', which quietly suggest something abnormal or non-compliant, we might name what is really happening: a society that has not yet learned to serve the full variety of human minds, and that therefore has a duty to adapt to their needs.
+
+Biomedical care still matters. Medication, psychotherapy, coaching, and behavioral support can be essential, especially for people facing severe difficulty or unsupportive surroundings. But society, too, must rethink how it treats difference. The steady rise of ADHD, ASD, learning differences, depression, anxiety, and burnout may be a message to us: what most needs to change is not the diagnostic criteria or the economic calculations, but the livability of the world itself, so that people can reach the lives they value.
+
+**Finale: Letting Every Mind Find Its Spring**
+
+So let us return, one last time, to the cherry trees. They do not all bloom on the same day or under the same sky. Each one responds to its own chilling hours and its own measure of warmth, and a tree rushed or starved of what it needs will never flower well. People are no different. We flourish in the conditions that suit us, not under forced uniformity.
+
+This is where the threads of the story meet. Hanami reminds us that flourishing is a shared, lived experience, not a number on a forecast. The Capability Approach shows that apps, subsidies, and accommodations are only tools, and that what truly matters is the real freedom they unlock. And the debate over ADHD shows what happens when we forget both lessons: we end up questioning the brain instead of the barriers we have built around it.
+
+Science and policy need not be gatekeepers deciding who is allowed to bloom. Just as Japan built forecasts, accessible routes, and quiet spaces so that the elderly and disabled could still sit beneath the blossoms, we can build schools, workplaces, and institutions that turn human difference into capability rather than deficit. That is a choice we make, not a fate we inherit. The very same environment can be either a barrier or a bridge, and the difference between them is design, which is well within our power.
+
+So it is worth pausing to ask ourselves a few honest questions. What might our classrooms, offices, public spaces, and even our health policies look like if they were designed for the full range of human needs rather than for an imagined average person? In our research, might the messy variety of real people become something we account for honestly, from the first design to the final report, instead of smoothing it away? And when we meet someone who struggles to fit the world as it is, will we ask what is wrong with them, or what the world might be failing to offer?
+
+The science of spring, in the end, teaches us something simple. Just as Japan's forecasts and helpers exist so that everyone can sit beneath the blossoms, our classrooms, clinics, workplaces, and research can be built so that every kind of person has the chance to flourish. We are born not only to survive but to thrive, to grow, and to be and do what we value, at every stage of life, whether or not our names are ever known. Perhaps our most urgent task, above all for those of us who carry out research in the name of the people we serve, is to turn our questions back toward human flourishing, and to let every kind of mind find its own spring.
 #</div>
 
-## Further reading
-
-
-- Reductionism > materialism > 
-- Cause-effects > chain of cause > many cause can lead to effects
-- Sensory and situational-environmental context
-- Variability, uncertainty
-- Statisticallism
-- definitive statement of the ....... position
-- dependent upon experience in our effort to gain knowledge of the external world
-- bureaucratic institutions such as school and college
+> **Sen, A. (1999).** *Development as Freedom*. Oxford University Press.
+> **Davies, W. (2015).** *The Happiness Industry: How the Government and Big Business Sold Us Well-Being*. Verso Books.
+ >**Fine, B. (2002).** *From Economics Imperialism to Freakonomics: The Shifting Boundaries Between Economics and Social Science*. Routledge.
+> **Marcuse, H. (1955).** *Eros and Civilization: A Philosophical Inquiry into Freud*. Beacon Press.
