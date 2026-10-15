@@ -5,8 +5,6 @@ weight: 1
 feedExclude: true
 ---
 
-An honest running log of where the project actually is. Newest first.
-
 {{< milestone date="June 2023" status="done" >}}
 **Developing interest in Neurodevelopmental Conditions.** Late diagnosed of attention deficit/hyperactivity disorder (ADHD) after a year of depression and anxiety treatment and therapy with psychiatrist and psychotherapist. Starting read 'books' 
 {{< /milestone >}}
