@@ -1,15 +1,14 @@
 ---
-title: "Progress"
-description: "What is built, what is underway, and what comes next."
+title: Progress
+description: What is built, what is underway, and what comes next.
 weight: 1
 feedExclude: true
+draft: true
 ---
 
 {{< milestone date="June 2023" status="done" >}}
 **Developing interest in Neurodevelopmental Conditions.** Late diagnosed of attention deficit/hyperactivity disorder (ADHD) after a year of depression and anxiety treatment and therapy with psychiatrist and psychotherapist. Reading some books related to the ADHD lived experiences ([BooksReview](ndls/BooksReview.md)) made me realize, I am not alone, and millions of children and adults could have a better life by just realizing themself. As a researcher,  there are a lot of things I believe could make a a difference to their life.
 {{< /milestone >}}
-
-
 
 {{< milestone date="September 2026" status="done" >}}
 **Framework proposal posted.** The full NDLS framework — the causal layer, the
