@@ -8,19 +8,18 @@ sidebar:
 ---
 
 #### **A Capability-focused Dynamic Bio-Psycho-Social Modelling Framework for Social, Health and Well-Being of Persons with Neurodevelopmental Conditions (NDCs).**
+
 {{< ndls-mark src="/img/ndls-logo.mp4" >}}
-<div style="text-align: justify; line-height: 1.6;">
-<br><br>
+
 NDLS treats <a href="https://www.psychiatry.org/patients-families/neurodevelopment-disorders" target="_blank"> Neurodevelopmental Conditions (NDC) </a> — ADHD, autism, Down syndrome,
 learning disabilities — not as fixed labels but as a continually evolving (struggling, surviving, thriving and flourishing) in a dynamically interconnected
 systems that take shape across their whole life. Persons with NDC are autonomous
 agents (the same as neurotype) whose biology, cognition and socio-environment change each other over time,
-rather than as an abnormality where outcomes simply happen personally or in isolation. <br><br>
+rather than as an abnormality where outcomes simply happen personally or in isolation.
 
-Framed within <a href="[https://www.psychiatry.org/patients-families/neurodevelopment-disorders](https://en.wikipedia.org/wiki/Biopsychosocial_model)" target="_blank"> the biopsychosocial model </a>, <a href="[https://www.psychiatry.org/patients-families/neurodevelopment-disorders](https://www.google.co.th/books/edition/Principles_of_Topological_Psychology/lUh8CgAAQBAJ?hl=en&gbpv=0)" target="_blank"> Topological psychology </a>, <a href="[https://www.psychiatry.org/patients-families/neurodevelopment-disorders](https://www.google.co.th/books/edition/_/6h5pDwAAQBAJ?hl=en&gbpv=0)](https://oecs.mit.edu/pub/c7fncv7f/)" target="_blank"> the 4E cognition  </a>, and <a href="[https://www.psychiatry.org/patients-families/neurodevelopment-disorders](https://plato.stanford.edu/entries/capability-approach/)" target="_blank"> the capabilities approach </a>, this framework attempt to re-envision how social welfare, healthcare, human development policy are developed and evaluated using rights-value-evidence-based empirical study. <br><br>
- Primary methodological application will be in modeling and simulation to provide simulated data for economic evaluation. Testing of the framework against traditional data and instrument will be in first phase.
-</div>
+Framed within <a href="[https://www.psychiatry.org/patients-families/neurodevelopment-disorders](https://en.wikipedia.org/wiki/Biopsychosocial_model)" target="_blank"> the biopsychosocial model </a>, <a href="[https://www.psychiatry.org/patients-families/neurodevelopment-disorders](https://www.google.co.th/books/edition/Principles_of_Topological_Psychology/lUh8CgAAQBAJ?hl=en&gbpv=0)" target="_blank"> Topological psychology </a>, <a href="[https://www.psychiatry.org/patients-families/neurodevelopment-disorders](https://www.google.co.th/books/edition/_/6h5pDwAAQBAJ?hl=en&gbpv=0)](https://oecs.mit.edu/pub/c7fncv7f/)" target="_blank"> the 4E cognition  </a>, and <a href="[https://www.psychiatry.org/patients-families/neurodevelopment-disorders](https://plato.stanford.edu/entries/capability-approach/)" target="_blank"> the capabilities approach </a>, this framework attempt to re-envision how social welfare, healthcare, human development policy are developed and evaluated using rights-value-evidence-based empirical study.
 
+Primary methodological application will be in modeling and simulation to provide simulated data for economic evaluation. Testing of the framework against traditional data and instrument will be in first phase.
 #### Work Package
 
 {{< cards cols="5" >}}
