@@ -16,6 +16,7 @@ feedExclude: true
 agent-based layer and the capabilities layer — written up and deposited on
 figshare under its own DOI, so it can be cited and argued with while the work
 is still being built.
+Reading that shaped this period is logged in the [Books Review]({{< relref "ndls/BooksReview.md" >}}).
 {{< /milestone >}}
 
 {{< milestone date="Now" status="now" >}}
