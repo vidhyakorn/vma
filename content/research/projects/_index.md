@@ -1,6 +1,6 @@
 ---
 title: "Research Portfolio"
-description: "Three interlocking research programmes: NeuroDiversity LifeSpace, Capability Approach (CALY-THA), and the Modelling & Simulation tools that bind them."
+description: "Three interlocking research programmes: NeuroDiversity LifeSpace, Capability Approach-based Research and Policy (CARP), and the Modelling & Simulation tools that bind them."
 weight: 2
 cascade:
   type: docs
@@ -24,11 +24,11 @@ A capability-focused dynamic bio-psycho-social modelling framework for the socia
 
 ---
 
-### CALY-THA — Capability Approach
+### CARP — Capability Approach-based Research and Policy
 
 An extension of the DALY/QALY family of summary measures, replacing utility-based weighting with capability-based weighting grounded in the Sen–Nussbaum capability approach.  Developed for the Thai population, with domain mapping, empirical weighting studies and an R estimation package in development.
 
-→ [Explore CALY-THA](/research/projects/caly-tha/)
+→ [Explore CARP](/research/projects/carp/)
 
 **Status:** Framework and protocol in development
 
@@ -53,9 +53,9 @@ The computational spine of the portfolio: system-dynamics models of NDLS traject
          trajectory)
             │
             ▼
-   Modelling & Simulation ──► CALY-THA
+   Modelling & Simulation ──► CARP
    (operationalises NDLS)     (population-level
                                outcome metric)
 ```
 
-NDLS provides the theoretical architecture.  Modelling & Simulation turns that architecture into computable form.  CALY-THA converts simulation outputs into the kind of summary measures that enter health policy decisions.
+NDLS provides the theoretical architecture.  Modelling & Simulation turns that architecture into computable form.  CARP converts simulation outputs into the kind of summary measures that enter health policy decisions.

@@ -1,13 +1,13 @@
 ---
 title: "Modelling & Simulation"
-description: "Agent-based models, system dynamics, and simulation tools that operationalise the NDLS framework and support CALY-THA estimation."
+description: "Agent-based models, system dynamics, and simulation tools that operationalise the NDLS framework and support CARP estimation."
 weight: 2
 feedExclude: true
 ---
 
 ## Modelling & Simulation
 
-This thread develops the **computational tools and formal models** that turn NDLS and CALY-THA from conceptual frameworks into empirically testable and policy-useful instruments.
+This thread develops the **computational tools and formal models** that turn NDLS and CARP from conceptual frameworks into empirically testable and policy-useful instruments.
 
 ### System dynamics core
 
@@ -32,4 +32,4 @@ Both model types require empirical calibration against Thai cohort data (MORU), 
 
 ### Role in the portfolio
 
-Modelling & Simulation is the **methodological spine** of the research portfolio: it takes theoretical constructs from [NDLS](/ndls/) and measurement outputs from [CALY-THA](/research/projects/caly-tha/), combines them into forward-looking scenario models, and feeds back insights that refine both frameworks.
+Modelling & Simulation is the **methodological spine** of the research portfolio: it takes theoretical constructs from [NDLS](/ndls/) and measurement outputs from [CARP](/research/projects/carp/), combines them into forward-looking scenario models, and feeds back insights that refine both frameworks.

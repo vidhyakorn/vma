@@ -1,19 +1,20 @@
 ---
-title: "CALY-THA"
-description: "Capability Approach — a measurement framework grounded in the capability approach, developed for the Thai population with neurodevelopmental conditions."
+title: "CARP"
+slug: "carp"
+description: "Capability Approach-based Research and Policy — a capability-approach measurement and policy framework for the Thai population with neurodevelopmental conditions."
 weight: 1
 feedExclude: true
 ---
 
 ## Capability Approach — Thai Context
 
-**CALY-THA** extends the DALY/QALY family of summary health measures by replacing utility-based weighting with capability-based weighting, drawing on [Amartya Sen's Capability Approach](https://plato.stanford.edu/entries/capability-approach/).
+**CARP** extends the DALY/QALY family of summary health measures by replacing utility-based weighting with capability-based weighting, drawing on [Amartya Sen's Capability Approach](https://plato.stanford.edu/entries/capability-approach/).
 
-Where conventional DALYs ask *"how much does this condition reduce health utility?"*, CALY-THA asks *"how much does this condition constrain what a person is genuinely able to do and be?"* — centring agency, functioning, and context rather than population-averaged preference weights.
+Where conventional DALYs ask *"how much does this condition reduce health utility?"*, CARP asks *"how much does this condition constrain what a person is genuinely able to do and be?"* — centring agency, functioning, and context rather than population-averaged preference weights.
 
 ### Why Thailand?
 
-Thailand's disability and neurodevelopmental data systems are structured around ICD-10 codes and bureaucratic categories that were not designed to capture capability dimensions.  A Thai-specific capability weight set allows CALY-THA to integrate with the national disability registry, provincial survey data, and MORU/IHRI disease burden estimates — producing estimates that are both internationally comparable and locally actionable.
+Thailand's disability and neurodevelopmental data systems are structured around ICD-10 codes and bureaucratic categories that were not designed to capture capability dimensions.  A Thai-specific capability weight set allows CARP to integrate with the national disability registry, provincial survey data, and MORU/IHRI disease burden estimates — producing estimates that are both internationally comparable and locally actionable.
 
 ### Key development threads
 
@@ -23,7 +24,7 @@ Thailand's disability and neurodevelopmental data systems are structured around 
 
 **Tool development.** A short-form capability screener (< 20 items) compatible with existing MORU surveillance instruments, and an R package for weight estimation and uncertainty propagation.
 
-**Burden estimates.** Pilot CALY-THA burden-of-condition estimates for ADHD and autism in upper-middle-income Thai provinces, benchmarked against standard DALY estimates to test divergence and policy implications.
+**Burden estimates.** Pilot CARP burden-of-condition estimates for ADHD and autism in upper-middle-income Thai provinces, benchmarked against standard DALY estimates to test divergence and policy implications.
 
 ### Progress
 
@@ -37,4 +38,4 @@ Thailand's disability and neurodevelopmental data systems are structured around 
 
 ### Connection to NDLS
 
-CALY-THA provides the **population-level outcome metric** for the [NDLS](/ndls/) framework: where NDLS models the longitudinal bio-psycho-social trajectory of an individual, CALY-THA aggregates those trajectories into a policy-relevant summary measure that can enter health technology assessment and resource-allocation decisions.
+CARP provides the **population-level outcome metric** for the [NDLS](/ndls/) framework: where NDLS models the longitudinal bio-psycho-social trajectory of an individual, CARP aggregates those trajectories into a policy-relevant summary measure that can enter health technology assessment and resource-allocation decisions.
