@@ -13,8 +13,7 @@ aliases:
 ---
 
 
-> I wrote this article to recognize October as ADHD and Neurodiversity Awareness Month, inspired by the recent conversations surrounding UK Channel 4’s documentary, [‘_The Great Myth of ADHD’_](https://youtu.be/Kg4Fq3VVuzs?si=H3LRh9RZQPir7Mvz). A special thank you to Assoc. Prof. Wirichada Pan-ngum (Pan) and the whole MAEMOD squad for their ongoing support, as well as the EDI committee for their official endorsement in publishing this article on MORU News.
-## ‘Hanami’: A ‘Cherry Blossom Viewing’; What the Science of Spring Can Teach Us About Human Flourishing.
+> I wrote this article to recognize October as ADHD and Neurodiversity Awareness Month, inspired by the recent conversations surrounding UK Channel 4’s documentary, [‘_The Great Myth of ADHD’_](https://youtu.be/Kg4Fq3VVuzs?si=H3LRh9RZQPir7Mvz).
 
 <div style="text-align: justify;">
 **Act 1: A Tradition of Watching the Blossoms**
