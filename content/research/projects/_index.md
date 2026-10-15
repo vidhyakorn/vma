@@ -1,6 +1,6 @@
 ---
 title: "Research Portfolio"
-description: "Three interlocking research programmes: NeuroDiversity LifeSpace, Capability-Adjusted Life Years, and the Modelling & Simulation tools that bind them."
+description: "Three interlocking research programmes: NeuroDiversity LifeSpace, Capability Approach (CALY-THA), and the Modelling & Simulation tools that bind them."
 weight: 2
 cascade:
   type: docs
@@ -24,7 +24,7 @@ A capability-focused dynamic bio-psycho-social modelling framework for the socia
 
 ---
 
-### CALY-THA — Capability-Adjusted Life Years
+### CALY-THA — Capability Approach
 
 An extension of the DALY/QALY family of summary measures, replacing utility-based weighting with capability-based weighting grounded in the Sen–Nussbaum capability approach.  Developed for the Thai population, with domain mapping, empirical weighting studies and an R estimation package in development.
 

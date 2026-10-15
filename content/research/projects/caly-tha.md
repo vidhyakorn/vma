@@ -1,11 +1,11 @@
 ---
 title: "CALY-THA"
-description: "Capability-Adjusted Life Years — a measurement framework grounded in the capability approach, developed for the Thai population with neurodevelopmental conditions."
+description: "Capability Approach — a measurement framework grounded in the capability approach, developed for the Thai population with neurodevelopmental conditions."
 weight: 1
 feedExclude: true
 ---
 
-## Capability-Adjusted Life Years — Thai Context
+## Capability Approach — Thai Context
 
 **CALY-THA** extends the DALY/QALY family of summary health measures by replacing utility-based weighting with capability-based weighting, drawing on [Amartya Sen's Capability Approach](https://plato.stanford.edu/entries/capability-approach/).
 
