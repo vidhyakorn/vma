@@ -15,8 +15,9 @@ aliases:
 
 > I wrote this article to recognize October as ADHD and Neurodiversity Awareness Month, inspired by the recent conversations surrounding UK Channel 4’s documentary, [‘_The Great Myth of ADHD’_](https://youtu.be/Kg4Fq3VVuzs?si=H3LRh9RZQPir7Mvz).
 
-<div style="text-align: justify;">
-**Act 1: A Tradition of Watching the Blossoms**
+---
+
+**Act 1: Appreciating Fleeting Blossoms**
 
 Every spring in Japan, from the warm south to the cooler north, cherry trees open their blossoms, and millions of people gather beneath the falling sakura petals for a centuries-old custom called 'Hanami', or flower viewing. Parks fill with picnics and poetry, office parties and family reunions, all held in the brief window before the petals scatter.
 
@@ -26,7 +27,7 @@ The blossoms carry a deeper meaning, because they last only a week or so before 
 
 Over the centuries, the tradition spread from high society to ordinary families until it became a shared cultural milestone. Today, whole communities wait for the bloom the way others wait for a holiday, and public broadcasters and newspapers follow its progress as a matter of national interest.
 
-**Act 2: The Science and the Care Behind the Bloom**
+**Act 2: The Science as a Welfare**
 
 In time, that ancient ritual also became a science. In 1955, the Japan Meteorological Agency began monitoring 58 'ideal trees' across the country to mark the official opening of each season. Today, detailed forecasting models track winter 'chilling hours' and spring 'growing degree-days' to predict the blooms almost to the hour, drawing on satellite data and crowdsourced reports from mobile apps.
 
@@ -40,7 +41,7 @@ And yet the true heart of Hanami is not the precision of a forecast or the glow 
 
 “Even a sea bream loses its flavor when eaten alone.” – an old Japanese saying
 
-**Act 3: What Are People Able to Do and to Be?**
+**Act 3: What Are Human?**
 
 This blend of science and shared humanity made me reflect on what social and health policy is really for. It brought to mind the Capability Approach, a framework in economics and philosophy developed by the Nobel laureate Amartya Sen and the philosopher Martha Nussbaum. At its heart sits one deceptively simple question: what are people actually able to do and to be?
 
@@ -48,7 +49,7 @@ Instead of measuring success by the total amount of happiness or efficiency a so
 
 This matters most where resources are scarce. When efficiency and cost-effectiveness always come first, people can quietly be reduced to units of production and consumption, valued mainly for what they can spend. Policies then reward compliance over dignity, and those seen as 'non-productive' become invisible, noticed only when they can be made useful again. That is the logic of ableism, not of genuine well-being. Longer lives, better healthcare, and new technologies are all worth celebrating, but only insofar as they widen the real opportunities, the capabilities, of a real human life (Sen, 1999; Davies, 2015; Fine, 2002; Marcuse, 1955).
 
-**Act 4: Turning Resources into Real Freedom**
+**Act 4: Resources as Means into Real Freedom**
 
 Seen through this lens, the tools of Hanami fall into place. A bloom-forecasting app, a monetary subsidy, a reserved and accessible space, the Universal Tourism program, the government-backed assistants: all of these are what the approach calls a vector of socioeconomic commodities. They are instruments, nothing more. In principle, everyone has an equal opportunity to attend Hanami, since no one is stopped from going.
 
@@ -62,7 +63,7 @@ Her list runs from the most basic to the most social: (1) life; (2) bodily healt
 
 This is where real equality truly lives: in the genuine freedom to choose what to be and to do according to what one values, whether that means being socially connected, being well rested, being able to learn, or simply being at peace in the quiet.
 
-**Act 5: Asking a Better Question About ADHD**
+**Act 5: Wrong questions Never Brings To Right Answer.
 
 With that lens in hand, turn to the recent debate around the documentary 'The Great Myth of ADHD', which asks whether attention-deficit/hyperactivity disorder (ADHD) is a real medical condition, an over-diagnosed label, or simply a social construct. The more I follow the argument, the more I suspect we are asking the wrong question about the human condition altogether.
 
@@ -78,7 +79,7 @@ Whether or not ADHD proves biomedically valid, and that is a fair question for o
 
 Biomedical care still matters. Medication, psychotherapy, coaching, and behavioral support can be essential, especially for people facing severe difficulty or unsupportive surroundings. But society, too, must rethink how it treats difference. The steady rise of ADHD, ASD, learning differences, depression, anxiety, and burnout may be a message to us: what most needs to change is not the diagnostic criteria or the economic calculations, but the livability of the world itself, so that people can reach the lives they value.
 
-**Finale: Letting Every Mind Find Its Spring**
+**Finale: Flourishing as End Goal**
 
 So let us return, one last time, to the cherry trees. They do not all bloom on the same day or under the same sky. Each one responds to its own chilling hours and its own measure of warmth, and a tree rushed or starved of what it needs will never flower well. People are no different. We flourish in the conditions that suit us, not under forced uniformity.
 
@@ -89,7 +90,8 @@ Science and policy need not be gatekeepers deciding who is allowed to bloom. Jus
 So it is worth pausing to ask ourselves a few honest questions. What might our classrooms, offices, public spaces, and even our health policies look like if they were designed for the full range of human needs rather than for an imagined average person? In our research, might the messy variety of real people become something we account for honestly, from the first design to the final report, instead of smoothing it away? And when we meet someone who struggles to fit the world as it is, will we ask what is wrong with them, or what the world might be failing to offer?
 
 The science of spring, in the end, teaches us something simple. Just as Japan's forecasts and helpers exist so that everyone can sit beneath the blossoms, our classrooms, clinics, workplaces, and research can be built so that every kind of person has the chance to flourish. We are born not only to survive but to thrive, to grow, and to be and do what we value, at every stage of life, whether or not our names are ever known. Perhaps our most urgent task, above all for those of us who carry out research in the name of the people we serve, is to turn our questions back toward human flourishing, and to let every kind of mind find its own spring.
-#</div>
+
+---
 
 > **Sen, A. (1999).** *Development as Freedom*. Oxford University Press.
 > **Davies, W. (2015).** *The Happiness Industry: How the Government and Big Business Sold Us Well-Being*. Verso Books.
