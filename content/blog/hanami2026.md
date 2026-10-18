@@ -1,7 +1,7 @@
 ---
 title: "‘Hanami’: A ‘Cherry Blossom Viewing’; What the Science of Spring Can Teach Us About Human Flourishing"
 date: 2026-09-20
-draft: true
+draft: false
 tags:
   - hanami
 description: What we may forget about how science can help improve human flourishing, not as a gatekeeper.
