@@ -63,7 +63,7 @@ Together, these conversion factors build what is called a person's ***Capability
 
 Her list runs from the most basic to the most social: (1) life; (2) bodily health; (3) bodily integrity and safety from harm; (4) the free use of our senses, imagination, and thought; (5) the full range of human emotions; (6) practical reason, the freedom to reflect and plan one's own life; (7) affiliation, living among others as an equal and free from humiliation; (8) a caring relationship with other species and the natural world; (9) play, rest, and laughter; and (10) control over one's environment, from a real voice in political life to fair terms at work.
 
-$$ \small \underbrace{\text{Vector of Commodities + Conversion Factors}}_{\text{Inputs \& Filters}} \longrightarrow \underbrace{\text{Capability Set}}_{\text{Set of Potential Functionings}} \xrightarrow{\text{Agency / Choice}} \underbrace{\text{Achieved Functionings}}_{\text{Realized Way of Life}} $$
+$$ \footnotesize \underbrace{\text{Vector of Commodities + Conversion Factors}}_{\text{Inputs \& Filters}} \longrightarrow \underbrace{\text{Capability Set}}_{\text{Set of Potential Functionings}} \xrightarrow{\text{Agency / Choice}} \underbrace{\text{Achieved Functionings}}_{\text{Realized Way of Life}} $$
 
 This is where *'real equality'* truly lives: in the genuine freedom to choose *'what to be'* and *'to do'* according to *'what one values'*, whether that means being socially connected, being well rested, being able to learn, or simply being at peace in the quiet.
 
