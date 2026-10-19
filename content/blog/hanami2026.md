@@ -39,7 +39,7 @@ Many towns add their own community schemes, such as the well-loved [Fureai Kippu
 
 And yet the true heart of 'Hanami' is not the precision of a forecast, the glow of a mobile application, monetary and materials support. It is the moment a person steps outside and sits down with others beneath the blossoming tree, sharing the quiet appreciation, the laughter, and the reflection on how precious life is.
 
-[“Even a sea bream loses its flavor when eaten alone.”](https://economictimes.indiatimes.com/news/international/us/japanese-proverb-of-the-day-even-a-sea-bream-loses-its-flavor-when-eaten-alone-a-timeless-lesson-on-friendship-connection-and-the-joy-of-sharing/articleshow/132220434.cms?from=mdr) – an old Japanese saying
+[“Even a sea bream loses its flavor when eaten alone.”](https://economictimes.indiatimes.com/news/international/us/japanese-proverb-of-the-day-even-a-sea-bream-loses-its-flavor-when-eaten-alone-a-timeless-lesson-on-friendship-connection-and-the-joy-of-sharing/articleshow/132220434.cms?from=mdr) – *an old Japanese saying*
 
 **What Are Human?**
 
@@ -55,15 +55,19 @@ Seen through this lens, the tools of 'Hanami' fall into place. A bloom-forecasti
 
 For example, an elderly or disabled person, or [persons with neurodiversity](https://neurodiversity.directory/neurodiversity-statistics/), may still find it hard to take part or participate due to different in physical, mental, sensory-motor processing . This is where the specially designed subsidies and assistance come in. They are a form of 'equity', offered to particular people in particular set so that they too can join in, physically, psychologically, socially, financially, with comfortably, if sitting beneath the blossoms is something they truly value. And if it is not what they value, choosing to stay home is perfectly fine.
 
+![Hanami as a Welfare (image generated using google gemini)](asset/hanami2026.png)
+
 What actually turns a resource into a *'real opportunity'*, or capability, are three kinds of *conversion factors*: *personal*, such as a person's body and mind; *social*, such as laws, norms, prejudices, and strict preferential on expression; and *environmental ones*, such as how the physical world, the space, the lights, the sound is designed and operated. The same subsidy, the same app, and the same classroom, rolled out for the majority, can make impacts on lives very different depending on how well these factors line up, most might be better-off, and the worst-off will be sacrificed for the rule of 'social utility maximization'. 
 
 Together, these conversion factors build what is called a *person's capability set*. Martha Nussbaum took the idea one step further, proposing a core list of [ten central capabilities](https://raggeduniversity.co.uk/2022/09/28/martha-nussbaum-public-services/) that any society committed to human dignity should protect for everyone.
 
 Her list runs from the most basic to the most social: (1) life; (2) bodily health; (3) bodily integrity and safety from harm; (4) the free use of our senses, imagination, and thought; (5) the full range of human emotions; (6) practical reason, the freedom to reflect and plan one's own life; (7) affiliation, living among others as an equal and free from humiliation; (8) a caring relationship with other species and the natural world; (9) play, rest, and laughter; and (10) control over one's environment, from a real voice in political life to fair terms at work.
 
+$$\underbrace{\text{Commodities + Conversion Factors}}_{\text{Inputs \& Filters}} \longrightarrow \underbrace{\text{Capability Set}}_{\text{Set of Potential Functionings}} \xrightarrow{\text{Agency / Choice}} \underbrace{\text{Achieved Functioning Vector}}_{\text{Realized Way of Life}}$$
+
 This is where **'real equality'** truly lives: in the genuine freedom to choose *'what to be'* and *'to do'* according to *'what one values'*, whether that means being socially connected, being well rested, being able to learn, or simply being at peace in the quiet.
 
-**Wrong questions Never Brings To Right Answer.
+**Wrong questions Never Brings To Right Answer**
 
 With that lens in hand, turn to the recent debate around the documentary [‘_The Great Myth of ADHD’_](https://youtu.be/Kg4Fq3VVuzs?si=H3LRh9RZQPir7Mvz), which asks whether [attention-deficit/hyperactivity disorder (ADHD)](https://www.youtube.com/watch?v=VuTcYLqRG9o&t=436s) is a *real medical condition*, an *over-diagnosed label*, or simply a [social construct](https://www.nature.com/nature-index/topics/l4/medicalization-and-social-construction-of-health). The more I follow the argument, the more I suspect we are asking the wrong question about the human and their lives especially children.
 
