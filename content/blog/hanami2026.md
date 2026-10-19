@@ -41,7 +41,7 @@ And yet the true heart of 'Hanami' is not the precision of a forecast, the glow 
 
 [“Even a sea bream loses its flavor when eaten alone.”](https://economictimes.indiatimes.com/news/international/us/japanese-proverb-of-the-day-even-a-sea-bream-loses-its-flavor-when-eaten-alone-a-timeless-lesson-on-friendship-connection-and-the-joy-of-sharing/articleshow/132220434.cms?from=mdr) – *an old Japanese saying*
 
-<figure> <img src="asset/hanami2026.png" alt="Hanami as a Social Welfare"> <figcaption>Figure 1: Hanami as a Social Welfare (image generated using Google Gemini.)</figcaption> </figure>
+![[Hanami as a Welfare](asset/hanami2026.png)<figcaption>Figure 1: Hanami as a Social Welfare (image generated using Google Gemini.)</figcaption>
 
 **What Are Being Human?**
 
