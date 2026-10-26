@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Float download button styling */
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: #007acc;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Print Specific Rules */
+@media print {
+    .print-btn { display: none; } /* Hide the button on the PDF */
+    body { padding: 0; margin: 0; font-size: 12pt; }
+    @page { size: A4; margin: 2cm; }
+}

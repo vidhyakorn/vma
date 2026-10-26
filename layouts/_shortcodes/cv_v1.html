@@ -1,0 +1,41 @@
+{{- /* Embeds a self-hosted PDF with a download button.
+
+       Usage in a page:
+         {{< cv src="/cv/vidhyakorn-cv.pdf" title="Curriculum Vitae" height="1000" >}}
+
+       The file lives in static/, so static/cv/vidhyakorn-cv.pdf is served at
+       /cv/vidhyakorn-cv.pdf. If it is missing, this renders a note saying so
+       rather than an empty grey box. */ -}}
+{{- $src    := .Get "src"    | default "/cv/cv.pdf" -}}
+{{- $title  := .Get "title"  | default "Curriculum Vitae" -}}
+{{- $height := .Get "height" | default "1000" -}}
+{{- $rel    := $src | strings.TrimPrefix "/" -}}
+{{- $url    := $rel | relURL -}}
+{{- $exists := fileExists (printf "static/%s" $rel) -}}
+
+<section class="cv-embed">
+  <div class="cv-bar">
+    <span class="cv-title">{{ $title }}</span>
+    <span class="cv-actions">
+      <a class="cv-btn" href="{{ $url }}" target="_blank" rel="noopener">Open in new tab</a>
+      <a class="cv-btn cv-btn-primary" href="{{ $url }}" download>Download PDF</a>
+    </span>
+  </div>
+
+  {{- if $exists }}
+  <object class="cv-frame" data="{{ $url }}#view=FitH" type="application/pdf" style="height:{{ $height }}px">
+    <p class="cv-fallback">
+      Your browser can’t show the PDF inline.
+      <a href="{{ $url }}">Open it in a new tab</a> instead.
+    </p>
+  </object>
+  <p class="cv-mobile-note">
+    <a href="{{ $url }}">Open the CV as a PDF</a> — inline preview is hidden on small screens.
+  </p>
+  {{- else }}
+  <p class="cv-missing">
+    No PDF found at <code>static/{{ $rel }}</code>. Export the CV from Typst
+    (File → Export → PDF) and save it to that path.
+  </p>
+  {{- end }}
+</section>

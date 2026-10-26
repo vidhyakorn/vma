@@ -1,0 +1,123 @@
+---
+title: Curriculum Vitae
+date: 2026-10-26
+draft: false
+tags:
+description: ""
+cover: ""
+math: false
+layout: cv
+url: /cv
+---
+# Vidhyakorn Mahd-Adam
+*Research Assistant*
+
+**Contact:** vidhyakornadam@gmail.com | (+66) 82-703-5717  
+**Address:** 33/10-11 Soi Petchburi 5, Ratchathewi, Bangkok, Thailand  
+**Links:** [github.com/mvidhyagorn](https://github.com/mvidhyagorn) | [linkedin.com/in/vidhyakorn](https://linkedin.com/in/vidhyakorn) | [ORCID: 0009-0008-2468-8870](https://orcid.org/0009-0008-2468-8870) | [medium](https://vidhyakorn.medium.com/)
+**Personal:** Nationality: Thai | Languages: Thai (Native), English (Professional)  
+
+---
+
+## SUMMARY & ABOUT ME
+I am a research assistant in mathematical modelling, focusing on population-level models of health and disease. My current interest explores how human health and well-being can be modelled through the bio-psychosocial model and the capabilities approach. I primarily use mathematical modelling, supported by multimodal data collection and analysis, to inform, calibrate, and refine models. My goal in conducting research is to contribute to evidence-based policy development.
+
+My interest in research and modelling is rooted in scientific curiosity, lived experience, and social observation. These experiences shape my commitment to marginalized communities, subaltern groups, and people often framed through social deviance. I believe human and social services, including health care, education, and youth and disability services, should move beyond treating difference as a defect, deficit, or disorder. Instead, they should strengthen human capabilities and support diverse people's potential, while recognizing how social and environmental conditions shape choices, actions, and opportunities.
+
+As a queer, neurodivergent Muslim from southern Thailand, I identify with communities across Southeast Asia and other low- and middle-income contexts whose potential is often constrained by inequitable systems. This lived experience informs my commitment to advocating for equitable and inclusive health and social policies that support diverse people. I believe these values should shape how research is designed, conducted, and communicated. With an academic background in biomedical and health sciences, alongside a strong interest in social theories, I hope to develop this commitment further through formal PhD research.
+
+---
+
+## SKILLS & INTERESTS
+**Interests:** 
+- Computational Methods
+- Population Dynamics
+- Capabilities Approach
+- Bio-psychosocial Model
+- Neurodiversity & EDI
+- Social Deviance & 'Others'
+- Social Theories of Health and Diseases
+
+**Data/Tools:** 
+- R
+- LaTeX/Quarto/Typst
+- Data Analysis
+- MS Office Suite
+
+---
+
+## EDUCATION
+**2023 | M.Sc. (Biomedical and Health Informatics)**
+*Mahidol University — Bangkok, Thailand*
+- **Thesis:** "Mathematical Modelling To Assess The Impacts Of Using Mobile Health Technology For Cross Border Travel In Controlling Of The Covid-19 Pandemics In Thailand".
+- **Advisors:** Assoc. Prof. Wirichada Pan-ngum, PhD., Assoc. Prof. Chawarat Rotejanaprasert, PhD., Dr. Panithee Thammawijaya, M.D., PhD.
+- **Defense Committee Chair:** Prof. Lisa Jane White, PhD.
+
+**2019 | Bachelor of Public Health**
+*Sukhothai Thammathirat Open University — Nonthaburi, Thailand*
+
+---
+
+## EXPERIENCES
+**2025 – Present | Consultant Researcher**
+*Mathematical and Economic Modelling Group, Mahidol-Oxford Tropical Medicine Research Unit (MORU), Faculty of Tropical Medicine, Mahidol University — Bangkok, Thailand*
+- Developing dynamic transmission models for infectious disease research.
+- Contributing to project coordination including ethics submissions, data administration and analysis, and field work preparation.
+
+**2023 – 2025 | Medical and Data Assistant**
+*Health Assessment Program, Migration Health, International Organisation for Migration (IOM Thailand) — Bangkok, Thailand*
+- Supported health assessment programmes for refugees and stateless persons across UNHCR-led schemes in Thailand.
+
+**2016 – 2021 | Claim Supervisor**
+*Insurance Claim Department, Allianz Partners — Bangkok, Thailand*
+
+---
+
+## PROJECTS
+**2025 – Present | Estimating an Economic Burden of Pneumococcal Disease and Economic Evaluation of the New Higher-Valent Pneumococcal Conjugated Vaccines Among Thai Older Adults**
+*Funded by Thailand Research Fund*
+- Built a pneumococcal disease with age-structured dynamic transmission model for pneumococcal disease burden and evaluate the impact of adult and infant Pneumococcal-conjugate valent vaccine strategies on incidence and mortality.
+
+**2025 – Present | Anthelmintic Resistance in Southeast Asia: Implications for Control and Elimination of Intestinal Helminths (AHR-SEA)**
+*Funded by MMRC (UK), CHRD (The Philippines), HSRI (Thailand)*
+- Coordinating project administration, including ethics board submissions, and data analysis.
+- Managing field faecal sample collection, mass drug administration monitoring, socioeconomic surveys, and discrete choice experiments.
+
+**2026 – Present | Mapping Inequities and Programmatic Profiles of Soil-Transmitted Helminth Interventions in Southeast Asia: A Systematic Review and Model-Based Network Meta-analysis**
+*Part of the AHR-SEA project under the supervision of Assoc Prof. Wirichada Pan-ngum, Assoc. Prof. Poom Adisakwattana, Mahidol University*
+- Conceptualised the study and protocol, and contributed to co-reviewing, data extraction, analysis and manuscript writing.
+
+---
+
+## PUBLICATIONS & CONFERENCES
+**Publication (2025):**
+- Vidhyakorn Mahd-Adam, Chawarat Rotejanaprasert, Saranath Lawpoolsri, Panithee Thammawijaya, and Wirichada Pan-ngum, "Mathematical modeling of public health policy for international travelers (PHPIT): a case study of the COVID-19 pandemic in Thailand", *BMC Public Health* 26-68, 2025. [https://doi.org/10.1186/s12889-025-25811-5](https://doi.org/10.1186/s12889-025-25811-5).
+
+**Conferences:**
+- **2022:** Vidhyakorn Mahd-Adam, Panithee Thammawijaya, Chawarat Rotejanaprasert, and Wirichada Pan-ngum, "Data-driven mathematical model for cross-border control of COVID-19-Reopening of Thailand's border", *Joint International of Tropical Medicine Meeting (JITMM)*, 2022.
+- **2021:** Vidhyakorn Mahd-Adam, Wirichada Pan-ngum, Chawarat Rotejanaprasert, and Panithee Thammawijaya, "Modelling of Health IT involved strategies in cross border controlling of COVID-19", *Joint International of Tropical Medicine Meeting (JITMM)*, 2021.
+
+---
+
+## TRAININGS
+- **2026:** MIDSEA Summer School-2026: Track 3 Bayesian & Simulation-based Inference (MIDSEA Network, Sarawak, Malaysia)
+- **2026:** Health Economics Workshop (Mahidol-Oxford Tropical Medicine Research Unit, Mahidol University, Bangkok, Thailand)
+- **2026:** Health Policy Advocacy for Researchers Workshop (Mahidol-Oxford Translational Innovation Partnership (MOTIP), Bangkok, Thailand)
+- **2025:** MORU & OUCRU Advance Statistics Course 2025: Analysis of Longitudinal and Correlated Data and Introduction to Bayesian Data Analysis (MORU, Mahidol University, Bangkok, Thailand)
+- **2025:** MIDSEA Summer School-2025: Track 2 Simulation Techniques and Numerical Methods (MIDSEA Network, Yogyakarta, Indonesia)
+
+---
+
+## REFERENCE PERSONS
+**Assoc. Prof. Wirichada Pan-ngum, PhD**
+Dept. of Tropical Hygiene, Faculty of Tropical Medicine, Mahidol University
+Email: pan@tropmedres.ac
+
+**Assoc. Prof. Poom Adisakwattana, PhD**
+Dept. of Helminthology, Faculty of Tropical Medicine, Mahidol University
+Email: poom.adi@mahidol.ac.th
+
+**Sompob Saralamba, PhD**
+Mahidol-Oxford Tropical Medicine Research Unit, Mahidol University
+Email: sompob@tropmedres.ac
+
