@@ -22,4 +22,4 @@ Complementing this, I approach philosophy through investigating historical socia
  I enjoy getting to know more and having meaningful conversation about [*Mathematic as a Language*](https://www.academia.edu/7642018/Mathematics_as_Language) ·  [*Capabilities Approach*](https://plato.stanford.edu/entries/capability-approach/) ·  [*Biopsychosocial Model*](https://en.wikipedia.org/wiki/Biopsychosocial_model) ·  [*Neurodiversity*](http://dickyricky.com/books/psych/NeuroDiversity%20-%20The%20Birth%20of%20an%20Idea%20-%20Judy%20Singer.pdf) ·  [*Social Deviant & Social Others*](https://en.wikipedia.org/wiki/Deviance_(sociology)) ·  [*Philosophy of Science and Medicine*](https://philpapers.org/browse/philosophy-of-science-misc/) · [*Blue Skies Research*](https://en.wikipedia.org/wiki/Blue_skies_research) · [*Computational Model*](https://en.wikipedia.org/wiki/Computational_model)
 ### _Curriculum Vitae_
 
-{{< cv src="/about/cv" title="Curriculum Vitae" height="100" >}}
+{{< cv_v1 src="/cv/vidhyakorn_cv_Oct26.pdf" title="Curriculum Vitae" height="800" >}}

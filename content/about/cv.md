@@ -7,7 +7,6 @@ description: ""
 cover: ""
 math: false
 layout: cv
-url: /cv
 ---
 # Vidhyakorn Mahd-Adam
 *Research Assistant*

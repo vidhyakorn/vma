@@ -1150,3 +1150,112 @@ main#content h1:not(.site-headline) {
 .dark .prj-panel-code  { color: rgba(160,230,195,0.9); }
 .dark .prj-panel-name  { color: rgba(220,240,230,0.55); }
 .dark .prj-panel-status{ color: rgba(220,240,230,0.38); }
+
+
+/* ─── CV PAGE ─────────────────────────────────────────────────────────────── */
+
+.cv-page-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+/* Top action bar */
+.cv-topbar {
+  position: sticky;
+  top: var(--navbar-height, 64px);
+  z-index: 10;
+  background: var(--cv-bar-bg, rgba(255,255,255,0.92));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+}
+.dark .cv-topbar { --cv-bar-bg: rgba(17,24,28,0.92); border-bottom-color: rgba(255,255,255,0.07); }
+
+.cv-topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0;
+}
+
+.cv-topbar-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted, #6b7280);
+}
+
+.cv-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff !important;
+  background: #2A5C40;
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+.cv-dl-btn:hover { background: #1F4530; opacity: 0.92; }
+.dark .cv-dl-btn { background: #3D7A5A; }
+.dark .cv-dl-btn:hover { background: #4A9070; }
+
+/* CV content area */
+.cv-content {
+  padding-top: 2rem;
+}
+
+/* Headings */
+.cv-content h1 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  margin-bottom: 0.15rem;
+  color: #1a2e24;
+}
+.dark .cv-content h1 { color: #d4f0e2; }
+
+.cv-content h2 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2A5C40;
+  border-bottom: 1.5px solid #2A5C40;
+  padding-bottom: 0.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.dark .cv-content h2 { color: #6bd4a0; border-bottom-color: #3a7a58; }
+
+.cv-content h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.1rem;
+}
+
+.cv-content p { font-size: 0.875rem; line-height: 1.7; margin-bottom: 0.4rem; }
+.cv-content ul { font-size: 0.875rem; line-height: 1.7; margin-left: 1.25rem; }
+.cv-content li { margin-bottom: 0.2rem; }
+.cv-content a { color: #2A5C40; }
+.dark .cv-content a { color: #6bd4a0; }
+.cv-content hr { border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 1.5rem 0; }
+.dark .cv-content hr { border-top-color: rgba(255,255,255,0.08); }
+.cv-content em { color: var(--color-muted, #6b7280); font-style: normal; }
+.cv-content strong { color: inherit; }
+
+/* Print: hide navbar, topbar, keep just content */
+@media print {
+  nav, header, .cv-topbar, footer { display: none !important; }
+  .cv-page-wrap { max-width: 100%; padding: 0; margin: 0; }
+  .cv-content { padding-top: 0; }
+  .cv-content h1 { font-size: 18pt; }
+  .cv-content h2 { font-size: 9pt; }
+  .cv-content p, .cv-content li { font-size: 10pt; }
+  @page { size: A4; margin: 2cm; }
+}
