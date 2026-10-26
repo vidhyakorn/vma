@@ -56,7 +56,7 @@ layout: cv
 
 **2026 – Present | Mapping Inequities and Programmatic Profiles of Soil-Transmitted Helminth Interventions in Southeast Asia: A Systematic Review and Model-Based Network Meta-analysis**
 *Part of the AHR-SEA project under the supervision of Assoc Prof. Wirichada Pan-ngum, Assoc. Prof. Poom Adisakwattana, Mahidol University*
-- Conceptualised the study and protocol, and contributed to co-reviewing, data extraction, analysis and manuscript writing.
+- Conceptualized the study and protocol, and contributed to co-reviewing, data extraction, analysis and manuscript writing.
 
 ---
 
