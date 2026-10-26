@@ -18,34 +18,6 @@ url: /about/cv/
 **Personal:** Nationality: Thai | Languages: Thai (Native), English (Professional)  
 
 ---
-
-## SUMMARY & ABOUT ME
-I am a research assistant in mathematical modelling, focusing on population-level models of health and disease. My current interest explores how human health and well-being can be modelled through the bio-psychosocial model and the capabilities approach. I primarily use mathematical modelling, supported by multimodal data collection and analysis, to inform, calibrate, and refine models. My goal in conducting research is to contribute to evidence-based policy development.
-
-My interest in research and modelling is rooted in scientific curiosity, lived experience, and social observation. These experiences shape my commitment to marginalized communities, subaltern groups, and people often framed through social deviance. I believe human and social services, including health care, education, and youth and disability services, should move beyond treating difference as a defect, deficit, or disorder. Instead, they should strengthen human capabilities and support diverse people's potential, while recognizing how social and environmental conditions shape choices, actions, and opportunities.
-
-As a queer, neurodivergent Muslim from southern Thailand, I identify with communities across Southeast Asia and other low- and middle-income contexts whose potential is often constrained by inequitable systems. This lived experience informs my commitment to advocating for equitable and inclusive health and social policies that support diverse people. I believe these values should shape how research is designed, conducted, and communicated. With an academic background in biomedical and health sciences, alongside a strong interest in social theories, I hope to develop this commitment further through formal PhD research.
-
----
-
-## SKILLS & INTERESTS
-**Interests:** 
-- Computational Methods
-- Population Dynamics
-- Capabilities Approach
-- Bio-psychosocial Model
-- Neurodiversity & EDI
-- Social Deviance & 'Others'
-- Social Theories of Health and Diseases
-
-**Data/Tools:** 
-- R
-- LaTeX/Quarto/Typst
-- Data Analysis
-- MS Office Suite
-
----
-
 ## EDUCATION
 **2023 | M.Sc. (Biomedical and Health Informatics)**
 *Mahidol University — Bangkok, Thailand*
@@ -85,7 +57,7 @@ As a queer, neurodivergent Muslim from southern Thailand, I identify with commun
 
 **2026 – Present | Mapping Inequities and Programmatic Profiles of Soil-Transmitted Helminth Interventions in Southeast Asia: A Systematic Review and Model-Based Network Meta-analysis**
 *Part of the AHR-SEA project under the supervision of Assoc Prof. Wirichada Pan-ngum, Assoc. Prof. Poom Adisakwattana, Mahidol University*
-- Conceptualised the study and protocol, and contributed to co-reviewing, data extraction, analysis and manuscript writing.
+- Conceptualized the study and protocol, and contributed to co-reviewing, data extraction, analysis and manuscript writing.
 
 ---
 
@@ -107,6 +79,13 @@ As a queer, neurodivergent Muslim from southern Thailand, I identify with commun
 - **2025:** MIDSEA Summer School-2025: Track 2 Simulation Techniques and Numerical Methods (MIDSEA Network, Yogyakarta, Indonesia)
 
 ---
+## SKILLS & INTERESTS
+
+**Interests:** Computational Methods; Population Dynamics; Capabilities Approach; Bio-psychosocial Model; Neurodiversity & EDI; Social Deviance & 'Others'; Social Theories of Health and Diseases
+
+**Data/Tools:** R; Python, Julia; Data Analysis; MS Office Suite
+
+---
 
 ## REFERENCE PERSONS
 **Assoc. Prof. Wirichada Pan-ngum, PhD**
@@ -120,4 +99,5 @@ Email: poom.adi@mahidol.ac.th
 **Sompob Saralamba, PhD**
 Mahidol-Oxford Tropical Medicine Research Unit, Mahidol University
 Email: sompob@tropmedres.ac
+
 
