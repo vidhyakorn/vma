@@ -22,7 +22,7 @@ url: /about/cv/
 **2023 | M.Sc. (Biomedical and Health Informatics)**
 *Mahidol University — Bangkok, Thailand*
 - **Thesis:** ["Mathematical Modelling To Assess The Impacts Of Using Mobile Health Technology For Cross Border Travel In Controlling Of The Covid-19 Pandemics In Thailand"](https://repository.li.mahidol.ac.th/items/7ce34ec9-9030-448a-a4b7-d1a2fbfdae25).
-- **Advisors:** Assoc. Prof. [Wirichada Pan-ngum]([https://www.tm.mahidol.ac.th/hygiene/our-team/wirichada-pan-ngum/](https://scholar.google.com/citations?user=bPK0p38AAAAJ&hl=en)), Assoc. Prof. [Chawarat Rotejanaprasert]([https://www.tm.mahidol.ac.th/hygiene/our-team/chawarat-rotejanaprasert/](https://scholar.google.com/citations?user=qPvjA6MAAAAJ&hl=en)), Dr. [Panithee Thammawijaya](https://scholar.google.com/citations?user=lUdCRFYAAAAJ&hl=en)
+- **Advisors:** Assoc. Prof. [Wirichada Pan-ngum](https://scholar.google.com/citations?user=bPK0p38AAAAJ&hl=en), Assoc. Prof. [Chawarat Rotejanaprasert](https://scholar.google.com/citations?user=qPvjA6MAAAAJ&hl=en), Dr. [Panithee Thammawijaya](https://scholar.google.com/citations?user=lUdCRFYAAAAJ&hl=en)
 - **Defense Committee Chair:** Prof. [Lisa Jane White](https://www.researchgate.net/profile/Lisa-White-11)
 
 **2019 | Bachelor of Public Health**
