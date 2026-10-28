@@ -244,6 +244,10 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   [params.toc]
     displayTags = true
 
+  [params.analytics]
+    [params.analytics.goatCounter]
+      code = "vidhyakorn"
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'

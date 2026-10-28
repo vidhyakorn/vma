@@ -1160,29 +1160,6 @@ main#content h1:not(.site-headline) {
   padding: 0 1.25rem 4rem;
 }
 
-/* Download button row — sits inside the content column, right-aligned */
-.cv-dl-row {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1.5rem 0 0.5rem;
-}
-
-.cv-dl-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.38rem 0.85rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #fff !important;
-  background: #2A5C40;
-  border-radius: 6px;
-  text-decoration: none !important;
-  transition: background 0.15s ease;
-}
-.cv-dl-btn:hover { background: #1F4530; }
-.dark .cv-dl-btn { background: #3D7A5A; }
-.dark .cv-dl-btn:hover { background: #4A9070; }
 
 /* CV content area */
 .cv-content { padding-top: 0; }
