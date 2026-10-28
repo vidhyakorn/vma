@@ -111,6 +111,10 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   pageRef = '/about'
   weight = 3
 
+[services]
+  [services.googleAnalytics]
+    ID = "G-P1DPV6CWY5"
+
 [params]
   description = 'Vidhyakorn Mahd-Adam — research assistant at MORU, Bangkok. Epidemiological and social modelling, health policy, and the history and philosophy of science and medicine.'
   externalLinkDecoration = true
@@ -244,9 +248,6 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   [params.toc]
     displayTags = true
 
-  [params.analytics]
-    [params.analytics.goatCounter]
-      code = "vidhyakorn"
 
 [caches]
   [caches.images]
