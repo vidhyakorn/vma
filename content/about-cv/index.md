@@ -6,6 +6,7 @@ tags:
 description: ""
 cover: ""
 math: false
+feedExclude: true
 layout: cv
 url: /about/cv/
 ---
