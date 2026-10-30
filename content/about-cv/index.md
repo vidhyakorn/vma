@@ -15,7 +15,7 @@ url: /about/cv/
 
 **Contact:** vidhyakornadam@gmail.com | (+66) 82-703-5717  
 **Address:** Bangkok, Thailand  
-**Links:** [Page: vidhyakorn.github.io/vma/](https://vidhyakorn.github.io/vma/) | [github.com/vidhyakorn](https://github.com/vidhyakorn) | [linkedin.com/in/vidhyakorn](https://linkedin.com/in/vidhyakorn) | [ORCID: 0009-0008-2468-8870](https://orcid.org/0009-0008-2468-8870) | [medium](https://vidhyakorn.medium.com/)
+**Links:** [Page: vidhyakorn.github.io/vma/](https://vidhyakorn.github.io/vma/) | [github.com/vidhyakorn](https://github.com/vidhyakorn) | [linkedin.com/in/vidhyakorn](https://linkedin.com/in/vidhyakorn) | [ORCID: 0009-0008-2468-8870](https://orcid.org/0009-0008-2468-8870) |
 **Personal:** Nationality: Thai | Languages: Thai (Native), English (Professional)  
 
 ---
@@ -46,16 +46,16 @@ url: /about/cv/
 ---
 ## PROJECTS
 **2025 – Present | Estimating an Economic Burden of Pneumococcal Disease and Economic Evaluation of the New Higher-Valent Pneumococcal Conjugated Vaccines Among Thai Older Adults**
-*Funded by Thailand Research Fund*
+*Under the supervision of Assoc. Prof. Thundon Ngamprasertchai & Assoc. Prof. Wirichada Pan-ngum; Project Funded by Thailand Research Fund*
 - Built a pneumococcal disease with age-structured dynamic transmission model for pneumococcal disease burden and evaluate the impact of adult and infant Pneumococcal-conjugate valent vaccine strategies on incidence and mortality.
 
 **2025 – Present | [Anthelmintic Resistance in Southeast Asia: Implications for Control and Elimination of Intestinal Helminths (AHR-SEA)](https://www.surrey.ac.uk/research-projects/anthelmintic-resistance-southeast-asia-ahr-sea-implications-control-and-elimination-intestinal)**
-*Funded by MMRC (UK), CHRD (The Philippines), HSRI (Thailand)*
+*Under the supervision of Assoc. Prof. Wirichada Pan-ngum, and Assoc. Prof. Poom Adisakwattana; Project Funded by MMRC (UK), CHRD (The Philippines), HSRI (Thailand)*
 - Coordinating project administration, including ethics board submissions, and data analysis.
-- Managing field faecal sample collection, mass drug administration monitoring, socioeconomic surveys, and discrete choice experiments.
+- Managing administrative activity related to field fecal sample collection, socioeconomic surveys, and discrete choice experiments.
 
 **2026 – Present | Mapping Inequities and Programmatic Profiles of Soil-Transmitted Helminth Interventions in Southeast Asia: A Systematic Review and Model-Based Network Meta-analysis**
-*Part of the AHR-SEA project under the supervision of Assoc Prof. Wirichada Pan-ngum, Assoc. Prof. Poom Adisakwattana, Mahidol University*
+*Under the supervision of Assoc Prof. Wirichada Pan-ngum, Assoc. Prof. Poom Adisakwattana
 - Conceptualized the study and [protocol](https://www.crd.york.ac.uk/PROSPERO/view/CRD420261370944), and contributed to co-reviewing, data extraction, analysis and manuscript writing.
 
 ---
@@ -83,7 +83,7 @@ url: /about/cv/
 ## SKILLS & INTERESTS
 
 **Interests:** Computational Methods; Population Dynamics; Capabilities Approach; Bio-psychosocial Model; Neurodiversity & EDI; Social Deviance & 'Others'; Social Theories of Health and Diseases
-**Data/Tools:** R; Python, Julia; Data Analysis; MS Office Suite
+**Data/Tools/Methods:** R; Data Analysis; MS Office Suite; Systematic Review and Meta-analysis; Mathematical Modeling
 
 ---
 ## REFERENCE PERSONS
