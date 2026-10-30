@@ -1,18 +1,19 @@
 {{/*
-  project-landscape.html — horizontal row of three equal green panels.
+  project-landscape.html — horizontal row of four equal panels, one per core domain.
 
-  Order left → right:  NDLS  |  Modelling  |  CARP
-  Colours (different tones of green, all with white text):
-    NDLS        #1B4332  dark forest green
-    Modelling   #2D6A4F  deep emerald
-    CARP    #40916C  medium green
+  Order left → right:  NDLS  |  PopDyn  |  EvidSyn  |  CApS
+  Stripe colours (top accent, green family):
+    NDLS     #4A7C59  forest
+    PopDyn   #5E8A6A  sage-teal
+    EvidSyn  #3B7A7A  teal
+    CApS     #7A6B3B  amber-olive
 */}}
 
 <figure class="prj-landscape-wrap not-prose" aria-label="Research project overview">
   <p class="prj-landscape-label">Research Portfolio</p>
 
   <div class="prj-landscape">
-    {{/* ── NDLS — dark green, left ──────────────────────────────── */}}
+    {{/* ── NDLS — NeuroDiversity LifeSpace ──────────────────────── */}}
     <div class="prj-panel prj-panel--ndls">
       <a href="{{ relLangURL "ndls/" }}" class="prj-panel-link">
         <span class="prj-panel-code">NDLS</span>
@@ -20,22 +21,30 @@
       </a>
     </div>
 
-    {{/* ── Modelling — medium green, centre ────────────────────── */}}
-    <div class="prj-panel prj-panel--mod">
-      <a href="{{ relLangURL "research/projects/modelling/" }}" class="prj-panel-link">
-        <span class="prj-panel-code">Models</span>
-        <span class="prj-panel-name">Simulation & Tools</span>
+    {{/* ── PopDyn — Population Dynamics ────────────────────────── */}}
+    <div class="prj-panel prj-panel--popdyn">
+      <a href="{{ relLangURL "research/popdyn/" }}" class="prj-panel-link">
+        <span class="prj-panel-code">PopDyn</span>
+        <span class="prj-panel-name">Population Dynamics</span>
       </a>
     </div>
 
-    {{/* ── CARP — lighter green, right ─────────────────────── */}}
-    <div class="prj-panel prj-panel--caly">
-      <a href="{{ relLangURL "research/projects/carp/" }}" class="prj-panel-link">
-        <span class="prj-panel-code">CARP</span>
-        <span class="prj-panel-name">Capability Approach-based Research and Policy</span>
+    {{/* ── EvidSyn — Evidence Synthesis ────────────────────────── */}}
+    <div class="prj-panel prj-panel--evidsyn">
+      <a href="{{ relLangURL "research/evidsyn/" }}" class="prj-panel-link">
+        <span class="prj-panel-code">EvidSyn</span>
+        <span class="prj-panel-name">Evidence Synthesis Methodologies</span>
+      </a>
+    </div>
+
+    {{/* ── CApS — Capabilities Approach Studies ────────────────── */}}
+    <div class="prj-panel prj-panel--caps">
+      <a href="{{ relLangURL "research/caps/" }}" class="prj-panel-link">
+        <span class="prj-panel-code">CApS</span>
+        <span class="prj-panel-name">Capabilities Approach Studies</span>
       </a>
     </div>
   </div>
 
-  <a class="prj-landscape-more" href="{{ relLangURL "research/projects/" }}">Full research portfolio →</a>
+  <a class="prj-landscape-more" href="{{ relLangURL "research/" }}">Full research portfolio →</a>
 </figure>
