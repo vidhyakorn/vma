@@ -3,7 +3,7 @@ title: Progress
 description: What is built, what is underway, and what comes next.
 weight: 1
 feedExclude: true
-draft: true
+draft: false
 ---
 
 {{< milestone date="June 2023" status="done" >}}
