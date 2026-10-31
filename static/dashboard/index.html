@@ -261,6 +261,7 @@ let G = {
 };
 
 let currentGraph = null; // stored after each render for highlight traversal
+let activeProject = null; // currently hovered project id
 
 // ── RENDER ────────────────────────────────────────────────────────────────
 function render() {
@@ -335,12 +336,12 @@ function render() {
     .attr('stroke', (d, i) => `url(#g${i})`)
     .attr('stroke-width', d => Math.max(1.5, d.width))
     .on('mouseover', function(e, d) {
-      d3.select(this).style('stroke-opacity', .55);
+      if (!activeProject) d3.select(this).style('stroke-opacity', .55);
       showTip(e, `${d.source.name}\n→ ${d.target.name}`);
     })
     .on('mousemove', moveTip)
     .on('mouseout', function() {
-      d3.select(this).style('stroke-opacity', .22);
+      if (!activeProject) d3.select(this).style('stroke-opacity', .22);
       hideTip();
     });
 
@@ -357,15 +358,9 @@ function render() {
     .attr('fill', d => GC[d.group] || '#94A3B8')
     .attr('rx', 4)
     .on('click', (e, d) => handleClick(d))
-    .on('mouseover', function(e, d) {
-      showTip(e, d.name);
-      if (d.layer === 0) highlightProject(d.id);
-    })
+    .on('mouseover', (e, d) => showTip(e, d.name))
     .on('mousemove', moveTip)
-    .on('mouseout', function(e, d) {
-      hideTip();
-      if (d.layer === 0) clearHighlight();
-    });
+    .on('mouseout', hideTip);
 
   // Labels
   const maxLayer = Math.max(...G.nodes.map(n => n.layer));
@@ -393,6 +388,24 @@ function render() {
     div.className = 'leg-item';
     div.innerHTML = `<span class="leg-dot" style="background:${GC[n.group]}"></span><span>${n.name}</span>`;
     legEl.appendChild(div);
+  });
+
+  // SVG-level delegation: highlight project on enter, clear when leaving it
+  svg.on('mouseover', function(event) {
+    const el = event.target;
+    if (el.classList && el.classList.contains('node-rect')) {
+      const d = d3.select(el).datum();
+      if (d && d.layer === 0) {
+        if (activeProject !== d.id) {
+          activeProject = d.id;
+          highlightProject(d.id);
+        }
+        return;
+      }
+    }
+    if (activeProject) { activeProject = null; clearHighlight(); }
+  }).on('mouseleave', function() {
+    if (activeProject) { activeProject = null; clearHighlight(); }
   });
 }
 
