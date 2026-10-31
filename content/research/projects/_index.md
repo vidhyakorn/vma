@@ -12,35 +12,29 @@ sidebar:
 
 My research is built around three components that depend on each other and grow together.
 
+{{< cards >}}
+  {{< card link="/ndls/" title="NDLS — NeuroDiversity LifeSpace" subtitle="Active · MORU Bangkok" icon="academic-cap" tag="Active" tagType="info" >}}
+  {{< card link="/research/projects/carp/" title="CARP — Capability Approach-based Research and Policy" subtitle="Framework and protocol in development" icon="chart-bar" tag="In Development" >}}
+  {{< card link="/research/projects/modelling/" title="Modelling & Simulation" subtitle="Prototyping and design phase" icon="cube" tag="Prototyping" >}}
+{{< /cards >}}
+
 ---
 
 ### NDLS — NeuroDiversity LifeSpace
 
 A capability-focused dynamic bio-psycho-social modelling framework for the social, health and well-being of persons with neurodevelopmental conditions. NDLS treats conditions such as ADHD, autism and Down syndrome not as fixed labels but as evolving trajectories shaped by biology, cognition and environment across a whole life.
 
-→ [Explore NDLS](/ndls/)
-
-**Status:** Active research programme at MORU Bangkok
-
 ---
 
 ### CARP — Capability Approach-based Research and Policy
 
-An extension of the DALY/QALY family of summary measures, replacing utility-based weighting with capability-based weighting grounded in the Sen–Nussbaum capability approach.  Developed for the Thai population, with domain mapping, empirical weighting studies and an R estimation package in development.
-
-→ [Explore CARP](/research/projects/carp/)
-
-**Status:** Framework and protocol in development
+An extension of the DALY/QALY family of summary measures, replacing utility-based weighting with capability-based weighting grounded in the Sen–Nussbaum capability approach. Developed for the Thai population, with domain mapping, empirical weighting studies and an R estimation package in development.
 
 ---
 
 ### Modelling & Simulation
 
 The computational spine of the portfolio: system-dynamics models of NDLS trajectories, an agent-based extension preserving individual heterogeneity, calibration tools for Thai cohort data, and a Shiny scenario dashboard for policy exploration.
-
-→ [Explore Modelling & Simulation](/research/projects/modelling/)
-
-**Status:** Prototyping and design phase
 
 ---
 
@@ -58,4 +52,4 @@ The computational spine of the portfolio: system-dynamics models of NDLS traject
                                outcome metric)
 ```
 
-NDLS provides the theoretical architecture.  Modelling & Simulation turns that architecture into computable form.  CARP converts simulation outputs into the kind of summary measures that enter health policy decisions.
+NDLS provides the theoretical architecture. Modelling & Simulation turns that architecture into computable form. CARP converts simulation outputs into the kind of summary measures that enter health policy decisions.
