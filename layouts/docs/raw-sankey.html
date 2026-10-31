@@ -84,12 +84,6 @@ svg{display:block}
     <div id="leg-projects"></div>
   </div>
 
-  <div class="s-sec">
-    <div class="s-title">Add</div>
-    <button class="btn" onclick="openAddNode()">＋ Add Node</button>
-    <button class="btn" onclick="openAddLink()">＋ Add Link</button>
-  </div>
-
   <div class="s-sec" style="flex:1">
     <div class="s-title">How to use</div>
     <div style="font-size:12px;color:var(--text2);line-height:1.65">
@@ -113,18 +107,6 @@ svg{display:block}
     <div class="modal-note" id="mod-note"></div>
     <div class="tags" id="mod-tags"></div>
     <button class="btn" onclick="closeMod('modal')">Close</button>
-  </div>
-</div>
-
-<!-- Add form -->
-<div id="form-modal" class="overlay hidden" onclick="closeMod('form-modal')">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <h3 id="fm-title"></h3>
-    <div id="fm-body"></div>
-    <div class="form-actions">
-      <button class="btn" onclick="closeMod('form-modal')">Cancel</button>
-      <button class="btn btn-primary" onclick="submitForm()">Add</button>
-    </div>
   </div>
 </div>
 
@@ -152,7 +134,7 @@ const LAYER_NAMES = ['Projects','Subject Matters','Methods','Data','Applications
 let G = {
   nodes: [
     // ── Projects (layer 0) ──
-    {id:'ndls',    name:'NDLS',              layer:0, group:'ndls',    url:PORTFOLIO_URL,
+    {id:'ndls',    name:'NDLS',              layer:0, group:'ndls',    url:'https://vidhyakorn.github.io/vma/ndls/',
      tags:['#NeuroDiversity','#LifeSpace','#ADHD','#ASD','#LD','#lifeCourse']},
     {id:'pcv',     name:'Pneumococcal (PCV)', layer:0, group:'popdyn',  url:PORTFOLIO_URL,
      tags:['#pneumococcal','#vaccine','#Thailand','#CEA']},
@@ -479,77 +461,9 @@ function showTip(e, text) { tip.textContent = text; tip.style.opacity = '1'; mov
 function moveTip(e) { tip.style.left = (e.clientX + 14) + 'px'; tip.style.top = (e.clientY - 8) + 'px'; }
 function hideTip() { tip.style.opacity = '0'; }
 
-// ── ADD FORMS ─────────────────────────────────────────────────────────────
-let formMode = null;
-
-function openAddNode() {
-  formMode = 'node';
-  document.getElementById('fm-title').textContent = 'Add Node';
-  document.getElementById('fm-body').innerHTML = `
-    <div class="form-group"><label>Name</label><input id="fn" placeholder="e.g. New Method"></div>
-    <div class="form-group"><label>Layer</label>
-      <select id="fl">
-        ${LAYER_NAMES.map((n,i)=>`<option value="${i}">${i} — ${n}</option>`).join('')}
-      </select>
-    </div>
-    <div class="form-group"><label>Color Group</label>
-      <select id="fg">
-        <option value="ndls">NDLS · green</option>
-        <option value="popdyn">PopDyn · teal</option>
-        <option value="adhd">ADHD · teal-blue</option>
-        <option value="evidsyn">EvidSyn · blue</option>
-        <option value="caps">CApS · amber</option>
-        <option value="subject">Subject Matter · violet</option>
-        <option value="method">Method · orange</option>
-        <option value="data">Data · slate</option>
-        <option value="app">Application · green</option>
-      </select>
-    </div>
-    <div class="form-group"><label>Project URL (optional)</label><input id="fu" placeholder="https://..."></div>
-    <div class="form-group"><label>Tags (comma-separated)</label><input id="ft" placeholder="#tag1, #tag2"></div>
-  `;
-  document.getElementById('form-modal').classList.remove('hidden');
-}
-
-function openAddLink() {
-  formMode = 'link';
-  document.getElementById('fm-title').textContent = 'Add Link';
-  const opts = G.nodes.map(n =>
-    `<option value="${n.id}">${LAYER_NAMES[n.layer]}: ${n.name}</option>`).join('');
-  document.getElementById('fm-body').innerHTML = `
-    <div class="form-group"><label>Source</label><select id="fsrc">${opts}</select></div>
-    <div class="form-group"><label>Target</label><select id="ftgt">${opts}</select></div>
-    <div class="form-group"><label>Flow strength (1–5)</label>
-      <input type="number" id="fval" value="1" min="1" max="10">
-    </div>
-  `;
-  document.getElementById('form-modal').classList.remove('hidden');
-}
-
-function submitForm() {
-  if (formMode === 'node') {
-    const name = document.getElementById('fn').value.trim();
-    if (!name) return;
-    const layer = +document.getElementById('fl').value;
-    const group = document.getElementById('fg').value;
-    const url = document.getElementById('fu').value.trim();
-    const tagsRaw = document.getElementById('ft').value;
-    const tags = tagsRaw.split(',').map(t=>t.trim()).filter(Boolean);
-    G.nodes.push({id:'n'+Date.now(), name, layer, group, url, tags});
-  } else {
-    const src = document.getElementById('fsrc').value;
-    const tgt = document.getElementById('ftgt').value;
-    const val = +document.getElementById('fval').value || 1;
-    if (src === tgt) return;
-    G.links.push({source:src, target:tgt, value:val});
-  }
-  closeMod('form-modal');
-  render();
-}
-
 // ── INIT ──────────────────────────────────────────────────────────────────
 window.addEventListener('resize', render);
-document.addEventListener('keydown', e => { if (e.key==='Escape') { closeMod('modal'); closeMod('form-modal'); }});
+document.addEventListener('keydown', e => { if (e.key==='Escape') { closeMod('modal'); }});
 render();
 </script>
 </body>
