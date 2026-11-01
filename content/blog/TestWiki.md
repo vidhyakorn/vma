@@ -8,7 +8,7 @@ image: "[[Image_Name.jpg]]"
 born:
 died:
 occupation:
-draft: false
+draft: true
 ---
 # Test1234
 
