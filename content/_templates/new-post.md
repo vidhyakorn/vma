@@ -5,6 +5,8 @@ draft: true
 tags: []
 description: ""
 cover: ""
+link: ""
+toc: true
 math: false
 ---
 
@@ -19,11 +21,12 @@ Where to save it
 
 Set draft: false when it is ready to publish.
 description is the grey line under the card on the homepage.
+toc: true  → shows a table of contents on the right side.
 
 Card picture — the first of these that is filled in wins:
   cover: "/img/picture.jpg"            a file in static/img/
   cover: "https://example.org/x.jpg"   any image on the web
-  link:  "https://site.org/article"    borrows that page's preview image
+  link:  "https://site.org/article"    borrows that page's social preview image
   (nothing)                            a coloured tile with the first letter
 
 Diagrams in the text:
