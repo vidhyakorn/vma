@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Research Flow</title>
+<title>My Research Landscape</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
@@ -114,6 +114,7 @@ svg{display:block}
 
 <script>
 // ── CONSTANTS ──────────────────────────────────────────────────────────────
+// default for page
 const PORTFOLIO_URL = 'https://claude.ai/artifact/NjCfMMAiVWZVjtW1yvSvLF';
 
 const GC = {
@@ -134,31 +135,31 @@ const LAYER_NAMES = ['Projects','Subject Matters','Methods','Data','Applications
 let G = {
   nodes: [
     // ── Projects (layer 0) ──
-    {id:'ndls',    name:'NDLS',              layer:0, group:'ndls',    url:'https://vidhyakorn.github.io/vma/ndls/',
+    {id:'ndls',    name:'NeuroDiversity LifeSpace Framework (NDLS)', layer:0, group:'ndls',    url:'https://vidhyakorn.github.io/vma/ndls/',
      tags:['#NeuroDiversity','#LifeSpace','#ADHD','#ASD','#LD','#lifeCourse']},
     {id:'pcv',     name:'Pneumococcal (PCV)', layer:0, group:'popdyn',  url:PORTFOLIO_URL,
      tags:['#pneumococcal','#vaccine','#Thailand','#CEA']},
-    {id:'sth',     name:'AHR-SEA Helminths', layer:0, group:'popdyn',  url:PORTFOLIO_URL,
+    {id:'sth',     name:'Anthelmintics Resistance Modeling', layer:0, group:'popdyn',  url:PORTFOLIO_URL,
      tags:['#STH','#helminths','#SEA','#MDA','#resistance']},
-    {id:'covid',   name:'COVID-19 ✓',        layer:0, group:'popdyn',  url:PORTFOLIO_URL,
+	{id:'sth-sr',     name:'Mapping STH Intervention in SEA ', layer:0, group:'method',  url:'https://www.crd.york.ac.uk/PROSPERO/view/CRD420261370944',
+     tags:['#STH','#helminths','#SEA','#MDA','#resistance']},
+    {id:'covid',   name:'COVID-19 ✓',        layer:0, group:'popdyn',  url:'https://vidhyakorn.github.io/vma/research/publications/cbc2025/',
      tags:['#COVID19','#published','#crossBorder','#Thailand']},
-    {id:'adhd',    name:'ADHD Burden & SR',  layer:0, group:'adhd',    url:PORTFOLIO_URL,
+    {id:'adhd',    name:'ADHD Modeling for Thailand',  layer:0, group:'adhd',    url:PORTFOLIO_URL,
      tags:['#ADHD','#burden','#systematicReview','#Thailand']},
-    {id:'evidsyn', name:'EvidSyn (STH NMA)', layer:0, group:'evidsyn', url:PORTFOLIO_URL,
-     tags:['#STH','#NMA','#evidence','#Bayesian']},
-    {id:'caps',    name:'CApS / CALY',       layer:0, group:'caps',    url:PORTFOLIO_URL,
+    {id:'caps',    name:'Capabilities Approach Studies',       layer:0, group:'caps',    url:PORTFOLIO_URL,
      tags:['#capability','#CALY','#wellbeing','#ICECAP']},
 
     // ── Subject Matters (layer 1) ──
-    {id:'s_nd',  name:'Neurodevelopmental',  layer:1, group:'subject', url:'',
+    {id:'s_nd',  name:'Neurodevelopmental Conditions and Neurodiversity',  layer:1, group:'subject', url:'',
      tags:['#ADHD','#ASD','#LD','#lifeCourse','#capability','#cognition']},
     {id:'s_inf', name:'Infectious Diseases', layer:1, group:'subject', url:'',
      tags:['#pneumococcal','#COVID19','#transmission','#ODE','#vaccine']},
-    {id:'s_ntd', name:'Neglected Tropical',  layer:1, group:'subject', url:'',
+    {id:'s_ntd', name:'Neglected Tropical Diseases',  layer:1, group:'subject', url:'',
      tags:['#STH','#helminths','#deworming','#SEA','#MDA']},
-    {id:'s_adh', name:'ADHD Epidemiology',   layer:1, group:'subject', url:'',
+    {id:'s_adh', name:'Mental Health and Social Epidemiology',   layer:1, group:'subject', url:'',
      tags:['#prevalence','#burden','#incidence','#Thailand','#SEA']},
-    {id:'s_cap', name:'Capabilities',        layer:1, group:'subject', url:'',
+    {id:'s_cap', name:'Capabilities Approach',        layer:1, group:'subject', url:'',
      tags:['#capability','#wellbeing','#freedom','#CALY','#ICECAP']},
 
     // ── Methods (layer 2) ──
@@ -168,11 +169,11 @@ let G = {
      tags:['#ABM','#Mesa','#Python','#simulation','#individual']},
     {id:'m_sr',  name:'Systematic Review',      layer:2, group:'method', url:'',
      tags:['#PRISMA','#PROSPERO','#screening','#bias','#fullText']},
-    {id:'m_nma', name:'Network Meta-Analysis',  layer:2, group:'method', url:'',
-     tags:['#Bayesian','#NMA','#gemtc','#R','#indirect','#consistency']},
-    {id:'m_hee', name:'Health Economic Eval.',  layer:2, group:'method', url:'',
+    {id:'m_ma', name:'Meta-Analyses',  layer:2, group:'method', url:'',
+     tags:['#Bayesian','#MA','#gemtc','#R','#indirect','#consistency']},
+    {id:'m_ie', name:'Implementation and Evaluation',  layer:2, group:'method', url:'',
      tags:['#CEA','#DALY','#ICER','#threshold','#costEffectiveness']},
-    {id:'m_pe',  name:'Preference Elicitation', layer:2, group:'method', url:'',
+    {id:'m_dc',  name:'Data Collection', layer:2, group:'method', url:'',
      tags:['#BWS','#TTO','#DCE','#capability','#utility','#community']},
 
     // ── Data (layer 3) ──
@@ -213,23 +214,23 @@ let G = {
     {source:'s_nd',  target:'m_abm', value:1},
     {source:'s_nd',  target:'m_sr',  value:1},
     {source:'s_inf', target:'m_dtm', value:2},
-    {source:'s_inf', target:'m_hee', value:1},
+    {source:'s_inf', target:'m_ie', value:1},
     {source:'s_ntd', target:'m_sr',  value:1},
-    {source:'s_ntd', target:'m_nma', value:1},
+    {source:'s_ntd', target:'m_ma', value:1},
     {source:'s_ntd', target:'m_dtm', value:1},
     {source:'s_adh', target:'m_sr',  value:1},
-    {source:'s_adh', target:'m_nma', value:1},
-    {source:'s_adh', target:'m_hee', value:1},
-    {source:'s_cap', target:'m_pe',  value:2},
-    {source:'s_cap', target:'m_hee', value:1},
+    {source:'s_adh', target:'m_ma', value:1},
+    {source:'s_adh', target:'m_ie', value:1},
+    {source:'s_cap', target:'m_dc',  value:2},
+    {source:'s_cap', target:'m_ie', value:1},
     // Methods → Data
     {source:'m_dtm', target:'d_thai', value:1},
     {source:'m_dtm', target:'d_sea',  value:2},
     {source:'m_abm', target:'d_sim',  value:2},
     {source:'m_sr',  target:'d_lit',  value:3},
-    {source:'m_nma', target:'d_lit',  value:2},
-    {source:'m_hee', target:'d_thai', value:2},
-    {source:'m_pe',  target:'d_surv', value:2},
+    {source:'m_ma', target:'d_lit',  value:2},
+    {source:'m_ie', target:'d_thai', value:2},
+    {source:'m_dc',  target:'d_surv', value:2},
     // Data → Applications
     {source:'d_thai', target:'a_vax',  value:2},
     {source:'d_thai', target:'a_adhd', value:1},
