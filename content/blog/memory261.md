@@ -1,6 +1,6 @@
 ---
-title: "{{title}}"
-date: {{date:YYYY-MM-DD}}
+title: "memory261"
+date: 2026-11-01
 draft: true
 tags: []
 description: ""
