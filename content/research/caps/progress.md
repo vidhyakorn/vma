@@ -3,6 +3,7 @@ title: Progress
 description: Status of Capabilities Approach Studies projects.
 weight: 1
 feedExclude: true
+draft: true
 ---
 
 ### CARP Framework

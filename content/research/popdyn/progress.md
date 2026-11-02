@@ -3,6 +3,7 @@ title: Progress
 description: Status of Population Dynamics projects.
 weight: 1
 feedExclude: true
+draft: true
 ---
 
 ### Pneumococcal Disease Burden — Thailand
