@@ -22,8 +22,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Hextra needs Hugo 0.146.0 or newer; the extended build is kept for the
-      # image processing that resizes card pictures.
+      # no-fate requires Hugo 0.158.0+; use 0.166.0 extended for image processing.
       HUGO_VERSION: 0.166.0
     steps:
       - name: Install Hugo CLI
@@ -33,20 +32,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # The theme lives in the repo as ordinary files, so there is nothing
-          # to fetch beyond the checkout itself.
+          # no-fate is added as a git submodule in themes/no-fate
+          submodules: recursive
           fetch-depth: 0
       - name: Sanity check — the theme must be present
         run: |
-          test -f themes/hextra/theme.toml \
-            || { echo "::error::themes/hextra is missing from the repo"; exit 1; }
+          test -f themes/no-fate/theme.toml \
+            || { echo "::error::themes/no-fate is missing from the repo"; exit 1; }
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
         with:
-          # Turns Pages on for the repo if it is not already enabled, instead of
-          # failing with "Get Pages site failed". Needs the pages:write
-          # permission granted above.
           enablement: true
       - name: Build with Hugo
         env:

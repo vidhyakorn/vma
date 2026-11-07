@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Site palette — overrides no-fate's default signal colour with the
+   custom palette from the design brief.
+
+   From the brief:
+     Yellow      #EFC028
+     Orange-red  #E04A1A   ← primary accent (signal) in light mode
+     Green       #4DB848
+     Blue        #2D88C8
+     Pink        #E43282
+
+   no-fate uses --nf-signal for accents (borders, hover backgrounds,
+   link underlines, blockquote bars, the wild title even-lines fill).
+   --nf-wild-signal specifically drives the wild-style even title lines.
+   ========================================================================== */
+
+/* Palette tokens — available everywhere for custom shortcodes / partials */
+:root {
+  --palette-yellow:      #EFC028;
+  --palette-orange:      #E04A1A;
+  --palette-green:       #4DB848;
+  --palette-blue:        #2D88C8;
+  --palette-pink:        #E43282;
+}
+
+/* Light mode — orange-red as primary signal */
+:root[data-nf-style="wild"] {
+  --nf-signal:       #E04A1A;
+  --nf-wild-signal:  #E04A1A;
+  --nf-focus:        #2D88C8;   /* blue for focus rings */
+  --nf-alert:        #E43282;   /* pink for alert state */
+}
+
+/* Dark mode — yellow becomes the signal (high contrast on dark paper) */
+:root[data-nf-style="wild"][data-theme="dark"] {
+  --nf-signal:       #EFC028;
+  --nf-wild-signal:  #E04A1A;   /* keep wild title lines orange-red */
+  --nf-focus:        #4DB848;   /* green for focus rings in dark */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-nf-style="wild"][data-theme="auto"] {
+    --nf-signal:       #EFC028;
+    --nf-wild-signal:  #E04A1A;
+    --nf-focus:        #4DB848;
+  }
+}
+
+/* clean style (fallback if someone switches away from wild) */
+:root[data-nf-style="clean"] {
+  --nf-signal: #E04A1A;
+  --nf-focus:  #2D88C8;
+}
+
+/* NDLS mark — keep the original white tile styling */
+.ndls-mark {
+  background: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 8px;
+  margin: 1rem 0;
+}
+
+/* cards shortcode grid */
+.site-cards {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.site-cards--cols-2 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
+.site-cards--cols-3 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+.site-cards--cols-4 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr)); }
+.site-cards--cols-5 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr)); }
+
+.site-card {
+  background: var(--nf-surface);
+  border: var(--nf-border);
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.site-card:hover { border-color: var(--nf-signal); }
+.site-card__title {
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.site-card__subtitle {
+  font-size: 0.85rem;
+  color: var(--nf-muted);
+  margin: 0;
+}
+
+/* Figure block */
+.figure-block { text-align: center; margin: 1.5rem auto; }
+.figure-block.figure-left { text-align: left; }
+.figure-block.figure-right { text-align: right; float: right; margin: 0 0 1rem 1.5rem; }
+.figure-block img { max-width: 100%; height: auto; }
+.figure-block figcaption { font-size: 0.85rem; color: var(--nf-muted); margin-top: 0.5rem; }
+
+/* CV page */
+.cv-page-wrap { max-width: var(--nf-reading); margin: 0 auto; padding: 2rem var(--nf-gutter); }

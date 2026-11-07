@@ -1,0 +1,18 @@
+{{- /* card — a single card, used inside {{< cards >}}.
+
+     title    — heading text (required)
+     subtitle — supporting text (optional)
+     href     — makes the card a link (optional)
+     image    — card image URL (optional, ignored without href)
+
+     Replaces the Hextra-bundled card shortcode. */ -}}
+{{- $title    := .Get "title" -}}
+{{- $subtitle := .Get "subtitle" -}}
+{{- $href     := .Get "href" -}}
+{{- $tag      := "div" -}}
+{{- if $href }}{{- $tag = "a" -}}{{- end -}}
+<{{ $tag }}{{ with $href }} href="{{ . | relURL }}"{{ end }} class="site-card">
+  {{- with $title }}<p class="site-card__title">{{ . }}</p>{{- end -}}
+  {{- with $subtitle }}<p class="site-card__subtitle">{{ . }}</p>{{- end -}}
+  {{- .Inner -}}
+</{{ $tag }}>

@@ -1,7 +1,6 @@
 ---
 title: about
 date: 2026-09-18
-layout: page
 draft: false
 toc: false
 description: Research Assistant at MORU, Bangkok.

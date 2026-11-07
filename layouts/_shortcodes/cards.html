@@ -1,0 +1,12 @@
+{{- /* cards — a responsive grid of card shortcodes.
+
+     {{< cards cols="3" >}}
+       {{< card title="…" subtitle="…" href="/path/" >}}
+     {{< /cards >}}
+
+     cols  — number of columns hint (2-5); default 3.
+     Replaces the Hextra-bundled cards shortcode which is unavailable with no-fate. */ -}}
+{{- $cols := .Get "cols" | default "3" -}}
+<div class="site-cards site-cards--cols-{{ $cols }}">
+  {{- .Inner -}}
+</div>

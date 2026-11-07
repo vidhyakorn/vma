@@ -1,34 +1,12 @@
-{{/* docs/single (project override) — the theme's docs page, with the title
-     resolved through utils/title and a citation panel under it for
-     publications. See layouts/_partials/pub-block.html. */}}
+{{/* docs/single (project override) — single page for NDLS docs section.
+
+     Adapts no-fate's editorial layout for the docs content type.
+     The pub-block partial is injected via extend_post_content.html
+     for any page that has a doi or link field. */}}
 {{ define "main" }}
-  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
-    {{ partial "sidebar.html" (dict "context" .) }}
-    {{ partial "toc.html" . }}
-    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
-      <main id="content" class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
-        {{ partial "breadcrumb.html" (dict "page" . "enable" true) }}
-        <div class="content">
-          {{- $title := partial "utils/title" . -}}
-          {{ if $title }}
-          <div class="hx:flex hx:flex-col hx:sm:flex-row hx:items-start hx:sm:items-center hx:sm:justify-between hx:gap-4 hx:mb-4">
-            <h1 class="hx:mb-0">{{ $title }}</h1>
-            {{ partial "components/page-context-menu" . }}
-          </div>
-          {{ end }}
-          {{- /* Citation panel for a page that names a DOI or source URL —
-                 authors, journal, year and links, fetched at build time. */ -}}
-          {{- partial "pub-block.html" . -}}
-          {{ .Content }}
-
-
-        </div>
-        {{ partial "components/last-updated.html" . }}
-        {{- if (site.Params.page.displayPagination | default true) -}}
-          {{- partial "components/pager.html" . -}}
-        {{- end -}}
-        {{ partial "components/comments.html" . }}
-      </main>
-    </article>
-  </div>
+<article class="nf-article post-single" data-page-mode="editorial">
+  {{- partial "modes/editorial/opening.html" . -}}
+  {{- partial "modes/editorial/body.html" . -}}
+  {{- partial "article-footer.html" . -}}
+</article>
 {{ end }}

@@ -1,10 +1,6 @@
 ---
 title: "NeuroDiversity LifeSpace (NDLS)"
 description: "NeuroDiversity LifeSpace — a capability-focused dynamic bio-psycho-social modelling framework for Person with Neurodevelopmental Conditions (NDCs)."
-cascade:
-  type: docs
-sidebar:
-  open: true
 ---
 
 #### **A Capability-focused Bio-Psycho-Social Dynamic Modelling Framework for Social, Health and Well-Being of Persons with Neurodevelopmental Conditions (NDC).**

@@ -1,23 +1,23 @@
-# Hextra — https://github.com/imfing/hextra  (v0.12.3, vendored in themes/hextra)
-# Layout modelled on https://developers.osuny.org/, which is itself built on Hextra.
-# CUSTOMISING.md explains where to change colours, the homepage and the sidebar.
+# No Fate — https://github.com/OliverObst/no-fate  (commit 15da703, vendored as submodule)
+# CUSTOMISING: colours → assets/css/extended/palette.css
+#              homepage → content/_index.md
+#              comments → layouts/_partials/comments.html
 
 baseURL = 'https://vidhyakorn.github.io/vma/'
 locale = 'en'
 defaultContentLanguage = 'en'
 title = 'Vidhyakorn Mahd-Adam'
-theme = 'hextra'
+theme = 'no-fate'
 
 enableRobotsTXT = true
 enableInlineShortcodes = true
-enableGitInfo = true   # populates .Lastmod from git; feed sorts by this
+enableGitInfo = true   # populates .Lastmod from git
 
-# Obsidian note templates live in content/_templates/ so they are visible in
-# the vault, but they are not pages and must never be published.
+# Obsidian note templates live in content/_templates/ — not pages, never published.
 ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
 
 [outputs]
-  home = ['html']
+  home = ['html', 'rss', 'json']   # json feeds no-fate's search index
   page = ['html']
   section = ['html', 'rss']
 
@@ -29,6 +29,11 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
     noClasses = false
   [markup.goldmark.renderer]
     unsafe = true
+  [markup.goldmark.parser]
+    wrapStandAloneImageWithinParagraph = false
+    [markup.goldmark.parser.attribute]
+      block = true
+      title = true
   [markup.goldmark.extensions.passthrough]
     enable = true
     [markup.goldmark.extensions.passthrough.delimiters]
@@ -39,8 +44,8 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
     endLevel = 4
 
 # ---------------------------------------------------------------------------
-# Top navigation — left to right in weight order. Start at 1: Hugo treats
-# weight 0 as 'no weight' and puts that entry last.
+# Top navigation — no-fate wild style shows these in a grid header.
+# 'secondary' appears as small text under each nav label.
 # ---------------------------------------------------------------------------
 [[menu.main]]
   name = 'Home'
@@ -50,113 +55,85 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   name = 'Research'
   pageRef = '/research'
   weight = 2
-[[menu.main]]
-  name = 'Publications'
-  pageRef = '/research/publications'
-  weight = 3
+  [menu.main.params]
+    secondary = 'projects · publications'
 [[menu.main]]
   name = 'NDLS'
   pageRef = '/ndls'
-  weight = 4
+  weight = 3
+  [menu.main.params]
+    secondary = 'neurodiversity'
 [[menu.main]]
   name = 'Writing'
   pageRef = '/blog'
-  weight = 5
+  weight = 4
+  [menu.main.params]
+    secondary = 'essays · notes'
 [[menu.main]]
   name = 'About'
   pageRef = '/about'
-  weight = 6
-[[menu.main]]
-  name = 'Discuss'
-  pageRef = '/discuss'
-  weight = 7
+  weight = 5
+  [menu.main.params]
+    secondary = 'CV · contact'
 [[menu.main]]
   name = 'Search'
-  weight = 8
-  [menu.main.params]
-    type = 'search'
-# Icons on the far right. ORCID and Google Scholar are added in data/icons.yaml.
-[[menu.main]]
-  name = 'ORCID'
-  url = 'https://orcid.org/0009-0008-2468-8870'
-  weight = 9
-  [menu.main.params]
-    icon = 'orcid'
-[[menu.main]]
-  name = 'Google Scholar'
-  url = 'https://scholar.google.com/citations?hl=en&user=jgY_JOAAAAAJ'
-  weight = 10
-  [menu.main.params]
-    icon = 'googlescholar'
-[[menu.main]]
-  name = 'LinkedIn'
-  url = 'https://www.linkedin.com/in/vidhyakorn'
-  weight = 11
-  [menu.main.params]
-    icon = 'linkedin'
-
-# Extra links at the bottom of the Research sidebar.
-[[menu.sidebar]]
-  identifier = 'more'
-  name = 'More'
-  weight = 1
-  [menu.sidebar.params]
-    type = 'separator'
-[[menu.sidebar]]
-  name = 'Writing'
-  pageRef = '/blog'
-  weight = 2
-[[menu.sidebar]]
-  name = 'About & CV'
-  pageRef = '/about'
-  weight = 3
+  url = '/search/'
+  weight = 6
 
 [services]
   [services.googleAnalytics]
     ID = "G-P1DPV6CWY5"
 
 [params]
+  author = 'Vidhyakorn Mahd-Adam'
   description = 'Vidhyakorn Mahd-Adam — research assistant at MORU, Bangkok. Epidemiological and social modelling, health policy, and the history and philosophy of science and medicine.'
-  externalLinkDecoration = true
   dateFormat = 'January 2, 2006'
-  displayUpdatedDate = false
+  defaultTheme = 'auto'
+  comments = true
 
-  # Publication metadata lookups — Crossref serves identified requests from a
-  # faster pool. See layouts/_partials/paper-meta.html.
+  # mainSections drives what shows up in listing pages and the feed
+  mainSections = ['blog', 'research']
+
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = false
+  ShowToc = true
+
+  # Publication metadata lookups — Crossref serves identified requests faster.
+  # See layouts/_partials/pub-block.html.
   crossrefMailto = 'vidhyakornadam@gmail.com'
 
   # ---------------------------------------------------------------------------
-  # Homepage — the Osuny-style hero. Everything below the button (the card
-  # grids of latest publications and writing) is generated automatically.
+  # no-fate theme settings
   # ---------------------------------------------------------------------------
-  [params.home]
-    badge = 'reach out'
-    badgeLink = '/discuss'
-    headline = ' “I Am Because We Are.” '
-    subtitle = ' — Ubuntu Philosophy '
-    intro = ' "...when you live in a way that your own life interests and welfare are connected to the interests and welfare of others around you, your humanity grows, and so does the humanity of the whole community." '
-    buttonText = 'sources'
-    buttonLink = 'https://www.jyu.fi/en/blog/i-am-because-we-are-understanding-the-concept-of-ubuntu'
-    # The "What's New" row: how many cards, what it is called, and where the
-    # link beside it goes. The row is every post on the site — papers, essays,
-    # methods, projects and any section added later — newest first.
-    latest = 6
-    latestTitle = "What's New"
-    latestMore = 'More'
-    latestLink = '/posts'
-    # Sections that are pages rather than posts, so they stay out of the feed.
-    feedExclude = ['about', 'discuss', 'posts']
+  [params.noFate]
+    style = "wild"
+    defaultMode = "editorial"
+    defaultAccent = "signal"
+    showThemeToggle = true
+    showSearch = true
+    showReadingTime = true
+    showPropositions = false
+    enableImageProcessing = true
+    validateContentModel = false   # relax during migration; tighten later
+    strictHomeSelections = false
+
+  [params.noFate.home]
+    modules = ["opening", "selected_writing"]
+    featuredProposition = ""
+
+  [params.noFate.images]
+    widths = [480, 800, 1200, 1600]
+    webpQuality = 82
 
   # ---------------------------------------------------------------------------
   # Comments — giscus, stored as GitHub Discussions on the vidhyakorn/vma repo.
-  # Hextra's own giscus support: one thread per page, on every Research page
-  # and every Writing post, and it follows the light/dark switch. Turn it off
-  # for one page with  comments: false  in that page's front matter.
-  # IDs from https://giscus.app for this repository.
+  # Rendered by layouts/_partials/comments.html (our override).
   # ---------------------------------------------------------------------------
   [params.comments]
     enable = true
-    type = 'giscus'
     [params.comments.giscus]
       repo = 'vidhyakorn/vma'
       repoId = 'R_kgDOUg27EQ'
@@ -169,95 +146,13 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
       inputPosition = 'top'
       lang = 'en'
 
-  # ---------------------------------------------------------------------------
-  # The reading list (data/books.yaml, shown by the book-list shortcode).
-  # ---------------------------------------------------------------------------
-  [params.books]
-    # Shown above the list, but only once at least one code below is filled in.
-    disclosure = "Some bookshop links below are affiliate links: if you buy through one I earn a small commission, at no extra cost to you. It changes nothing about which books are here or what I say about them."
-
-    # Affiliate codes. Leave a shop blank and its links stay plain and untracked.
-    #   a bare code        -> added to the shop's own address as ?tag=CODE
-    #                         (this is how Amazon Associates works)
-    #   a template with {url} -> the shop's address is wrapped in it
-    #                         (this is how networks such as Involve Asia work,
-    #                          e.g. 'https://invol.co/aff_m?offer_id=1&aff_id=2&url={url}')
-    [params.books.affiliate]
-      amazon = ''
-      asiabooks = ''
-      kinokuniya = ''
-
-    # Where to search a shop when a book has no direct link of its own.
-    # {isbn} is replaced with the book's ISBN. Blank = no button for that shop.
-    [params.books.search]
-      amazon = 'https://www.amazon.com/s?k={isbn}'
-      asiabooks = ''
-      kinokuniya = ''
-
-  [params.navbar]
-    # The signature image replaces the site name in the top bar. It links to
-    # the homepage, as the name did. vmd-dark.png is the same signature in
-    # white, for dark mode. Both are in static/img/.
-    displayTitle = false
-    displayLogo = true
-    width = 'wide'
-    [params.navbar.logo]
-      path = 'img/vmd.png'
-      dark = 'img/vmd-dark.png'
-      width = 180
-      height = 28
-      # No link = here: Hextra uses it exactly as written, and a bare '/' would
-      # point at the top of github.io rather than at /vma/. Left out, it links
-      # to the homepage by itself.
-
-  [params.page]
-    width = 'normal'
-
-  [params.theme]
-    default = 'system'
-    displayToggle = true
-
-  [params.footer]
-    enable = true
-    displayCopyright = true
-    displayPoweredBy = true
-    width = 'normal'
-
-  [params.search]
-    enable = true
-    type = 'flexsearch'
-    [params.search.flexsearch]
-      index = 'content'
-      tokenize = 'forward'
-      # FlexSearch is kept in the repo (assets/lib/) instead of being fetched
-      # from a CDN on every build, so a CDN outage can't break a deploy.
-      js = 'lib/flexsearch.bundle.min.js'
-
-  [params.editURL]
-    enable = false
-
-  [params.blog.list]
-    displayTags = true
-    sortBy = 'date'
-    sortOrder = 'desc'
-    pagerSize = 20
-
-  [params.blog.article]
-    displayPagination = true
-
-  [params.toc]
-    displayTags = true
-
-
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
 
 # ---------------------------------------------------------------------------
-# Folder mounts. Declaring any mount replaces Hugo's defaults, so all of them
-# are listed. The last one is the only addition: it makes static/img visible
-# to Hugo's image processing as well, so card pictures kept in static/img are
-# resized to small WebP files instead of being sent at full size.
+# Folder mounts. The last entry makes static/img visible to Hugo image
+# processing, so card pictures are resized to small WebP instead of full-size.
 # ---------------------------------------------------------------------------
 [module]
   [[module.mounts]]

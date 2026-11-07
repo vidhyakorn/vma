@@ -1,0 +1,26 @@
+{{- /* comments.html — giscus comment widget.
+     Overrides the no-fate placeholder. The widget uses GitHub Discussions
+     on the vidhyakorn/vma repo. Config comes from [params.comments.giscus]
+     in hugo.toml.
+
+     Shows on every page whose front matter has  comments: true  (or when
+     [params.comments] enable = true globally), and can be suppressed on
+     individual pages with  comments: false. */ -}}
+{{- $giscus := site.Params.comments.giscus -}}
+{{- with $giscus -}}
+<script src="https://giscus.app/client.js"
+  data-repo="{{ .repo }}"
+  data-repo-id="{{ .repoId }}"
+  data-category="{{ .category }}"
+  data-category-id="{{ .categoryId }}"
+  data-mapping="{{ .mapping | default "title" }}"
+  data-strict="{{ .strict | default 0 }}"
+  data-reactions-enabled="{{ .reactionsEnabled | default 1 }}"
+  data-emit-metadata="{{ .emitMetadata | default 0 }}"
+  data-input-position="{{ .inputPosition | default "top" }}"
+  data-theme="{{ if eq (site.Params.defaultTheme | default "auto") "dark" }}dark{{ else }}light{{ end }}"
+  data-lang="{{ .lang | default "en" }}"
+  crossorigin="anonymous"
+  async>
+</script>
+{{- end -}}

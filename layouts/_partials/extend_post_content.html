@@ -1,0 +1,6 @@
+{{- /* extend_post_content — injected after page body in no-fate's article-shell.
+     Shows a citation panel for pages that have a DOI or external link.
+     See layouts/_partials/pub-block.html for the panel markup. */ -}}
+{{- if or (.Param "doi") (.Param "link") -}}
+  {{- partial "pub-block.html" . -}}
+{{- end -}}
