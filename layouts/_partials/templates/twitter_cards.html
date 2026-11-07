@@ -10,7 +10,7 @@
 {{- end -}}
 {{- if $coverImg -}}
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{{ $coverImg | absURL }}">
+<meta name="twitter:image" content="{{ strings.TrimPrefix "/" $coverImg | absURL }}">
 {{- else }}
 {{- $images := partial "templates/_funcs/get-page-images" . }}
 {{- with index $images 0 }}

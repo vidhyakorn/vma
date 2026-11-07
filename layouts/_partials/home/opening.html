@@ -1,0 +1,68 @@
+{{- /* Homepage opening — "collage" hero (project override of no-fate's home/opening.html).
+
+     A greyscale photograph with flat colour blocks laid over it, each block
+     carrying a small label tag, in the manner of an album-sleeve tracklist.
+     Linked blocks are the site's sections; the rest name research topics.
+
+     Everything is driven by content/_index.md:
+       opening.headline / opening.deck   — h1 text and the small paragraph
+       visual.title_lines                — the h1 broken into lines; a line
+                                           starting with "*" is set in italic
+       visual.byline                     — small line under the title
+       visual.hero_image(+_alt)          — the photograph (path under static/)
+       visual.blocks                     — up to nine {label, note, url}; slot
+                                           order sets colour and position
+     ------------------------------------------------------------------------ */ -}}
+{{- $opening := partial "home/value.html" (dict "page" . "key" "opening" "default" dict) -}}
+{{- $headline := $opening.headline | default .Title -}}
+{{- $deck := $opening.deck | default .Description -}}
+{{- $visual := .Params.visual | default dict -}}
+{{- $lines := $visual.title_lines | default (slice $headline) -}}
+{{- $image := $visual.hero_image | default "" -}}
+{{- $imageAlt := $visual.hero_image_alt | default "" -}}
+{{- $blocks := $visual.blocks | default slice -}}
+<header class="m-hero">
+    <div class="m-hero__stage">
+        {{- with $image }}
+        <figure class="m-hero__photo">
+            <img src="{{ strings.TrimPrefix "/" . | relURL }}" alt="{{ $imageAlt }}" loading="eager" fetchpriority="high" decoding="async">
+        </figure>
+        {{- end }}
+
+        <div class="m-hero__intro">
+            {{- with $deck }}<p class="m-hero__deck">{{ . | markdownify }}</p>{{ end }}
+            {{- with $.Content }}<div class="m-hero__quote">{{ . }}</div>{{ end }}
+        </div>
+
+        <div class="m-hero__title-wrap">
+            <h1 class="m-hero__title">
+                <span class="nf-visually-hidden">{{ $headline }}</span>
+                <span class="m-hero__title-lines" aria-hidden="true">
+                    {{- range $i, $line := $lines }}
+                        {{- $italic := hasPrefix $line "*" }}
+                        <span class="m-hero__line m-hero__line--{{ add $i 1 }}{{ if $italic }} is-italic{{ end }}">{{ strings.TrimPrefix "*" $line }}</span>
+                    {{- end }}
+                </span>
+            </h1>
+            {{- with $visual.byline }}<p class="m-hero__byline">{{ . }}</p>{{ end }}
+        </div>
+
+        {{- with $blocks }}
+        <ul class="m-hero__blocks" role="list">
+            {{- range $i, $b := first 9 . }}
+            <li class="m-block m-block--{{ add $i 1 }}">
+                {{- if $b.url }}
+                <a class="m-block__face" href="{{ $b.url | relLangURL }}">
+                    <span class="m-tag"><strong>{{ $b.label }}</strong>{{ with $b.note }} : {{ . }}{{ end }}</span>
+                </a>
+                {{- else }}
+                <span class="m-block__face">
+                    <span class="m-tag">{{ $b.label }}{{ with $b.note }} : {{ . }}{{ end }}</span>
+                </span>
+                {{- end }}
+            </li>
+            {{- end }}
+        </ul>
+        {{- end }}
+    </div>
+</header>

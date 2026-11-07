@@ -46,7 +46,7 @@
   {{- end -}}
 {{- end -}}
 {{- if $coverImg -}}
-  <meta property="og:image" content="{{ $coverImg | absURL }}">
+  <meta property="og:image" content="{{ strings.TrimPrefix "/" $coverImg | absURL }}">
 {{- else }}
   {{- with partial "_funcs/get-page-images" . }}
     {{- range . | first 6 }}

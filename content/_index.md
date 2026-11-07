@@ -2,9 +2,8 @@
 title: "Vidhyakorn Mahd-Adam"
 description: "Research assistant at MORU, Bangkok. Epidemiological and social modelling, health policy, and the history and philosophy of science and medicine."
 
-# no-fate opening module — the hero section.
-# In "wild" style, wild_title_lines render as large staggered blocks.
-# Even-numbered lines get the signal (orange-red) background.
+# Opening — headline is the h1 (read by screen readers and search engines);
+# deck is the small paragraph over the photo, followed by the body text below.
 opening:
   headline: '"I Am Because We Are."'
   deck: "Research on epidemiological and social modelling, health policy, and the history and philosophy of science and medicine. Based at MORU, Bangkok."
@@ -16,12 +15,29 @@ selected_writing:
   - "/blog/dehumanizing/"
   - "/blog/acorn2026/"
 
+# Homepage collage (layouts/_partials/home/opening.html).
+#   title_lines — the headline split into lines; start a line with * for italic.
+#   blocks      — nine colour blocks over the photo, in slot order:
+#                 1 sage · 2 violet · 3 green · 4 pink · 5 yellow · 6 blue
+#                 7 red · 8 rose · 9 plum.  Give a url to make a block a link.
 visual:
-  wild_title_lines:
+  title_lines:
     - '"I Am'
-    - 'Because'
+    - '*Because'
     - 'We Are."'
-  wild_reference: "MORU Bangkok / Vidhyakorn Mahd-Adam"
+  byline: "Vidhyakorn Mahd-Adam · MORU, Bangkok"
+  hero_image: "img/traditions.jpg"
+  hero_image_alt: "A crowd walking together beneath cherry blossoms"
+  blocks:
+    - { label: "Ubuntu" }
+    - { label: "Research", note: "projects · publications", url: "/research/" }
+    - { label: "NDLS", note: "neurodiversity", url: "/ndls/" }
+    - { label: "Writing", note: "essays · notes", url: "/blog/" }
+    - { label: "About", note: "CV · contact", url: "/about/" }
+    - { label: "Search", url: "/search/" }
+    - { label: "Epidemiological & social modelling" }
+    - { label: "Health policy" }
+    - { label: "History & philosophy of science" }
 ---
 
 *"...when you live in a way that your own life interests and welfare are connected to the interests and welfare of others around you, your humanity grows, and so does the humanity of the whole community."*

@@ -1,0 +1,44 @@
+{{- /* Homepage writing grid — project override of no-fate's home/selected-writing.html.
+
+     Shows the pages listed under selected_writing in content/_index.md first,
+     then fills up with the newest posts from params.mainSections, six cards in
+     all. Each card is a greyscale picture under a flat colour block, with a
+     small label tag naming the section and date. */ -}}
+{{- $paths := partial "home/value.html" (dict "page" . "key" "selected_writing" "default" slice) -}}
+{{- $selected := partial "home/selected-pages.html" (dict "paths" $paths "context" "selected_writing") -}}
+{{- $recent := where (where site.RegularPages "Section" "in" site.Params.mainSections) "Params.hidden" "ne" true -}}
+{{- $pages := $selected -}}
+{{- range $recent.ByDate.Reverse -}}
+    {{- if and (lt (len $pages) 6) (not (in $pages .)) -}}
+        {{- $pages = $pages | append . -}}
+    {{- end -}}
+{{- end -}}
+{{- with $pages }}
+<section class="m-writing" aria-labelledby="m-writing-heading">
+    <div class="m-writing__head">
+        <h2 id="m-writing-heading" class="m-writing__title">{{ i18n "nf_selected_writing" | default "Selected writing" }}</h2>
+        <a class="m-tag m-tag--link" href="{{ "blog/" | relLangURL }}">All writing</a>
+    </div>
+    <ol class="m-cards" role="list">
+        {{- range $i, $p := . }}
+        {{- $cover := "" -}}
+        {{- with $p.Params.cover -}}
+            {{- if reflect.IsMap . }}{{ $cover = .image | default "" }}{{ else }}{{ $cover = . }}{{ end -}}
+        {{- end }}
+        <li class="m-card m-card--{{ add (mod $i 6) 1 }}">
+            <a class="m-card__link" href="{{ $p.RelPermalink }}">
+                <span class="m-card__visual{{ if not $cover }} is-empty{{ end }}" aria-hidden="true">
+                    {{- with $cover }}<img src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ strings.TrimPrefix "/" . | relURL }}{{ end }}" alt="" loading="lazy" decoding="async">{{ end }}
+                    <span class="m-card__block"></span>
+                </span>
+                <span class="m-tag m-card__tag">{{ $p.Section | humanize }}{{ if not $p.Date.IsZero }} : {{ $p.Date | time.Format ":date_medium" }}{{ end }}</span>
+                <span class="m-card__title">{{ $p.LinkTitle }}</span>
+                {{- with ($p.Description | default ($p.Summary | plainify | htmlUnescape)) }}
+                <span class="m-card__summary">{{ . | plainify | truncate 150 }}</span>
+                {{- end }}
+            </a>
+        </li>
+        {{- end }}
+    </ol>
+</section>
+{{- end }}

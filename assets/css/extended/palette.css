@@ -1,234 +1,947 @@
 /* ==========================================================================
-   Site palette — editorial / collage aesthetic matching the design reference.
+   "Moment" — the site's visual layer, loaded after no-fate's own CSS.
 
-   Eight flat rectangular colour blocks positioned around the viewport,
-   mimicking the bold solid-colour overlays in the reference image.
+   An editorial-collage look: greyscale photography and grainy grey paper,
+   flat colour blocks laid over the pictures (multiplied, so the photo shows
+   through), small label tags at the blocks' corners, a high-contrast Didone
+   for titles and a plain sans for reading.
 
-   Palette:
-     Purple      #7B2ED4   (vivid violet — upper centre-left)
-     Green       #1AC83C   (bright green  — top right corner)
-     Coral/red   #E04A1A   (strip         — left side mid)
-     Yellow      #EFC028   (block         — centre-right)
-     Sky-blue    #2AB8F0   (block         — right side mid)
-     Hot-pink    #EE1490   (strip         — bottom centre)
-     Blue        #2D88C8   (block         — lower right)
-     Pink        #E43282   (strip         — bottom right)
-
-   Font: Plus Jakarta Sans (loaded via extend_head.html)
+   no-fate runs in its "clean" style (hugo.toml → params.noFate.style), which
+   leaves the presentation to this file. Sections, in order:
+     1  tokens (light, dark)          6  section lists
+     2  page, grain, base type        7  articles and prose
+     3  label tags                    8  site components (cards, figures, CV)
+     4  header and footer             9  small screens
+     5  homepage (collage + cards)
+   Fonts are declared in layouts/_partials/extend_head.html.
    ========================================================================== */
 
-/* ------------------------------------------------------------------
-   Palette tokens
-   ------------------------------------------------------------------ */
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
 :root {
-  --palette-purple:  #7B2ED4;
-  --palette-yellow:  #EFC028;
-  --palette-orange:  #E04A1A;
-  --palette-green:   #1AC83C;
-  --palette-blue:    #2D88C8;
-  --palette-cyan:    #2AB8F0;
-  --palette-hotpink: #EE1490;
-  --palette-pink:    #E43282;
+  /* Block colours — sampled from the reference sleeve. --x-ink is the text
+     colour that reads on that block's label tag (≥ 4.5:1). */
+  --m-sage: #a9c79a;     --m-sage-ink: #111;
+  --m-violet: #8b45c8;   --m-violet-ink: #fff;
+  --m-green: #14a85a;    --m-green-ink: #111;
+  --m-magenta: #e040c4;  --m-magenta-ink: #111;
+  --m-yellow: #f5b70a;   --m-yellow-ink: #111;
+  --m-blue: #1f6fd0;     --m-blue-ink: #fff;
+  --m-red: #f0462c;      --m-red-ink: #111;
+  --m-rose: #ff3a86;     --m-rose-ink: #111;
+  --m-plum: #8e1e5f;     --m-plum-ink: #fff;
+
+  --m-blend: multiply;   /* how blocks sit on photographs */
+  --m-block-opacity: 1;
+  --m-photo-filter: grayscale(1) contrast(1.12) brightness(1.04);
+  --m-grain-opacity: 0.13;
+
+  --m-serif: 'Bodoni Moda', 'Bodoni 72', Didot, 'Playfair Display', Georgia, serif;
+  --m-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* no-fate roles */
+  --nf-paper: #e9e8e4;
+  --nf-paper-deep: #d9d8d3;
+  --nf-surface: #f3f2ef;
+  --nf-ink: #141414;
+  --nf-muted: #55524d;
+  --nf-rule-colour: rgba(20, 20, 20, 0.85);
+  --nf-soft-rule-colour: rgba(20, 20, 20, 0.16);
+  --nf-signal: #7a35b8;
+  --nf-alert: #c2311b;
+  --nf-focus: #1f6fd0;
+  --nf-inverse-ink: #e9e8e4;
+  --nf-inverse-paper: #141414;
+
+  --nf-font-body: var(--m-sans);
+  --nf-font-display: var(--m-serif);
+  --nf-font-meta: var(--m-sans);
+  --nf-body-size: clamp(1.02rem, 0.3vw + 0.96rem, 1.14rem);
+  --nf-body-leading: 1.68;
+  --nf-display-leading: 1.02;
+  --nf-meta-size: 0.8rem;
+  --nf-page: 84rem;
+  --nf-reading: 66ch;
+  --nf-border: 1px solid var(--nf-rule-colour);
+  --nf-border-strong: 1px solid var(--nf-ink);
 }
 
-/* ------------------------------------------------------------------
-   Global overrides: white background + Plus Jakarta Sans
-   ------------------------------------------------------------------ */
-:root {
-  --nf-paper:            #ffffff;
-  --nf-paper-deep:       #f4f4f2;
-  --nf-surface:          #ffffff;
-  --nf-ink:              #111111;
-  --nf-muted:            #666666;
-  --nf-rule-colour:      rgba(0, 0, 0, 0.11);
-  --nf-soft-rule-colour: rgba(0, 0, 0, 0.07);
-
-  --nf-font-body:    'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --nf-font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --nf-font-mono:    ui-monospace, 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
-}
-
-/* ------------------------------------------------------------------
-   Heading weight + tracking — extra-bold to match the reference
-   ------------------------------------------------------------------ */
-h1, h2, h3, h4, h5, h6,
-.nf-site-title,
-.nf-wild-masthead {
-  font-weight: 800;
-  letter-spacing: -0.025em;
-}
-
-/* ------------------------------------------------------------------
-   Signal / accent — orange-red in light mode
-   ------------------------------------------------------------------ */
-:root,
-:root[data-nf-style="wild"],
-:root[data-nf-style="clean"] {
-  --nf-signal:      #E04A1A;
-  --nf-wild-signal: #E04A1A;
-  --nf-focus:       #2D88C8;
-  --nf-alert:       #E43282;
-}
-
-/* ------------------------------------------------------------------
-   Dark mode tokens — dark background, yellow accent
-   ------------------------------------------------------------------ */
 :root[data-theme="dark"] {
-  --nf-paper:            #141414;
-  --nf-paper-deep:       #1e1e1e;
-  --nf-surface:          #1e1e1e;
-  --nf-ink:              #f0ece4;
-  --nf-muted:            #999999;
-  --nf-rule-colour:      rgba(255, 255, 255, 0.11);
-  --nf-soft-rule-colour: rgba(255, 255, 255, 0.07);
-
-  --nf-signal:      #EFC028;
-  --nf-wild-signal: #E04A1A;
-  --nf-focus:       #1AC83C;
-  --nf-alert:       #E43282;
+  --nf-paper: #161615;
+  --nf-paper-deep: #22211f;
+  --nf-surface: #1d1c1a;
+  --nf-ink: #ebe9e4;
+  --nf-muted: #b3afa7;
+  --nf-rule-colour: rgba(235, 233, 228, 0.8);
+  --nf-soft-rule-colour: rgba(235, 233, 228, 0.18);
+  --nf-signal: #c69cf0;
+  --nf-alert: #ff8a73;
+  --nf-focus: #7fb4ff;
+  --nf-inverse-ink: #161615;
+  --nf-inverse-paper: #ebe9e4;
+  --m-blend: normal;
+  --m-block-opacity: 0.86;
+  --m-photo-filter: grayscale(1) contrast(1.1) brightness(0.62);
+  --m-grain-opacity: 0.22;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --nf-paper:            #141414;
-    --nf-paper-deep:       #1e1e1e;
-    --nf-surface:          #1e1e1e;
-    --nf-ink:              #f0ece4;
-    --nf-muted:            #999999;
-    --nf-rule-colour:      rgba(255, 255, 255, 0.11);
-    --nf-soft-rule-colour: rgba(255, 255, 255, 0.07);
-
-    --nf-signal:      #EFC028;
-    --nf-wild-signal: #E04A1A;
-    --nf-focus:       #1AC83C;
-    --nf-alert:       #E43282;
+  :root[data-theme="auto"] {
+    --nf-paper: #161615;
+    --nf-paper-deep: #22211f;
+    --nf-surface: #1d1c1a;
+    --nf-ink: #ebe9e4;
+    --nf-muted: #b3afa7;
+    --nf-rule-colour: rgba(235, 233, 228, 0.8);
+    --nf-soft-rule-colour: rgba(235, 233, 228, 0.18);
+    --nf-signal: #c69cf0;
+    --nf-alert: #ff8a73;
+    --nf-focus: #7fb4ff;
+    --nf-inverse-ink: #161615;
+    --nf-inverse-paper: #ebe9e4;
+    --m-blend: normal;
+    --m-block-opacity: 0.86;
+    --m-photo-filter: grayscale(1) contrast(1.1) brightness(0.62);
+    --m-grain-opacity: 0.22;
   }
 }
 
-/* ------------------------------------------------------------------
-   Rectangular block decorations — light mode
-   Eight flat solid-colour rectangles scattered around the viewport,
-   fixed in place (they don't scroll with page content).
+/* Colour slots — any element with .m-c-<name> (or a numbered slot below)
+   picks up --c / --c-ink for its block and tag. */
+.m-c-sage    { --c: var(--m-sage);    --c-ink: var(--m-sage-ink); }
+.m-c-violet  { --c: var(--m-violet);  --c-ink: var(--m-violet-ink); }
+.m-c-green   { --c: var(--m-green);   --c-ink: var(--m-green-ink); }
+.m-c-magenta { --c: var(--m-magenta); --c-ink: var(--m-magenta-ink); }
+.m-c-yellow  { --c: var(--m-yellow);  --c-ink: var(--m-yellow-ink); }
+.m-c-blue    { --c: var(--m-blue);    --c-ink: var(--m-blue-ink); }
+.m-c-red     { --c: var(--m-red);     --c-ink: var(--m-red-ink); }
+.m-c-rose    { --c: var(--m-rose);    --c-ink: var(--m-rose-ink); }
+.m-c-plum    { --c: var(--m-plum);    --c-ink: var(--m-plum-ink); }
 
-   Each layer is a solid-colour rectangle made via:
-     linear-gradient(color 0% 100%)  +  background-size + background-position
-   The 0.65–0.72 alpha keeps the blocks vivid against white without
-   looking like paint over the page content in the margins.
-   ------------------------------------------------------------------ */
-body.nf-page {
+/* --------------------------------------------------------------------------
+   2. Page, grain, base type
+   -------------------------------------------------------------------------- */
+html,
+body {
   background-color: var(--nf-paper);
-  background-image:
-    /* 1. Purple — upper centre-left, tall block */
-    linear-gradient(rgba(123, 46, 212, 0.68) 0% 100%),
-    /* 2. Green  — top right corner */
-    linear-gradient(rgba(26, 200, 60, 0.72) 0% 100%),
-    /* 3. Coral  — left side mid, horizontal strip */
-    linear-gradient(rgba(224, 74, 26, 0.68) 0% 100%),
-    /* 4. Yellow — centre-right upper, squarish block */
-    linear-gradient(rgba(239, 192, 40, 0.72) 0% 100%),
-    /* 5. Cyan   — right side mid, narrow tall block */
-    linear-gradient(rgba(42, 184, 240, 0.68) 0% 100%),
-    /* 6. Hot-pink — bottom centre, horizontal strip */
-    linear-gradient(rgba(238, 20, 144, 0.68) 0% 100%),
-    /* 7. Blue  — lower right */
-    linear-gradient(rgba(45, 136, 200, 0.68) 0% 100%),
-    /* 8. Pink  — bottom right corner strip */
-    linear-gradient(rgba(228, 50, 130, 0.65) 0% 100%);
-  background-size:
-    230px 165px,   /* 1 purple */
-    148px 112px,   /* 2 green */
-    215px 60px,    /* 3 coral strip */
-    170px 128px,   /* 4 yellow */
-    94px 148px,    /* 5 cyan */
-    192px 56px,    /* 6 hot-pink strip */
-    132px 106px,   /* 7 blue */
-    158px 56px;    /* 8 pink strip */
-  background-position:
-    22% 7%,                       /* 1 purple  */
-    calc(100% - 15px) 15px,       /* 2 green   */
-    15px 62%,                     /* 3 coral   */
-    60% 24%,                      /* 4 yellow  */
-    calc(100% - 10px) 48%,        /* 5 cyan    */
-    40% 90%,                      /* 6 hot-pink */
-    calc(100% - 20px) 68%,        /* 7 blue    */
-    78% 93%;                      /* 8 pink    */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
-/* Mobile — slightly smaller blocks so they don't crowd the content */
-@media (max-width: 600px) {
-  body.nf-page {
-    background-size:
-      150px 110px,
-      100px 80px,
-      150px 44px,
-      115px 88px,
-      65px 100px,
-      130px 40px,
-      90px 72px,
-      108px 40px;
-  }
+body {
+  color: var(--nf-ink);
+  font-family: var(--m-sans);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ------------------------------------------------------------------
-   Rectangular blocks — dark mode (reduced opacity on dark surface)
-   ------------------------------------------------------------------ */
-:root[data-theme="dark"] body.nf-page {
-  background-color: #141414;
-  background-image:
-    linear-gradient(rgba(149, 72, 230, 0.55) 0% 100%),
-    linear-gradient(rgba(26, 200, 60, 0.55) 0% 100%),
-    linear-gradient(rgba(224, 74, 26, 0.55) 0% 100%),
-    linear-gradient(rgba(239, 192, 40, 0.60) 0% 100%),
-    linear-gradient(rgba(42, 184, 240, 0.52) 0% 100%),
-    linear-gradient(rgba(238, 20, 144, 0.52) 0% 100%),
-    linear-gradient(rgba(45, 136, 200, 0.52) 0% 100%),
-    linear-gradient(rgba(228, 50, 130, 0.50) 0% 100%);
-  background-size:
-    230px 165px, 148px 112px, 215px 60px, 170px 128px,
-    94px 148px, 192px 56px, 132px 106px, 158px 56px;
-  background-position:
-    22% 7%, calc(100% - 15px) 15px, 15px 62%, 60% 24%,
-    calc(100% - 10px) 48%, 40% 90%, calc(100% - 20px) 68%, 78% 93%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+/* Film grain over the whole page, under the content. */
+body::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  content: "";
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: var(--m-grain-opacity);
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
 }
 
+:root[data-theme="dark"] body::before { mix-blend-mode: screen; opacity: 0.07; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) body.nf-page {
-    background-color: #141414;
-    background-image:
-      linear-gradient(rgba(149, 72, 230, 0.55) 0% 100%),
-      linear-gradient(rgba(26, 200, 60, 0.55) 0% 100%),
-      linear-gradient(rgba(224, 74, 26, 0.55) 0% 100%),
-      linear-gradient(rgba(239, 192, 40, 0.60) 0% 100%),
-      linear-gradient(rgba(42, 184, 240, 0.52) 0% 100%),
-      linear-gradient(rgba(238, 20, 144, 0.52) 0% 100%),
-      linear-gradient(rgba(45, 136, 200, 0.52) 0% 100%),
-      linear-gradient(rgba(228, 50, 130, 0.50) 0% 100%);
-    background-size:
-      230px 165px, 148px 112px, 215px 60px, 170px 128px,
-      94px 148px, 192px 56px, 132px 106px, 158px 56px;
-    background-position:
-      22% 7%, calc(100% - 15px) 15px, 15px 62%, 60% 24%,
-      calc(100% - 10px) 48%, 40% 90%, calc(100% - 20px) 68%, 78% 93%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
+  :root[data-theme="auto"] body::before { mix-blend-mode: screen; opacity: 0.07; }
 }
 
-/* ------------------------------------------------------------------
-   Existing site component CSS — preserved verbatim
-   ------------------------------------------------------------------ */
+::selection {
+  background: var(--m-yellow);
+  color: #111;
+}
 
-/* NDLS mark */
+h1, h2,
+.post-title,
+.nf-article__title,
+.page-header h1,
+.nf-entry__title {
+  font-family: var(--m-serif);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: var(--nf-display-leading);
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--m-sans);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--nf-focus);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Label tags — the small coloured caption boxes
+   -------------------------------------------------------------------------- */
+.m-tag {
+  background: var(--c, var(--nf-ink));
+  color: var(--c-ink, var(--nf-paper));
+  display: inline-block;
+  font-family: var(--m-sans);
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  padding: 0.32em 0.62em 0.36em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.m-tag strong {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+a.m-tag--link:hover,
+a.m-tag--link:focus-visible {
+  background: var(--m-yellow);
+  color: #111;
+}
+
+/* --------------------------------------------------------------------------
+   4. Header and footer
+   -------------------------------------------------------------------------- */
+.header,
+.nf-site-header {
+  background: transparent;
+  border-bottom: 1px solid var(--nf-ink);
+}
+
+.header-nav,
+.nf-site-nav {
+  align-items: center;
+  max-width: var(--nf-page);
+  padding: 1.1rem var(--nf-gutter);
+}
+
+.logo a,
+.nf-site-title {
+  font-family: var(--m-serif);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--nf-ink);
+  color: var(--nf-ink);
+  font-family: var(--m-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  min-height: 2rem;
+  min-width: 2rem;
+  padding: 0.25rem 0.6rem;
+}
+
+.theme-toggle:hover {
+  background: var(--nf-ink);
+  color: var(--nf-paper);
+}
+
+.menu {
+  gap: 0.35rem 1.4rem;
+}
+
+.menu a {
+  border-bottom: 0;
+  font-size: 0.92rem;
+  min-height: 2.75rem;
+  padding: 0.35rem 0;
+  text-decoration: none;
+}
+
+.nf-menu__primary {
+  display: inline-block;
+  font-weight: 500;
+  padding: 0.12em 0.4em;
+  margin-inline: -0.4em;
+  transition: background-color var(--nf-fast) var(--nf-ease), color var(--nf-fast) var(--nf-ease);
+}
+
+.nf-menu__secondary {
+  color: var(--nf-muted);
+  font-family: var(--m-sans);
+  font-size: 0.68rem;
+}
+
+.menu li:nth-child(1) { --c: var(--m-sage);    --c-ink: var(--m-sage-ink); }
+.menu li:nth-child(2) { --c: var(--m-violet);  --c-ink: var(--m-violet-ink); }
+.menu li:nth-child(3) { --c: var(--m-green);   --c-ink: var(--m-green-ink); }
+.menu li:nth-child(4) { --c: var(--m-magenta); --c-ink: var(--m-magenta-ink); }
+.menu li:nth-child(5) { --c: var(--m-yellow);  --c-ink: var(--m-yellow-ink); }
+.menu li:nth-child(6) { --c: var(--m-blue);    --c-ink: var(--m-blue-ink); }
+
+.menu .active,
+.menu a:hover .nf-menu__primary,
+.menu a:focus-visible .nf-menu__primary {
+  background: var(--c);
+  color: var(--c-ink);
+}
+
+.footer,
+.nf-site-footer {
+  align-items: center;
+  border-top: 1px solid var(--nf-ink);
+  color: var(--nf-muted);
+  font-size: 0.8rem;
+  max-width: var(--nf-page);
+  padding: 1.5rem var(--nf-gutter) 2rem;
+}
+
+/* A strip of the nine block colours, as a signature. */
+.nf-site-footer::before {
+  background: linear-gradient(90deg,
+    var(--m-sage) 0 11.11%, var(--m-violet) 0 22.22%, var(--m-green) 0 33.33%,
+    var(--m-magenta) 0 44.44%, var(--m-yellow) 0 55.55%, var(--m-blue) 0 66.66%,
+    var(--m-red) 0 77.77%, var(--m-rose) 0 88.88%, var(--m-plum) 0 100%);
+  content: "";
+  flex: 0 0 auto;
+  height: 0.9rem;
+  width: 8.1rem;
+}
+
+.nf-site-footer a { color: var(--nf-ink); }
+
+.top-link {
+  background: var(--nf-ink);
+  border: 0;
+  color: var(--nf-paper);
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. Homepage
+   -------------------------------------------------------------------------- */
+.nf-kind-home .main {
+  padding-top: 1.75rem;
+}
+
+.nf-home {
+  gap: clamp(4rem, 8vw, 6.5rem);
+}
+
+/* 5a. Collage hero ------------------------------------------------------- */
+.m-hero__stage {
+  aspect-ratio: 1.72;
+  isolation: isolate;
+  max-height: 52rem;
+  min-height: 36rem;
+  position: relative;
+  width: 100%;
+}
+
+.m-hero__photo {
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.m-hero__photo img {
+  display: block;
+  filter: var(--m-photo-filter);
+  height: 100%;
+  object-fit: cover;
+  object-position: center 62%;
+  width: 100%;
+}
+
+/* A pale wash over the upper part so the text reads, as the sky does
+   in the reference; grain on top of the photo. */
+.m-hero__photo::before,
+.m-hero__photo::after {
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.m-hero__photo::before {
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--nf-paper) 94%, transparent) 0%,
+    color-mix(in srgb, var(--nf-paper) 78%, transparent) 26%,
+    color-mix(in srgb, var(--nf-paper) 20%, transparent) 50%,
+    transparent 62%);
+  z-index: 1;
+}
+
+.m-hero__photo::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.45;
+  z-index: 2;
+}
+
+.m-hero__intro {
+  font-size: 0.86rem;
+  hyphens: auto;
+  left: 0.6%;
+  line-height: 1.5;
+  position: absolute;
+  text-align: justify;
+  text-align-last: left;
+  top: 16%;
+  width: 35%;
+  z-index: 3;
+}
+
+.m-hero__intro p { margin: 0 0 0.6em; }
+
+.m-hero__deck { font-weight: 500; }
+
+.m-hero__quote em { font-style: normal; }
+
+.m-hero__title-wrap {
+  left: 57%;
+  position: absolute;
+  top: 5%;
+  width: 28%;
+  z-index: 3;
+}
+
+.m-hero__title {
+  font-size: clamp(2rem, 3.4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 0.88;
+  margin: 0;
+}
+
+.m-hero__title-lines { display: block; }
+
+.m-hero__line {
+  display: block;
+  white-space: nowrap;
+}
+
+.m-hero__line.is-italic {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.m-hero__line--1 { font-size: 1em;   padding-left: 8%; }
+.m-hero__line--2 { font-size: 1.95em; margin-top: -0.06em; }
+.m-hero__line--3 { font-size: 1.05em; padding-left: 38%; margin-top: 0.02em; }
+.m-hero__line--4 { font-size: 1.6em; padding-left: 20%; margin-top: -0.1em; }
+
+.m-hero__byline {
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+  margin: 0.7rem 0 0 8%;
+}
+
+/* Blocks */
+.m-hero__blocks {
+  inset: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  /* no z-index here: it would isolate the blocks and stop them multiplying
+     with the photograph underneath */
+}
+
+.m-block {
+  aspect-ratio: 1;
+  pointer-events: auto;
+  position: absolute;
+  width: 12.2%;
+}
+
+.m-block__face {
+  color: inherit;
+  display: block;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+}
+
+.m-block__face::before {
+  background: var(--c);
+  content: "";
+  inset: 0;
+  mix-blend-mode: var(--m-blend);
+  opacity: var(--m-block-opacity);
+  position: absolute;
+  transition: transform var(--nf-medium) var(--nf-ease);
+}
+
+.m-block .m-tag {
+  position: absolute;
+  z-index: 1;
+}
+
+a.m-block__face:hover::before,
+a.m-block__face:focus-visible::before {
+  transform: translate(-0.35rem, -0.35rem);
+}
+
+a.m-block__face:hover .m-tag,
+a.m-block__face:focus-visible .m-tag {
+  background: var(--nf-ink);
+  color: var(--nf-paper);
+}
+
+a.m-block__face:focus-visible { outline-offset: 4px; }
+
+/* Slots: colour, position on the photo, and where the tag sits. */
+.m-block--1 { --c: var(--m-sage);    --c-ink: var(--m-sage-ink);    left: 0;     top: 0;   width: 8.4%; }
+.m-block--2 { --c: var(--m-violet);  --c-ink: var(--m-violet-ink);  left: 39%;   top: 7%;  }
+.m-block--3 { --c: var(--m-green);   --c-ink: var(--m-green-ink);   left: 86%;   top: 9%;  }
+.m-block--4 { --c: var(--m-magenta); --c-ink: var(--m-magenta-ink); left: 20.5%; top: 47%; }
+.m-block--5 { --c: var(--m-yellow);  --c-ink: var(--m-yellow-ink);  left: 51%;   top: 38%; }
+.m-block--6 { --c: var(--m-blue);    --c-ink: var(--m-blue-ink);    left: 71.5%; top: 50%; }
+.m-block--7 { --c: var(--m-red);     --c-ink: var(--m-red-ink);     left: 6.5%;  top: 73%; }
+.m-block--8 { --c: var(--m-rose);    --c-ink: var(--m-rose-ink);    left: 48.5%; top: 71%; }
+.m-block--9 { --c: var(--m-plum);    --c-ink: var(--m-plum-ink);    left: 79%;   top: 78%; }
+
+.m-block--1 .m-tag { right: 0.4rem; top: 32%; }
+.m-block--2 .m-tag { left: -0.9rem; top: -0.75rem; }
+.m-block--3 .m-tag { bottom: -0.7rem; right: -0.6rem; }
+.m-block--4 .m-tag { right: -1rem; top: -0.4rem; }
+.m-block--5 .m-tag { left: 18%; top: 0; }
+.m-block--6 .m-tag { left: 22%; top: 0.35rem; }
+.m-block--7 .m-tag { bottom: -0.75rem; left: -1.2rem; }
+.m-block--8 .m-tag { bottom: 0.6rem; left: -0.2rem; }
+.m-block--9 .m-tag { right: -0.5rem; top: -0.75rem; }
+
+/* 5b. Writing cards ------------------------------------------------------ */
+.m-writing__head {
+  align-items: baseline;
+  border-top: 1px solid var(--nf-ink);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 2.25rem;
+  padding-top: 1rem;
+}
+
+.m-writing__title {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+}
+
+.m-cards {
+  display: grid;
+  gap: 3.25rem clamp(1.5rem, 3vw, 2.75rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.m-card--1 { --c: var(--m-violet);  --c-ink: var(--m-violet-ink); }
+.m-card--2 { --c: var(--m-yellow);  --c-ink: var(--m-yellow-ink); }
+.m-card--3 { --c: var(--m-green);   --c-ink: var(--m-green-ink); }
+.m-card--4 { --c: var(--m-rose);    --c-ink: var(--m-rose-ink); }
+.m-card--5 { --c: var(--m-blue);    --c-ink: var(--m-blue-ink); }
+.m-card--6 { --c: var(--m-red);     --c-ink: var(--m-red-ink); }
+
+.m-card__link {
+  color: inherit;
+  display: grid;
+  gap: 0.55rem;
+  text-decoration: none;
+}
+
+.m-card__visual {
+  aspect-ratio: 4 / 3;
+  background: var(--nf-paper-deep);
+  display: block;
+  isolation: isolate;
+  position: relative;
+}
+
+.m-card__visual img {
+  display: block;
+  filter: var(--m-photo-filter);
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.m-card__block {
+  aspect-ratio: 1;
+  background: var(--c);
+  mix-blend-mode: var(--m-blend);
+  opacity: var(--m-block-opacity);
+  position: absolute;
+  right: 9%;
+  top: -7%;
+  transition: transform var(--nf-medium) var(--nf-ease);
+  width: 42%;
+}
+
+.m-card:nth-child(even) .m-card__block { left: 7%; right: auto; top: auto; bottom: -8%; }
+.m-card:nth-child(3n) .m-card__block { right: -3%; top: 22%; width: 36%; }
+
+.m-card__visual.is-empty {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+.m-card__visual.is-empty .m-card__block { bottom: auto; left: auto; right: 14%; top: 16%; width: 44%; }
+.m-card__visual.is-empty::after {
+  aspect-ratio: 1;
+  background: var(--m-sage);
+  content: "";
+  left: 16%;
+  mix-blend-mode: var(--m-blend);
+  position: absolute;
+  top: 40%;
+  width: 30%;
+}
+
+.m-card__tag {
+  justify-self: start;
+  margin-top: 0.45rem;
+  position: relative;
+  z-index: 1;
+}
+
+.m-card__title {
+  font-family: var(--m-serif);
+  font-size: clamp(1.35rem, 1.6vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.m-card__summary {
+  color: var(--nf-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.m-card__link:hover .m-card__block,
+.m-card__link:focus-visible .m-card__block {
+  transform: translate(-0.4rem, -0.4rem);
+}
+
+.m-card__link:hover .m-card__title,
+.m-card__link:focus-visible .m-card__title {
+  text-decoration: underline;
+  text-decoration-color: var(--c);
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.14em;
+}
+
+/* --------------------------------------------------------------------------
+   6. Section lists
+   -------------------------------------------------------------------------- */
+.page-header {
+  isolation: isolate;
+  padding-right: min(30%, 20rem);
+  position: relative;
+}
+
+.page-header h1 {
+  font-size: clamp(3rem, 7vw, 5.6rem);
+  font-style: italic;
+  font-weight: 400;
+  margin: 0.3rem 0 0.6rem;
+}
+
+/* Two overlapping blocks beside every section title. */
+.page-header::before,
+.page-header::after {
+  aspect-ratio: 1;
+  content: "";
+  mix-blend-mode: var(--m-blend);
+  opacity: var(--m-block-opacity);
+  position: absolute;
+  z-index: -1;
+}
+
+.page-header::before {
+  background: var(--m-violet);
+  right: 6%;
+  top: 0;
+  width: min(13vw, 10rem);
+}
+
+.page-header::after {
+  background: var(--m-yellow);
+  right: 0;
+  top: 38%;
+  width: min(9vw, 7rem);
+}
+
+.page-header .post-description {
+  color: var(--nf-muted);
+  font-size: 1.1rem;
+  max-width: 52ch;
+}
+
+.breadcrumbs {
+  font-family: var(--m-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+}
+
+.breadcrumbs a { color: var(--nf-muted); }
+
+.nf-section-index > h2,
+.nf-home-module__heading h2 {
+  color: var(--nf-ink);
+  font-family: var(--m-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* Entries: a colour square in the margin, a Didone title, plain summary. */
+.nf-entry-list { counter-reset: m-entry; }
+
+.nf-entry {
+  border-top: 1px solid var(--nf-ink);
+  column-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  padding-block: 1.75rem 2rem;
+}
+
+.nf-entry > * { grid-column: 2; }
+
+.nf-entry::before {
+  aspect-ratio: 1;
+  background: var(--c, var(--m-violet));
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / span 4;
+  margin-top: 0.35rem;
+  width: 100%;
+}
+
+.nf-entry:nth-child(6n+1) { --c: var(--m-violet); }
+.nf-entry:nth-child(6n+2) { --c: var(--m-yellow); }
+.nf-entry:nth-child(6n+3) { --c: var(--m-green); }
+.nf-entry:nth-child(6n+4) { --c: var(--m-rose); }
+.nf-entry:nth-child(6n+5) { --c: var(--m-blue); }
+.nf-entry:nth-child(6n+6) { --c: var(--m-red); }
+
+.nf-entry__title {
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  line-height: 1.06;
+  margin: 0 0 0.5rem;
+  max-width: 30ch;
+}
+
+.nf-entry--lead .nf-entry__title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.nf-entry__title a {
+  text-decoration: none;
+}
+
+.nf-entry__title a:hover,
+.nf-entry__title a:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--c);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.12em;
+}
+
+.nf-entry .entry-content {
+  color: var(--nf-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 72ch;
+}
+
+.nf-entry .entry-footer,
+.nf-entry__facts {
+  color: var(--nf-muted);
+  font-family: var(--m-sans);
+  font-size: 0.78rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Articles and prose
+   -------------------------------------------------------------------------- */
+.nf-article__opening {
+  isolation: isolate;
+  position: relative;
+}
+
+.nf-article__opening::after {
+  aspect-ratio: 1;
+  background: var(--m-rose);
+  content: "";
+  mix-blend-mode: var(--m-blend);
+  opacity: var(--m-block-opacity);
+  position: absolute;
+  right: 0;
+  top: 1.25rem;
+  width: min(11vw, 8.5rem);
+  z-index: -1;
+}
+
+.nf-article__kicker {
+  --c: var(--m-yellow);
+  --c-ink: var(--m-yellow-ink);
+  background: var(--c);
+  color: var(--c-ink);
+  display: inline-block;
+  font-family: var(--m-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.3em 0.6em;
+}
+
+.post-title,
+.nf-article__title {
+  font-size: clamp(2.5rem, 5.6vw, 4.8rem);
+  line-height: 1.02;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.nf-article__opening .nf-deck,
+.nf-article__opening .post-description {
+  color: var(--nf-muted);
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+  line-height: 1.5;
+  max-width: 50ch;
+}
+
+.post-meta,
+.nf-article__meta {
+  color: var(--nf-muted);
+  font-family: var(--m-sans);
+  font-size: 0.8rem;
+}
+
+/* Cover picture: keeps its colour, with a flat block set behind one corner. */
+.entry-cover {
+  isolation: isolate;
+  position: relative;
+}
+
+.entry-cover::before {
+  aspect-ratio: 1;
+  background: var(--m-blue);
+  content: "";
+  left: -1.1rem;
+  position: absolute;
+  top: -1.1rem;
+  width: min(30%, 12rem);
+  z-index: -1;
+}
+
+.nf-prose,
+.post-content {
+  font-size: var(--nf-body-size);
+  line-height: var(--nf-body-leading);
+}
+
+.nf-prose h2,
+.post-content h2 {
+  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+  font-weight: 500;
+  margin-top: 2.6em;
+}
+
+.nf-prose h3,
+.post-content h3 {
+  font-size: 1.15rem;
+  margin-top: 2.2em;
+}
+
+.nf-prose a,
+.post-content a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--m-violet);
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.18em;
+}
+
+.nf-prose a:hover,
+.post-content a:hover {
+  background: color-mix(in srgb, var(--m-yellow) 55%, transparent);
+  text-decoration-color: var(--nf-ink);
+}
+
+.nf-prose blockquote,
+.post-content blockquote {
+  border-left: 0;
+  font-family: var(--m-serif);
+  font-size: 1.12em;
+  font-style: italic;
+  line-height: 1.5;
+  padding-left: 1.6rem;
+  position: relative;
+}
+
+.nf-prose blockquote::before,
+.post-content blockquote::before {
+  background: var(--m-magenta);
+  bottom: 0.3em;
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 0.3em;
+  width: 0.45rem;
+}
+
+.nf-prose hr,
+.post-content hr {
+  border: 0;
+  border-top: 1px solid var(--nf-soft-rule-colour);
+}
+
+.post-tags a {
+  background: transparent;
+  border: 1px solid var(--nf-ink);
+  font-size: 0.75rem;
+  padding: 0.2em 0.6em;
+}
+
+.post-tags a:hover {
+  background: var(--m-yellow);
+  color: #111;
+}
+
+.paginav {
+  border-top: 1px solid var(--nf-ink);
+}
+
+.paginav .title {
+  font-family: var(--m-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* --------------------------------------------------------------------------
+   8. Site components (shortcodes and project templates)
+   -------------------------------------------------------------------------- */
+
+/* NDLS mark — keep the logo on a white tile */
 .ndls-mark {
   background: #fff;
   border-radius: 10px;
   display: inline-block;
-  padding: 8px;
   margin: 1rem 0;
+  padding: 8px;
 }
 
 /* cards shortcode grid */
@@ -244,30 +957,141 @@ body.nf-page {
 
 .site-card {
   background: var(--nf-surface);
-  border: var(--nf-border);
-  padding: 1rem 1.25rem;
-  text-decoration: none;
+  border: 1px solid var(--nf-ink);
   color: inherit;
   display: block;
+  padding: 1rem 1.25rem 1.1rem;
+  position: relative;
+  text-decoration: none;
 }
-.site-card:hover { border-color: var(--nf-signal); }
+.site-card::after {
+  background: var(--c, var(--m-violet));
+  content: "";
+  height: 0.9rem;
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  width: 0.9rem;
+}
+.site-card:nth-child(5n+2) { --c: var(--m-yellow); }
+.site-card:nth-child(5n+3) { --c: var(--m-green); }
+.site-card:nth-child(5n+4) { --c: var(--m-rose); }
+.site-card:nth-child(5n+5) { --c: var(--m-blue); }
+.site-card:hover { box-shadow: 0.4rem 0.4rem 0 var(--c, var(--m-violet)); }
 .site-card__title {
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  font-size: 1rem;
+  font-family: var(--m-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0 0 0.4rem;
 }
 .site-card__subtitle {
-  font-size: 0.85rem;
   color: var(--nf-muted);
+  font-size: 0.85rem;
   margin: 0;
 }
 
 /* Figure block */
-.figure-block { text-align: center; margin: 1.5rem auto; }
+.figure-block { margin: 1.5rem auto; text-align: center; }
 .figure-block.figure-left { text-align: left; }
-.figure-block.figure-right { text-align: right; float: right; margin: 0 0 1rem 1.5rem; }
-.figure-block img { max-width: 100%; height: auto; }
-.figure-block figcaption { font-size: 0.85rem; color: var(--nf-muted); margin-top: 0.5rem; }
+.figure-block.figure-right { float: right; margin: 0 0 1rem 1.5rem; text-align: right; }
+.figure-block img { height: auto; max-width: 100%; }
+.figure-block figcaption { color: var(--nf-muted); font-size: 0.85rem; margin-top: 0.5rem; }
 
 /* CV page */
-.cv-page-wrap { max-width: var(--nf-reading); margin: 0 auto; padding: 2rem var(--nf-gutter); }
+.cv-page-wrap { margin: 0 auto; max-width: var(--nf-reading); padding: 2rem var(--nf-gutter); }
+
+/* --------------------------------------------------------------------------
+   9. Small screens — the collage becomes photo + title, then a tile grid
+   -------------------------------------------------------------------------- */
+@media (max-width: 52rem) {
+  .m-hero__stage {
+    aspect-ratio: auto;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    max-height: none;
+    min-height: 0;
+  }
+
+  .m-hero__stage > * { grid-column: 1; }
+
+  .m-hero__photo {
+    aspect-ratio: 4 / 3;
+    grid-row: 1;
+    inset: auto;
+    position: relative;
+    z-index: 0;
+  }
+
+  .m-hero__photo::before {
+    background: linear-gradient(0deg,
+      color-mix(in srgb, var(--nf-paper) 90%, transparent) 0%,
+      color-mix(in srgb, var(--nf-paper) 55%, transparent) 40%,
+      transparent 70%);
+  }
+
+  .m-hero__title-wrap {
+    align-self: end;
+    grid-row: 1;
+    left: auto;
+    padding: 0 0 1rem 1rem;
+    position: relative;
+    top: auto;
+    width: auto;
+    z-index: 3;
+  }
+
+  .m-hero__title { font-size: clamp(1.8rem, 9vw, 3rem); }
+
+  .m-hero__intro {
+    grid-row: 2;
+    left: auto;
+    position: static;
+    text-align: left;
+    top: auto;
+    width: auto;
+  }
+
+  .m-hero__blocks {
+    display: grid;
+    gap: 0.6rem;
+    grid-row: 3;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    inset: auto;
+    position: static;
+  }
+
+  .m-block,
+  .m-block--1 {
+    left: auto;
+    position: relative;
+    top: auto;
+    width: auto;
+  }
+
+  .m-block .m-tag {
+    bottom: 0.45rem;
+    left: 0.45rem;
+    max-width: calc(100% - 0.9rem);
+    right: auto;
+    top: auto;
+    white-space: normal;
+  }
+
+  .page-header { padding-right: 0; }
+  .page-header::before { right: 0; width: 4.5rem; }
+  .page-header::after { right: 2.25rem; top: 2.5rem; width: 3rem; }
+  .nf-article__opening::after { width: 4rem; top: 0; }
+
+  .nf-entry { grid-template-columns: 1.6rem minmax(0, 1fr); column-gap: 1rem; }
+
+  .menu { flex-wrap: wrap; overflow: visible; }
+  .m-card:nth-child(3n) .m-card__block { right: 0; }
+}
+
+/* no-fate marks "Home" active on every page (it is an ancestor of all of
+   them); only show its tag on the homepage itself. */
+body:not(.nf-kind-home) .menu li:first-child .nf-menu__primary.active {
+  background: transparent;
+  color: inherit;
+}

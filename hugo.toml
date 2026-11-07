@@ -108,7 +108,7 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   # no-fate theme settings
   # ---------------------------------------------------------------------------
   [params.noFate]
-    style = "wild"
+    style = "clean"
     defaultMode = "editorial"
     defaultAccent = "signal"
     showThemeToggle = true

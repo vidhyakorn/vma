@@ -67,7 +67,7 @@
 {{- else -}}
     {{/* Simple cover for plain string URL */}}
     {{- $loading := cond $.IsSingle "eager" "lazy" }}
-    <img loading="{{ $loading }}" src="{{ $coverImg | absURL }}" alt="">
+    <img loading="{{ $loading }}" src="{{ strings.TrimPrefix "/" $coverImg | absURL }}" alt="">
 {{- end }}
 </figure>
 {{- end }}
