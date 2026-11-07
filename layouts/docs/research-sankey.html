@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research Flow</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--bg2:#F9FAFB;--border:#E5E7EB;
+  --text:#111827;--text2:#6B7280;--sw:280px;
+}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden}
+
+/* Sidebar */
+#sidebar{width:var(--sw);min-width:var(--sw);border-right:1px solid var(--border);background:var(--bg2);display:flex;flex-direction:column;overflow-y:auto}
+.s-sec{padding:16px;border-bottom:1px solid var(--border)}
+.s-title{font-size:10px;font-weight:700;color:var(--text2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.leg-item{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:12px;color:var(--text);cursor:default}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px;font-family:inherit;cursor:pointer;width:100%;transition:background .15s}
+.btn:hover{background:#F3F4F6}
+.btn+.btn{margin-top:6px}
+.btn-primary{background:#111827;color:#fff;border-color:#111827}
+.btn-primary:hover{background:#1F2937}
+
+/* Main */
+#main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative}
+#chart{flex:1;overflow:hidden}
+svg{display:block}
+
+/* Modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;z-index:100}
+.overlay.hidden{display:none}
+.modal-box{background:#fff;border-radius:16px;padding:28px 32px;width:min(420px,90vw);box-shadow:0 24px 64px rgba(0,0,0,.16)}
+.modal-box h3{font-size:20px;font-weight:600;margin-bottom:4px}
+.modal-layer-lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;min-height:28px}
+.tag{background:#F3F4F6;color:#374151;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:500}
+.tag-empty{font-size:13px;color:var(--text2);font-style:italic}
+.modal-note{font-size:12px;color:var(--text2);margin-bottom:16px;line-height:1.5}
+
+/* Form */
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.form-group input,.form-group select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;color:var(--text);background:var(--bg);outline:none}
+.form-group input:focus,.form-group select:focus{border-color:#6B7280}
+.form-actions{display:flex;gap:8px;margin-top:20px}
+.form-actions .btn{flex:1}
+
+/* Tooltip */
+#tip{position:fixed;background:#1F2937;color:#fff;padding:7px 11px;border-radius:8px;font-size:12px;pointer-events:none;opacity:0;transition:opacity .12s;z-index:200;max-width:220px;line-height:1.4;white-space:pre-wrap}
+
+/* Node cursor */
+.node-rect{cursor:pointer}
+.link-path{fill:none;stroke-opacity:.22;transition:stroke-opacity .15s;cursor:default}
+.link-path:hover{stroke-opacity:.55}
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div class="s-sec">
+    <a href="/vma/" style="font-size:11px;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:4px;margin-bottom:10px">
+      <span style="font-size:14px">←</span> vidhyakorn.github.io/vma
+    </a>
+    <div style="font-size:17px;font-weight:700;margin-bottom:3px">Research Flow</div>
+    <div style="font-size:12px;color:var(--text2)">Vidhyakorn Mahd-Adam · 2026</div>
+  </div>
+
+  <div class="s-sec">
+    <div class="s-title">Layers</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#6D28D9"></span>Subject Matters</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#C05621"></span>Methods</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#1E6A8A"></span>Data</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#0A6640"></span>Applications</div>
+  </div>
+
+  <div class="s-sec">
+    <div class="s-title">Projects</div>
+    <div id="leg-projects"></div>
+  </div>
+
+  <div class="s-sec">
+    <div class="s-title">Add</div>
+    <button class="btn" onclick="openAddNode()">＋ Add Node</button>
+    <button class="btn" onclick="openAddLink()">＋ Add Link</button>
+  </div>
+
+  <div class="s-sec" style="flex:1">
+    <div class="s-title">How to use</div>
+    <div style="font-size:12px;color:var(--text2);line-height:1.65">
+      Node <strong>height</strong> = frequency of use across projects.<br><br>
+      <strong>Click project</strong> nodes → open project page.<br><br>
+      <strong>Click any other node</strong> → see tags &amp; info.<br><br>
+      <strong>Hover project</strong> node → trace full flow across all layers.
+    </div>
+  </div>
+</div>
+
+<div id="main">
+  <div id="chart"></div>
+</div>
+
+<!-- Node detail -->
+<div id="modal" class="overlay hidden" onclick="closeMod('modal')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <h3 id="mod-name"></h3>
+    <div class="modal-layer-lbl" id="mod-layer"></div>
+    <div class="modal-note" id="mod-note"></div>
+    <div class="tags" id="mod-tags"></div>
+    <button class="btn" onclick="closeMod('modal')">Close</button>
+  </div>
+</div>
+
+<!-- Add form -->
+<div id="form-modal" class="overlay hidden" onclick="closeMod('form-modal')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <h3 id="fm-title"></h3>
+    <div id="fm-body"></div>
+    <div class="form-actions">
+      <button class="btn" onclick="closeMod('form-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitForm()">Add</button>
+    </div>
+  </div>
+</div>
+
+<div id="tip"></div>
+
+<script>
+// ── CONSTANTS ──────────────────────────────────────────────────────────────
+const PORTFOLIO_URL = 'https://claude.ai/artifact/NjCfMMAiVWZVjtW1yvSvLF';
+
+const GC = {
+  ndls:    '#2D7D4F',
+  popdyn:  '#0F7A7A',
+  adhd:    '#3A748C',
+  evidsyn: '#2855A8',
+  caps:    '#8A6118',
+  subject: '#6D28D9',
+  method:  '#C05621',
+  data:    '#1E6A8A',
+  app:     '#0A6640',
+};
+
+const LAYER_NAMES = ['Projects','Subject Matters','Methods','Data','Applications'];
+
+// ── DATA ──────────────────────────────────────────────────────────────────
+let G = {
+  nodes: [
+    // ── Projects (layer 0) ──
+    {id:'ndls',    name:'NDLS',              layer:0, group:'ndls',    url:PORTFOLIO_URL,
+     tags:['#NeuroDiversity','#LifeSpace','#ADHD','#ASD','#LD','#lifeCourse']},
+    {id:'pcv',     name:'Pneumococcal (PCV)', layer:0, group:'popdyn',  url:PORTFOLIO_URL,
+     tags:['#pneumococcal','#vaccine','#Thailand','#CEA']},
+    {id:'sth',     name:'AHR-SEA Helminths', layer:0, group:'popdyn',  url:PORTFOLIO_URL,
+     tags:['#STH','#helminths','#SEA','#MDA','#resistance']},
+    {id:'covid',   name:'COVID-19 ✓',        layer:0, group:'popdyn',  url:PORTFOLIO_URL,
+     tags:['#COVID19','#published','#crossBorder','#Thailand']},
+    {id:'adhd',    name:'ADHD Burden & SR',  layer:0, group:'adhd',    url:PORTFOLIO_URL,
+     tags:['#ADHD','#burden','#systematicReview','#Thailand']},
+    {id:'evidsyn', name:'EvidSyn (STH NMA)', layer:0, group:'evidsyn', url:PORTFOLIO_URL,
+     tags:['#STH','#NMA','#evidence','#Bayesian']},
+    {id:'caps',    name:'CApS / CALY',       layer:0, group:'caps',    url:PORTFOLIO_URL,
+     tags:['#capability','#CALY','#wellbeing','#ICECAP']},
+
+    // ── Subject Matters (layer 1) ──
+    {id:'s_nd',  name:'Neurodevelopmental',  layer:1, group:'subject', url:'',
+     tags:['#ADHD','#ASD','#LD','#lifeCourse','#capability','#cognition']},
+    {id:'s_inf', name:'Infectious Diseases', layer:1, group:'subject', url:'',
+     tags:['#pneumococcal','#COVID19','#transmission','#ODE','#vaccine']},
+    {id:'s_ntd', name:'Neglected Tropical',  layer:1, group:'subject', url:'',
+     tags:['#STH','#helminths','#deworming','#SEA','#MDA']},
+    {id:'s_adh', name:'ADHD Epidemiology',   layer:1, group:'subject', url:'',
+     tags:['#prevalence','#burden','#incidence','#Thailand','#SEA']},
+    {id:'s_cap', name:'Capabilities',        layer:1, group:'subject', url:'',
+     tags:['#capability','#wellbeing','#freedom','#CALY','#ICECAP']},
+
+    // ── Methods (layer 2) ──
+    {id:'m_dtm', name:'Transmission Modelling', layer:2, group:'method', url:'',
+     tags:['#ODE','#compartmental','#ageStructured','#R','#Python','#calibration']},
+    {id:'m_abm', name:'Agent-Based Modelling',  layer:2, group:'method', url:'',
+     tags:['#ABM','#Mesa','#Python','#simulation','#individual']},
+    {id:'m_sr',  name:'Systematic Review',      layer:2, group:'method', url:'',
+     tags:['#PRISMA','#PROSPERO','#screening','#bias','#fullText']},
+    {id:'m_nma', name:'Network Meta-Analysis',  layer:2, group:'method', url:'',
+     tags:['#Bayesian','#NMA','#gemtc','#R','#indirect','#consistency']},
+    {id:'m_hee', name:'Health Economic Eval.',  layer:2, group:'method', url:'',
+     tags:['#CEA','#DALY','#ICER','#threshold','#costEffectiveness']},
+    {id:'m_pe',  name:'Preference Elicitation', layer:2, group:'method', url:'',
+     tags:['#BWS','#TTO','#DCE','#capability','#utility','#community']},
+
+    // ── Data (layer 3) ──
+    {id:'d_thai', name:'Thai Health Data',      layer:3, group:'data', url:'',
+     tags:['#NHSO','#MOPH','#national','#Thailand','#registry','#surveillance']},
+    {id:'d_sea',  name:'SEA Population Data',   layer:3, group:'data', url:'',
+     tags:['#WHO','#SEA','#population','#epidemiology','#census','#regional']},
+    {id:'d_lit',  name:'Literature Databases',  layer:3, group:'data', url:'',
+     tags:['#PubMed','#Embase','#Cochrane','#CINAHL','#search','#screening']},
+    {id:'d_surv', name:'Survey & Pref. Data',   layer:3, group:'data', url:'',
+     tags:['#BWS','#DCE','#community','#Thailand','#primary','#elicitation']},
+    {id:'d_sim',  name:'Simulation Output',     layer:3, group:'data', url:'',
+     tags:['#ABM','#MonteCarlo','#synthetic','#generated','#virtual']},
+
+    // ── Applications (layer 4) ──
+    {id:'a_vax',  name:'Thai Vaccine Policy',       layer:4, group:'app', url:'',
+     tags:['#PCV','#CEA','#TRF','#MOPH','#active','#NIP']},
+    {id:'a_mda',  name:'SEA Deworming Strategy',    layer:4, group:'app', url:'',
+     tags:['#MDA','#AHR-SEA','#resistance','#coverage','#active','#WHO']},
+    {id:'a_adhd', name:'ADHD Policy Brief',         layer:4, group:'app', url:'',
+     tags:['#ADHD','#Thailand','#NDC','#prevalence','#active','#evidence']},
+    {id:'a_ndc',  name:'NDC Social & Health Policy',layer:4, group:'app', url:'',
+     tags:['#NeuroDiversity','#welfare','#education','#inDevelopment']},
+    {id:'a_caly', name:'Thai Capabilities Index',   layer:4, group:'app', url:'',
+     tags:['#CALY','#capability','#population','#weights','#planned']},
+  ],
+  links: [
+    // Projects → Subjects
+    {source:'ndls',    target:'s_nd',  value:2},
+    {source:'pcv',     target:'s_inf', value:2},
+    {source:'sth',     target:'s_ntd', value:2},
+    {source:'covid',   target:'s_inf', value:1},
+    {source:'adhd',    target:'s_adh', value:2},
+    {source:'adhd',    target:'s_nd',  value:1},
+    {source:'evidsyn', target:'s_ntd', value:2},
+    {source:'caps',    target:'s_cap', value:2},
+    // Subjects → Methods
+    {source:'s_nd',  target:'m_abm', value:1},
+    {source:'s_nd',  target:'m_sr',  value:1},
+    {source:'s_inf', target:'m_dtm', value:2},
+    {source:'s_inf', target:'m_hee', value:1},
+    {source:'s_ntd', target:'m_sr',  value:1},
+    {source:'s_ntd', target:'m_nma', value:1},
+    {source:'s_ntd', target:'m_dtm', value:1},
+    {source:'s_adh', target:'m_sr',  value:1},
+    {source:'s_adh', target:'m_nma', value:1},
+    {source:'s_adh', target:'m_hee', value:1},
+    {source:'s_cap', target:'m_pe',  value:2},
+    {source:'s_cap', target:'m_hee', value:1},
+    // Methods → Data
+    {source:'m_dtm', target:'d_thai', value:1},
+    {source:'m_dtm', target:'d_sea',  value:2},
+    {source:'m_abm', target:'d_sim',  value:2},
+    {source:'m_sr',  target:'d_lit',  value:3},
+    {source:'m_nma', target:'d_lit',  value:2},
+    {source:'m_hee', target:'d_thai', value:2},
+    {source:'m_pe',  target:'d_surv', value:2},
+    // Data → Applications
+    {source:'d_thai', target:'a_vax',  value:2},
+    {source:'d_thai', target:'a_adhd', value:1},
+    {source:'d_sea',  target:'a_mda',  value:2},
+    {source:'d_sea',  target:'a_vax',  value:1},
+    {source:'d_lit',  target:'a_mda',  value:1},
+    {source:'d_lit',  target:'a_adhd', value:2},
+    {source:'d_surv', target:'a_caly', value:2},
+    {source:'d_sim',  target:'a_ndc',  value:2},
+  ]
+};
+
+let currentGraph = null; // stored after each render for highlight traversal
+let activeProject = null; // currently hovered project id
+
+// ── RENDER ────────────────────────────────────────────────────────────────
+function render() {
+  const container = document.getElementById('chart');
+  container.innerHTML = '';
+  const W = container.clientWidth, H = container.clientHeight;
+  if (W < 50 || H < 50) return;
+
+  const PAD_TOP = 36, PAD = 16;
+
+  const sankey = d3.sankey()
+    .nodeId(d => d.id)
+    .nodeWidth(20)
+    .nodePadding(9)
+    .nodeSort(null)
+    .extent([[PAD, PAD_TOP], [W - PAD, H - PAD]]);
+
+  let graph;
+  try {
+    graph = sankey({
+      nodes: G.nodes.map(d => ({...d})),
+      links: G.links.map(d => ({...d}))
+    });
+  } catch(e) { console.error('Sankey error:', e); return; }
+  currentGraph = graph;
+
+  const svg = d3.select(container).append('svg')
+    .attr('width', W).attr('height', H);
+
+  // ── Gradient defs ──
+  const defs = svg.append('defs');
+  graph.links.forEach((lk, i) => {
+    const g = defs.append('linearGradient')
+      .attr('id', `g${i}`)
+      .attr('gradientUnits', 'userSpaceOnUse')
+      .attr('x1', lk.source.x1).attr('x2', lk.target.x0);
+    g.append('stop').attr('offset','0%')
+      .attr('stop-color', GC[lk.source.group] || '#94A3B8');
+    g.append('stop').attr('offset','100%')
+      .attr('stop-color', GC[lk.target.group] || '#94A3B8');
+  });
+
+  // ── Column headers ──
+  const layerX = {};
+  graph.nodes.forEach(n => {
+    if (!layerX[n.layer]) layerX[n.layer] = [];
+    layerX[n.layer].push((n.x0 + n.x1) / 2);
+  });
+  const hdrG = svg.append('g');
+  Object.entries(layerX).forEach(([layer, xs]) => {
+    const cx = d3.mean(xs);
+    hdrG.append('text')
+      .attr('x', cx).attr('y', 18)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '10px').attr('font-weight', '700')
+      .attr('fill', '#9CA3AF').attr('letter-spacing', '0.11em')
+      .attr('font-family', "'IBM Plex Sans', system-ui, sans-serif")
+      .text(LAYER_NAMES[+layer].toUpperCase());
+    // underline
+    hdrG.append('line')
+      .attr('x1', cx - 40).attr('x2', cx + 40)
+      .attr('y1', 22).attr('y2', 22)
+      .attr('stroke', '#E5E7EB').attr('stroke-width', 1);
+  });
+
+  // ── Links ──
+  svg.append('g').selectAll('.link-path')
+    .data(graph.links)
+    .join('path')
+    .attr('class', 'link-path')
+    .attr('d', d3.sankeyLinkHorizontal())
+    .attr('stroke', (d, i) => `url(#g${i})`)
+    .attr('stroke-width', d => Math.max(1.5, d.width))
+    .on('mouseover', function(e, d) {
+      if (!activeProject) d3.select(this).style('stroke-opacity', .55);
+      showTip(e, `${d.source.name}\n→ ${d.target.name}`);
+    })
+    .on('mousemove', moveTip)
+    .on('mouseout', function() {
+      if (!activeProject) d3.select(this).style('stroke-opacity', .22);
+      hideTip();
+    });
+
+  // ── Nodes ──
+  const nodeG = svg.append('g').selectAll('g')
+    .data(graph.nodes)
+    .join('g')
+    .attr('transform', d => `translate(${d.x0},${d.y0})`);
+
+  nodeG.append('rect')
+    .attr('class', 'node-rect')
+    .attr('width', d => d.x1 - d.x0)
+    .attr('height', d => Math.max(5, d.y1 - d.y0))
+    .attr('fill', d => GC[d.group] || '#94A3B8')
+    .attr('rx', 4)
+    .on('click', (e, d) => handleClick(d))
+    .on('mouseover', (e, d) => showTip(e, d.name))
+    .on('mousemove', moveTip)
+    .on('mouseout', hideTip);
+
+  // Labels
+  const maxLayer = Math.max(...G.nodes.map(n => n.layer));
+  nodeG.append('text')
+    .attr('class', 'node-label')
+    .attr('x', d => d.layer === maxLayer ? -7 : (d.x1 - d.x0 + 7))
+    .attr('y', d => (d.y1 - d.y0) / 2)
+    .attr('dy', '0.35em')
+    .attr('text-anchor', d => d.layer === maxLayer ? 'end' : 'start')
+    .attr('font-size', '11.5px')
+    .attr('font-family', "'IBM Plex Sans', system-ui, sans-serif")
+    .attr('fill', '#374151')
+    .attr('font-weight', d => d.layer === 0 ? '600' : '400')
+    .attr('pointer-events', 'none')
+    .text(d => {
+      const maxLen = d.layer === 2 ? 20 : 22;
+      return d.name.length > maxLen ? d.name.slice(0, maxLen - 1) + '…' : d.name;
+    });
+
+  // Update project legend
+  const legEl = document.getElementById('leg-projects');
+  legEl.innerHTML = '';
+  G.nodes.filter(n => n.layer === 0).forEach(n => {
+    const div = document.createElement('div');
+    div.className = 'leg-item';
+    div.innerHTML = `<span class="leg-dot" style="background:${GC[n.group]}"></span><span>${n.name}</span>`;
+    legEl.appendChild(div);
+  });
+
+  // SVG-level delegation: highlight project on enter, clear when leaving it
+  svg.on('mouseover', function(event) {
+    const el = event.target;
+    if (el.classList && el.classList.contains('node-rect')) {
+      const d = d3.select(el).datum();
+      if (d && d.layer === 0) {
+        if (activeProject !== d.id) {
+          activeProject = d.id;
+          highlightProject(d.id);
+        }
+        return;
+      }
+    }
+    if (activeProject) { activeProject = null; clearHighlight(); }
+  }).on('mouseleave', function() {
+    if (activeProject) { activeProject = null; clearHighlight(); }
+  });
+}
+
+// ── PROJECT HIGHLIGHT ─────────────────────────────────────────────────────
+function getReachable(startId) {
+  const reached = new Set([startId]);
+  const queue = [startId];
+  while (queue.length) {
+    const id = queue.shift();
+    const node = currentGraph.nodes.find(n => n.id === id);
+    if (node && node.sourceLinks) {
+      node.sourceLinks.forEach(lk => {
+        const tid = lk.target.id;
+        if (!reached.has(tid)) { reached.add(tid); queue.push(tid); }
+      });
+    }
+  }
+  return reached;
+}
+
+function highlightProject(projectId) {
+  if (!currentGraph) return;
+  const reached = getReachable(projectId);
+  d3.selectAll('.link-path')
+    .style('stroke-opacity', d =>
+      reached.has(d.source.id) && reached.has(d.target.id) ? 0.72 : 0.04);
+  d3.selectAll('.node-rect')
+    .style('opacity', d => reached.has(d.id) ? 1 : 0.1)
+    .style('fill', d => reached.has(d.id) ? (GC[d.group] || '#94A3B8') : '#CBD5E1');
+  d3.selectAll('.node-label')
+    .style('opacity', d => reached.has(d.id) ? 1 : 0.12);
+}
+
+function clearHighlight() {
+  d3.selectAll('.link-path').style('stroke-opacity', 0.22);
+  d3.selectAll('.node-rect')
+    .style('opacity', 1)
+    .style('fill', d => GC[d.group] || '#94A3B8');
+  d3.selectAll('.node-label').style('opacity', 1);
+}
+
+// ── INTERACTIONS ──────────────────────────────────────────────────────────
+function handleClick(d) {
+  if (d.layer === 0 && d.url) { window.open(d.url, '_blank'); return; }
+  document.getElementById('mod-name').textContent = d.name;
+  document.getElementById('mod-layer').textContent = LAYER_NAMES[d.layer] || '';
+  const note = document.getElementById('mod-note');
+  note.textContent = d.layer === 4
+    ? (d.tags.some(t=>t.includes('active')) ? '● Active project' : d.tags.some(t=>t.includes('Development')) ? '◐ In development' : '○ Planned')
+    : '';
+  note.style.color = d.tags.some(t=>t.includes('active')) ? '#0A6640' : '#8A6118';
+  const tagsEl = document.getElementById('mod-tags');
+  tagsEl.innerHTML = '';
+  if (!d.tags || d.tags.length === 0) {
+    tagsEl.innerHTML = '<span class="tag-empty">No tags yet</span>';
+  } else {
+    d.tags.forEach(t => {
+      const sp = document.createElement('span');
+      sp.className = 'tag'; sp.textContent = t;
+      tagsEl.appendChild(sp);
+    });
+  }
+  document.getElementById('modal').classList.remove('hidden');
+}
+
+function closeMod(id) { document.getElementById(id).classList.add('hidden'); }
+
+// ── TOOLTIP ───────────────────────────────────────────────────────────────
+const tip = document.getElementById('tip');
+function showTip(e, text) { tip.textContent = text; tip.style.opacity = '1'; moveTip(e); }
+function moveTip(e) { tip.style.left = (e.clientX + 14) + 'px'; tip.style.top = (e.clientY - 8) + 'px'; }
+function hideTip() { tip.style.opacity = '0'; }
+
+// ── ADD FORMS ─────────────────────────────────────────────────────────────
+let formMode = null;
+
+function openAddNode() {
+  formMode = 'node';
+  document.getElementById('fm-title').textContent = 'Add Node';
+  document.getElementById('fm-body').innerHTML = `
+    <div class="form-group"><label>Name</label><input id="fn" placeholder="e.g. New Method"></div>
+    <div class="form-group"><label>Layer</label>
+      <select id="fl">
+        ${LAYER_NAMES.map((n,i)=>`<option value="${i}">${i} — ${n}</option>`).join('')}
+      </select>
+    </div>
+    <div class="form-group"><label>Color Group</label>
+      <select id="fg">
+        <option value="ndls">NDLS · green</option>
+        <option value="popdyn">PopDyn · teal</option>
+        <option value="adhd">ADHD · teal-blue</option>
+        <option value="evidsyn">EvidSyn · blue</option>
+        <option value="caps">CApS · amber</option>
+        <option value="subject">Subject Matter · violet</option>
+        <option value="method">Method · orange</option>
+        <option value="data">Data · slate</option>
+        <option value="app">Application · green</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Project URL (optional)</label><input id="fu" placeholder="https://..."></div>
+    <div class="form-group"><label>Tags (comma-separated)</label><input id="ft" placeholder="#tag1, #tag2"></div>
+  `;
+  document.getElementById('form-modal').classList.remove('hidden');
+}
+
+function openAddLink() {
+  formMode = 'link';
+  document.getElementById('fm-title').textContent = 'Add Link';
+  const opts = G.nodes.map(n =>
+    `<option value="${n.id}">${LAYER_NAMES[n.layer]}: ${n.name}</option>`).join('');
+  document.getElementById('fm-body').innerHTML = `
+    <div class="form-group"><label>Source</label><select id="fsrc">${opts}</select></div>
+    <div class="form-group"><label>Target</label><select id="ftgt">${opts}</select></div>
+    <div class="form-group"><label>Flow strength (1–5)</label>
+      <input type="number" id="fval" value="1" min="1" max="10">
+    </div>
+  `;
+  document.getElementById('form-modal').classList.remove('hidden');
+}
+
+function submitForm() {
+  if (formMode === 'node') {
+    const name = document.getElementById('fn').value.trim();
+    if (!name) return;
+    const layer = +document.getElementById('fl').value;
+    const group = document.getElementById('fg').value;
+    const url = document.getElementById('fu').value.trim();
+    const tagsRaw = document.getElementById('ft').value;
+    const tags = tagsRaw.split(',').map(t=>t.trim()).filter(Boolean);
+    G.nodes.push({id:'n'+Date.now(), name, layer, group, url, tags});
+  } else {
+    const src = document.getElementById('fsrc').value;
+    const tgt = document.getElementById('ftgt').value;
+    const val = +document.getElementById('fval').value || 1;
+    if (src === tgt) return;
+    G.links.push({source:src, target:tgt, value:val});
+  }
+  closeMod('form-modal');
+  render();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+window.addEventListener('resize', render);
+document.addEventListener('keydown', e => { if (e.key==='Escape') { closeMod('modal'); closeMod('form-modal'); }});
+render();
+</script>
+</body>
+</html>
