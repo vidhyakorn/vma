@@ -1,26 +1,33 @@
 /* ==========================================================================
-   Site palette — overrides no-fate defaults for a clean white aesthetic
-   with colourful radial-gradient blob decorations, matching the design brief.
+   Site palette — editorial / collage aesthetic matching the design reference.
+
+   Eight flat rectangular colour blocks positioned around the viewport,
+   mimicking the bold solid-colour overlays in the reference image.
 
    Palette:
-     Yellow      #EFC028
-     Orange-red  #E04A1A   ← primary accent (signal) in light mode
-     Green       #4DB848
-     Blue        #2D88C8
-     Pink        #E43282
+     Purple      #7B2ED4   (vivid violet — upper centre-left)
+     Green       #1AC83C   (bright green  — top right corner)
+     Coral/red   #E04A1A   (strip         — left side mid)
+     Yellow      #EFC028   (block         — centre-right)
+     Sky-blue    #2AB8F0   (block         — right side mid)
+     Hot-pink    #EE1490   (strip         — bottom centre)
+     Blue        #2D88C8   (block         — lower right)
+     Pink        #E43282   (strip         — bottom right)
 
    Font: Plus Jakarta Sans (loaded via extend_head.html)
-     — variable weight 300–800; ExtraBold (800) for display headings.
    ========================================================================== */
 
 /* ------------------------------------------------------------------
    Palette tokens
    ------------------------------------------------------------------ */
 :root {
+  --palette-purple:  #7B2ED4;
   --palette-yellow:  #EFC028;
   --palette-orange:  #E04A1A;
-  --palette-green:   #4DB848;
+  --palette-green:   #1AC83C;
   --palette-blue:    #2D88C8;
+  --palette-cyan:    #2AB8F0;
+  --palette-hotpink: #EE1490;
   --palette-pink:    #E43282;
 }
 
@@ -42,7 +49,7 @@
 }
 
 /* ------------------------------------------------------------------
-   Heading weight + tracking — extra-bold to match the design brief
+   Heading weight + tracking — extra-bold to match the reference
    ------------------------------------------------------------------ */
 h1, h2, h3, h4, h5, h6,
 .nf-site-title,
@@ -64,7 +71,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ------------------------------------------------------------------
-   Dark mode — dark background, yellow accent
+   Dark mode tokens — dark background, yellow accent
    ------------------------------------------------------------------ */
 :root[data-theme="dark"] {
   --nf-paper:            #141414;
@@ -77,7 +84,7 @@ h1, h2, h3, h4, h5, h6,
 
   --nf-signal:      #EFC028;
   --nf-wild-signal: #E04A1A;
-  --nf-focus:       #4DB848;
+  --nf-focus:       #1AC83C;
   --nf-alert:       #E43282;
 }
 
@@ -93,68 +100,122 @@ h1, h2, h3, h4, h5, h6,
 
     --nf-signal:      #EFC028;
     --nf-wild-signal: #E04A1A;
-    --nf-focus:       #4DB848;
+    --nf-focus:       #1AC83C;
     --nf-alert:       #E43282;
   }
 }
 
 /* ------------------------------------------------------------------
-   Blob decorations — radial gradient paint daubs, light mode
-   Layered on body.nf-page so they sit behind all content.
-   Overrides the wild-style paper-grain background-image.
+   Rectangular block decorations — light mode
+   Eight flat solid-colour rectangles scattered around the viewport,
+   fixed in place (they don't scroll with page content).
+
+   Each layer is a solid-colour rectangle made via:
+     linear-gradient(color 0% 100%)  +  background-size + background-position
+   The 0.65–0.72 alpha keeps the blocks vivid against white without
+   looking like paint over the page content in the margins.
    ------------------------------------------------------------------ */
 body.nf-page {
   background-color: var(--nf-paper);
   background-image:
-    /* yellow blob — top right */
-    radial-gradient(ellipse 380px 300px at 92% -30px,
-      rgba(239, 192, 40, 0.22) 0%, transparent 65%),
-    radial-gradient(ellipse 240px 190px at 100% 80px,
-      rgba(239, 192, 40, 0.14) 0%, transparent 60%),
-    /* green blob — upper left */
-    radial-gradient(ellipse 280px 220px at -30px 55px,
-      rgba(77, 184, 72, 0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 190px 160px at 50px 10px,
-      rgba(77, 184, 72, 0.12) 0%, transparent 60%),
-    /* blue blob — right side, mid-page */
-    radial-gradient(ellipse 220px 180px at 100% 36%,
-      rgba(45, 136, 200, 0.13) 0%, transparent 60%),
-    /* pink blob — bottom left corner */
-    radial-gradient(ellipse 300px 220px at -10% 90%,
-      rgba(228, 50, 130, 0.10) 0%, transparent 65%);
+    /* 1. Purple — upper centre-left, tall block */
+    linear-gradient(rgba(123, 46, 212, 0.68) 0% 100%),
+    /* 2. Green  — top right corner */
+    linear-gradient(rgba(26, 200, 60, 0.72) 0% 100%),
+    /* 3. Coral  — left side mid, horizontal strip */
+    linear-gradient(rgba(224, 74, 26, 0.68) 0% 100%),
+    /* 4. Yellow — centre-right upper, squarish block */
+    linear-gradient(rgba(239, 192, 40, 0.72) 0% 100%),
+    /* 5. Cyan   — right side mid, narrow tall block */
+    linear-gradient(rgba(42, 184, 240, 0.68) 0% 100%),
+    /* 6. Hot-pink — bottom centre, horizontal strip */
+    linear-gradient(rgba(238, 20, 144, 0.68) 0% 100%),
+    /* 7. Blue  — lower right */
+    linear-gradient(rgba(45, 136, 200, 0.68) 0% 100%),
+    /* 8. Pink  — bottom right corner strip */
+    linear-gradient(rgba(228, 50, 130, 0.65) 0% 100%);
+  background-size:
+    230px 165px,   /* 1 purple */
+    148px 112px,   /* 2 green */
+    215px 60px,    /* 3 coral strip */
+    170px 128px,   /* 4 yellow */
+    94px 148px,    /* 5 cyan */
+    192px 56px,    /* 6 hot-pink strip */
+    132px 106px,   /* 7 blue */
+    158px 56px;    /* 8 pink strip */
+  background-position:
+    22% 7%,                       /* 1 purple  */
+    calc(100% - 15px) 15px,       /* 2 green   */
+    15px 62%,                     /* 3 coral   */
+    60% 24%,                      /* 4 yellow  */
+    calc(100% - 10px) 48%,        /* 5 cyan    */
+    40% 90%,                      /* 6 hot-pink */
+    calc(100% - 20px) 68%,        /* 7 blue    */
+    78% 93%;                      /* 8 pink    */
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-/* Dark mode blobs — more saturated, adapted for dark surface */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) body.nf-page {
-    background-color: var(--nf-paper);
-    background-image:
-      radial-gradient(ellipse 380px 300px at 92% -30px,
-        rgba(239, 192, 40, 0.14) 0%, transparent 65%),
-      radial-gradient(ellipse 280px 220px at -30px 55px,
-        rgba(77, 184, 72, 0.12) 0%, transparent 65%),
-      radial-gradient(ellipse 220px 180px at 100% 36%,
-        rgba(45, 136, 200, 0.10) 0%, transparent 60%),
-      radial-gradient(ellipse 300px 220px at -10% 90%,
-        rgba(228, 50, 130, 0.08) 0%, transparent 65%);
-    background-attachment: fixed;
+/* Mobile — slightly smaller blocks so they don't crowd the content */
+@media (max-width: 600px) {
+  body.nf-page {
+    background-size:
+      150px 110px,
+      100px 80px,
+      150px 44px,
+      115px 88px,
+      65px 100px,
+      130px 40px,
+      90px 72px,
+      108px 40px;
   }
 }
 
-/* explicit dark-mode class variant */
+/* ------------------------------------------------------------------
+   Rectangular blocks — dark mode (reduced opacity on dark surface)
+   ------------------------------------------------------------------ */
 :root[data-theme="dark"] body.nf-page {
-  background-color: var(--nf-paper);
+  background-color: #141414;
   background-image:
-    radial-gradient(ellipse 380px 300px at 92% -30px,
-      rgba(239, 192, 40, 0.14) 0%, transparent 65%),
-    radial-gradient(ellipse 280px 220px at -30px 55px,
-      rgba(77, 184, 72, 0.12) 0%, transparent 65%),
-    radial-gradient(ellipse 220px 180px at 100% 36%,
-      rgba(45, 136, 200, 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 300px 220px at -10% 90%,
-      rgba(228, 50, 130, 0.08) 0%, transparent 65%);
+    linear-gradient(rgba(149, 72, 230, 0.55) 0% 100%),
+    linear-gradient(rgba(26, 200, 60, 0.55) 0% 100%),
+    linear-gradient(rgba(224, 74, 26, 0.55) 0% 100%),
+    linear-gradient(rgba(239, 192, 40, 0.60) 0% 100%),
+    linear-gradient(rgba(42, 184, 240, 0.52) 0% 100%),
+    linear-gradient(rgba(238, 20, 144, 0.52) 0% 100%),
+    linear-gradient(rgba(45, 136, 200, 0.52) 0% 100%),
+    linear-gradient(rgba(228, 50, 130, 0.50) 0% 100%);
+  background-size:
+    230px 165px, 148px 112px, 215px 60px, 170px 128px,
+    94px 148px, 192px 56px, 132px 106px, 158px 56px;
+  background-position:
+    22% 7%, calc(100% - 15px) 15px, 15px 62%, 60% 24%,
+    calc(100% - 10px) 48%, 40% 90%, calc(100% - 20px) 68%, 78% 93%;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body.nf-page {
+    background-color: #141414;
+    background-image:
+      linear-gradient(rgba(149, 72, 230, 0.55) 0% 100%),
+      linear-gradient(rgba(26, 200, 60, 0.55) 0% 100%),
+      linear-gradient(rgba(224, 74, 26, 0.55) 0% 100%),
+      linear-gradient(rgba(239, 192, 40, 0.60) 0% 100%),
+      linear-gradient(rgba(42, 184, 240, 0.52) 0% 100%),
+      linear-gradient(rgba(238, 20, 144, 0.52) 0% 100%),
+      linear-gradient(rgba(45, 136, 200, 0.52) 0% 100%),
+      linear-gradient(rgba(228, 50, 130, 0.50) 0% 100%);
+    background-size:
+      230px 165px, 148px 112px, 215px 60px, 170px 128px,
+      94px 148px, 192px 56px, 132px 106px, 158px 56px;
+    background-position:
+      22% 7%, calc(100% - 15px) 15px, 15px 62%, 60% 24%,
+      calc(100% - 10px) 48%, 40% 90%, calc(100% - 20px) 68%, 78% 93%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
 }
 
 /* ------------------------------------------------------------------
