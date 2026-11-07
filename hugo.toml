@@ -89,7 +89,6 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   description = 'Vidhyakorn Mahd-Adam — research assistant at MORU, Bangkok. Epidemiological and social modelling, health policy, and the history and philosophy of science and medicine.'
   dateFormat = 'January 2, 2006'
   defaultTheme = 'auto'
-  comments = true
 
   # mainSections drives what shows up in listing pages and the feed
   mainSections = ['blog', 'research']

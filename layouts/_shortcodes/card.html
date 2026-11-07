@@ -14,5 +14,4 @@
 <{{ $tag }}{{ with $href }} href="{{ . | relURL }}"{{ end }} class="site-card">
   {{- with $title }}<p class="site-card__title">{{ . }}</p>{{- end -}}
   {{- with $subtitle }}<p class="site-card__subtitle">{{ . }}</p>{{- end -}}
-  {{- .Inner -}}
 </{{ $tag }}>
