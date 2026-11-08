@@ -50,8 +50,17 @@
       {{- $src := $cover -}}
       {{- if not (hasPrefix $cover "http") -}}
         {{- /* local asset in assets/ */ -}}
-        {{- with resources.Get (strings.TrimPrefix "/" $cover) -}}
+        {{- /* "img/x.jpg", "/img/x.jpg" and "static/img/x.jpg" all mean the
+               file in static/img/, which hugo.toml also mounts as assets/img */ -}}
+        {{- $local := strings.TrimPrefix "static/" (strings.TrimPrefix "/" $cover) -}}
+        {{- $src = $local | relURL -}}
+        {{- with resources.Get $local -}}
           {{- with try (.Fill "300x450 Smart webp q80") }}{{ with .Value }}{{ $src = .RelPermalink }}{{ end }}{{ end -}}
+        {{- else -}}
+          {{- with $b.isbn -}}
+            {{- $src = printf "https://covers.openlibrary.org/b/isbn/%s-L.jpg" . -}}
+          {{- end -}}
+          {{- warnf "book-list: cover %q not found in static/%s" $cover (cond (ne ($b.isbn | default "") "") " — using the Open Library cover" "") -}}
         {{- end -}}
       {{- else -}}
         {{- /* remote URL — fetch at build time and process through Hugo Pipes */ -}}
@@ -79,7 +88,14 @@
       {{- with .note }}<p class="book-note">{{ . | markdownify }}</p>{{ end -}}
 
       {{- /* ---- My Review button — shows when a review URL is set ---------- */ -}}
+      {{- /* A site path must name a published page, or the button is left out
+             until the review is written; a full address is used as given. */ -}}
+      {{- $review := "" -}}
       {{- with .review -}}
+        {{- if hasPrefix . "http" }}{{ $review = . }}
+        {{- else }}{{ with site.GetPage (strings.TrimSuffix "/" .) }}{{ $review = .RelPermalink }}{{ end }}{{ end -}}
+      {{- end -}}
+      {{- with $review -}}
       <div class="book-row book-row-review">
         <span class="book-row-label">My review</span>
         <span class="book-row-links">

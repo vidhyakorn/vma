@@ -38,4 +38,4 @@ Thailand's disability and neurodevelopmental data systems are structured around 
 
 ### Connection to NDLS
 
-CARP provides the **population-level outcome metric** for the [NDLS](/ndls/) framework: where NDLS models the longitudinal bio-psycho-social trajectory of an individual, CARP aggregates those trajectories into a policy-relevant summary measure that can enter health technology assessment and resource-allocation decisions.
+CARP provides the **population-level outcome metric** for the [NDLS](/research/ndls/) framework: where NDLS models the longitudinal bio-psycho-social trajectory of an individual, CARP aggregates those trajectories into a policy-relevant summary measure that can enter health technology assessment and resource-allocation decisions.

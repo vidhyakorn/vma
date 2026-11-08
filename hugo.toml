@@ -61,11 +61,11 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   weight = 3
 [[menu.main]]
   name = 'Writings'
-  pageRef = '/writing'
+  pageRef = '/note'
   weight = 4
 [[menu.main]]
   name = 'Contact'
-  pageRef = '/contact'
+  pageRef = '/about'   # no /contact page yet — create content/contact/ and change this back
   weight = 5
 
 [services]
@@ -79,7 +79,7 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   defaultTheme = 'auto'
 
   # mainSections drives what shows up in listing pages and the feed
-  mainSections = ['writing', 'research']
+  mainSections = ['note', 'research']
 
   ShowReadingTime = true
   ShowBreadCrumbs = true

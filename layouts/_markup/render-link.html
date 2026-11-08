@@ -1,0 +1,46 @@
+{{- /* render-link (project override of no-fate's _markup/render-link.html).
+
+     Adds one thing: internal links are resolved, so they keep working on a
+     site that lives under a sub-path (https://vidhyakorn.github.io/vma/).
+       [NDLS](/research/ndls/)   a page path, from the content root
+       [Progress](progress/)     a page path, relative to this page
+       [CV](/vidhyakorncv1.pdf)  a file in static/ — gets the /vma/ prefix
+     If the path names a page that exists, the link goes to that page (so it
+     survives the page moving, as long as the path still matches); otherwise a
+     root-relative path is given the site prefix. External links are left as
+     they are. A warning is printed for links to pages that cannot be found. */ -}}
+{{- $dest := .Destination -}}
+{{- $url := urls.Parse $dest -}}
+{{- $scheme := lower $url.Scheme -}}
+{{- $isWeb := in (slice "http" "https") $scheme -}}
+{{- $isExternal := and $url.IsAbs $isWeb (ne $url.Host (urls.Parse site.BaseURL).Host) -}}
+{{- if and (not $url.IsAbs) (not (hasPrefix $dest "#")) $url.Path (not $scheme) -}}
+    {{- $frag := cond (ne $url.Fragment "") (printf "#%s" $url.Fragment) "" -}}
+    {{- $query := cond (ne $url.RawQuery "") (printf "?%s" $url.RawQuery) "" -}}
+    {{- $page := "" -}}
+    {{- with .PageInner.GetPage (strings.TrimSuffix "/" $url.Path) }}{{ $page = . }}{{ end -}}
+    {{- if $page -}}
+        {{- $dest = printf "%s%s%s" $page.RelPermalink $query $frag -}}
+    {{- else if hasPrefix $url.Path "/" -}}
+        {{- $base := (urls.Parse site.BaseURL).Path -}}
+        {{- if not (hasPrefix $url.Path $base) -}}
+            {{- $dest = printf "%s%s%s" (strings.TrimPrefix "/" $url.Path | relURL) $query $frag -}}
+        {{- end -}}
+        {{- if not (path.Ext $url.Path) -}}
+            {{- warnf "%s: link to %q — no page at that path" .PageInner.File.Path $url.Path -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+{{- $target := index .Attributes "target" | default "" -}}
+{{- $rel := "" -}}
+{{- if $isExternal }}{{ $rel = "external" }}{{ end -}}
+{{- if eq $target "_blank" }}{{ $rel = strings.TrimSpace (printf "%s noopener noreferrer" $rel) }}{{ end -}}
+<a href="{{ $dest | safeURL }}"
+    {{- with .Title }} title="{{ . }}"{{ end -}}
+    {{- with $target }} target="{{ . }}"{{ end -}}
+    {{- with $rel }} rel="{{ . }}"{{ end -}}
+    {{- if $isExternal }} class="nf-external-link"{{ end -}}>
+    {{- .Text -}}
+    {{- if $isExternal }}<span class="nf-visually-hidden"> ({{ i18n "nf_external_link" | default "External link" }})</span>{{ end -}}
+</a>
+{{- /* Chomp trailing whitespace for adjacent inline elements. */ -}}

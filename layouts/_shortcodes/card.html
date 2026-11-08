@@ -2,16 +2,33 @@
 
      title    — heading text (required)
      subtitle — supporting text (optional)
-     href     — makes the card a link (optional)
+     href     — makes the card a link (optional): a page path from the
+                content root ("/research/ndls/"), a path relative to this page
+                ("progress/"), or a full address ("https://…")
      image    — card image URL (optional, ignored without href)
 
-     Replaces the Hextra-bundled card shortcode. */ -}}
+     A page path that names a draft or a missing page shows the card without
+     a link (and prints a warning), rather than a link that goes nowhere. */ -}}
 {{- $title    := .Get "title" -}}
 {{- $subtitle := .Get "subtitle" -}}
-{{- $href     := .Get "href" -}}
-{{- $tag      := "div" -}}
-{{- if $href }}{{- $tag = "a" -}}{{- end -}}
-<{{ $tag }}{{ with $href }} href="{{ . | relURL }}"{{ end }} class="site-card">
+{{- $href     := .Get "href" | default "" -}}
+{{- $url := "" -}}
+{{- if $href -}}
+  {{- if or (hasPrefix $href "http://") (hasPrefix $href "https://") (hasPrefix $href "mailto:") -}}
+    {{- $url = $href -}}
+  {{- else -}}
+    {{- with .Page.GetPage (strings.TrimSuffix "/" $href) -}}
+      {{- $url = .RelPermalink -}}
+    {{- else -}}
+      {{- if path.Ext $href -}}
+        {{- $url = strings.TrimPrefix "/" $href | relURL -}}
+      {{- else -}}
+        {{- warnf "%s: card %q links to %q — no published page there, shown without a link" .Page.File.Path $title $href -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $url }}<a href="{{ $url }}" class="site-card site-card--link">{{ else }}<div class="site-card">{{ end -}}
   {{- with $title }}<p class="site-card__title">{{ . }}</p>{{- end -}}
   {{- with $subtitle }}<p class="site-card__subtitle">{{ . }}</p>{{- end -}}
-</{{ $tag }}>
+{{- if $url }}</a>{{ else }}</div>{{ end -}}

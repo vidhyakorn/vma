@@ -32,4 +32,4 @@ Both model types require empirical calibration against Thai cohort data (MORU), 
 
 ### Role in the portfolio
 
-Modelling & Simulation is the **methodological spine** of the research portfolio: it takes theoretical constructs from [NDLS](/ndls/) and measurement outputs from [CARP](/research/projects/carp/), combines them into forward-looking scenario models, and feeds back insights that refine both frameworks.
+Modelling & Simulation is the **methodological spine** of the research portfolio: it takes theoretical constructs from [NDLS](/research/ndls/) and measurement outputs from [CARP](/research/caps/caly-tha/), combines them into forward-looking scenario models, and feeds back insights that refine both frameworks.

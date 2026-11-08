@@ -17,9 +17,9 @@
 {{- with $pages }}
 <section class="m-writing" aria-labelledby="m-writing-heading">
     <div class="m-writing__head">
-        <h2 id="m-writing-heading" class="m-writing__title">{{ i18n "nf_selected_writing" | default "Selected writing" }}</h2>
-        {{- with site.GetPage "/writing" }}
-        <a class="m-tag m-tag--link" href="{{ .RelPermalink }}">All writing</a>
+        <h2 id="m-writing-heading" class="m-writing__title">Latest</h2>
+        {{- with site.GetPage "/note" }}
+        <a class="m-tag m-tag--link" href="{{ .RelPermalink }}">All notes</a>
         {{- end }}
     </div>
     <ol class="m-cards" role="list">
@@ -34,7 +34,7 @@
                     {{- with $cover }}<img src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ strings.TrimPrefix "/" . | relURL }}{{ end }}" alt="" loading="lazy" decoding="async">{{ end }}
                     <span class="m-card__block"></span>
                 </span>
-                <span class="m-tag m-card__tag">{{ $p.Section | humanize }}{{ if not $p.Date.IsZero }} : {{ $p.Date | time.Format ":date_medium" }}{{ end }}</span>
+                <span class="m-tag m-card__tag">{{ with $p.FirstSection }}{{ .LinkTitle }}{{ end }}{{ if not $p.Date.IsZero }} : {{ $p.Date | time.Format ":date_medium" }}{{ end }}</span>
                 <span class="m-card__title">{{ $p.LinkTitle }}</span>
                 {{- with ($p.Description | default ($p.Summary | plainify | htmlUnescape)) }}
                 <span class="m-card__summary">{{ . | plainify | truncate 150 }}</span>

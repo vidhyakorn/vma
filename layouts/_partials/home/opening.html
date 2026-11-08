@@ -52,7 +52,11 @@
             {{- range $i, $b := first 9 . }}
             <li class="m-block m-block--{{ add $i 1 }}">
                 {{- if $b.url }}
-                <a class="m-block__face" href="{{ $b.url | relLangURL }}">
+                {{- $href := $b.url -}}
+                {{- if not (hasPrefix $href "http") -}}
+                    {{- with site.GetPage (strings.TrimSuffix "/" $href) }}{{ $href = .RelPermalink }}{{ else }}{{ $href = strings.TrimPrefix "/" $href | relLangURL }}{{ end -}}
+                {{- end }}
+                <a class="m-block__face" href="{{ $href }}">
                     <span class="m-tag"><strong>{{ $b.label }}</strong>{{ with strings.TrimSpace ($b.note | default "") }} : {{ . }}{{ end }}</span>
                 </a>
                 {{- else }}
