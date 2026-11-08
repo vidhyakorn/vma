@@ -23,9 +23,7 @@ dateModified: 2026-10-24T20:18:40.169+07:00
 draft: /
 ---
 
-# ADHD Life-Course Epidemiology and Population Dynamic Model Projects
-
-> [!infobox] **ADHD Life-Course Epidemiology and Population Dynamic Model Projects (ALEPop)**
+> [!infobox] **ADHD Life-Course Epidemiology and Population Dynamic Model Project**
 > ![[Image_Name.jpg|cover|200]]
 
 ## Introduction
