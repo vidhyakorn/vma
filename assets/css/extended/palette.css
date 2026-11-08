@@ -37,7 +37,7 @@
   --m-photo-filter: grayscale(1) contrast(1.12) brightness(1.04);
   --m-grain-opacity: 0.13;
 
-  --m-serif: 'Bodoni Moda', 'Bodoni 72', Didot, 'Playfair Display', Georgia, serif;
+  --m-serif: 'Asul', 'Bodoni 72', Didot, 'Playfair Display', Georgia, serif;
   --m-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* no-fate roles */
