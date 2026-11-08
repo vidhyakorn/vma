@@ -26,13 +26,13 @@ visual:
   hero_image: "img/traditions.jpg"
   hero_image_alt: "People peering over a wooden fence, bicycles leaning against it"
   blocks:
-    - { label: "About", note: " ", url: "/about/" }
-    - { label: "Research", note:" " , url: "/research/" }
-    - { label: "Book Reviews", note: " ", url: "/research/ndls/books/" }
-    - { label: "Writing", note: " ", url: "/writing/" }
-    - { label: "Epidemiological & Social Modelling", note:" " , url: "/modeling/" }
-    - { label: "Social and Health Policy", note:" " , url: "/policy/" }
-    - { label: "Philosophy of Science & Medicine", note:" " , url: "/philosophy/" }
+    - { label: "About", note: " ", url: "/content/about/" }
+    - { label: "Research", note:" " , url: "/content/research/" }
+    - { label: "Book Reviews", note: " ", url: "/content/brv/" }
+    - { label: "Notes", note: " ", url: "/content/note/" }
+    - { label: "Epidemiological & Social Modelling", note:" " , url: "/content/modeling/" }
+    - { label: "Social and Health Policy", note:" " , url: "/content/policy/" }
+    - { label: "Philosophy of Science & Medicine", note:" " , url: "/content/philosophy/" }
 ---
 
 
