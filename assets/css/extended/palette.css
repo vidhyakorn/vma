@@ -463,6 +463,16 @@ a.m-tag--link:focus-visible {
   width: 12.2%;
 }
 
+/* Pointer drift: --px/--py come from the script in home/opening.html and
+   each slot has its own --depth, so the blocks drift at different rates.
+   The movement goes on the colour layer and the label, never on .m-block
+   itself: a transform there would isolate the block and stop the colour
+   multiplying with the photo. */
+.m-block__face::before,
+.m-block .m-tag {
+  translate: calc(var(--px, 0) * var(--depth, 10px)) calc(var(--py, 0) * var(--depth, 10px));
+}
+
 .m-block__face {
   color: inherit;
   display: block;
@@ -478,47 +488,109 @@ a.m-tag--link:focus-visible {
   mix-blend-mode: var(--m-blend);
   opacity: var(--m-block-opacity);
   position: absolute;
-  transition: transform var(--nf-medium) var(--nf-ease);
+  transition: transform var(--nf-medium) var(--nf-ease), translate 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
+/* Labels on the photo: white, larger, on a deeper tone of the block's
+   colour so white text keeps at least 4.5:1 contrast. */
 .m-block .m-tag {
+  background: var(--c-deep, var(--c));
+  color: #fff;
+  font-size: clamp(0.82rem, 0.95vw, 1.02rem);
+  font-weight: 500;
+  left: -0.55rem;
+  letter-spacing: 0.005em;
+  padding: 0.34em 0.7em 0.38em;
+  max-width: min(15rem, 190%);
   position: absolute;
+  top: -0.85rem;
+  transition: translate 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  white-space: normal;
+  width: max-content;
   z-index: 1;
+}
+
+/* Blocks near the right edge hang their label leftwards. */
+.m-block--7 .m-tag,
+.m-block--9 .m-tag {
+  left: auto;
+  right: -0.55rem;
+}
+
+.m-block .m-tag strong {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Lower-row labels hang from the block's bottom-right instead, so the two
+   rows' labels don't stack on top of each other. */
+.m-block:nth-child(even) .m-tag {
+  bottom: -0.85rem;
+  left: auto;
+  right: -0.55rem;
+  top: auto;
 }
 
 a.m-block__face:hover::before,
 a.m-block__face:focus-visible::before {
-  transform: translate(-0.35rem, -0.35rem);
+  transform: translate(-0.4rem, -0.4rem);
 }
 
 a.m-block__face:hover .m-tag,
 a.m-block__face:focus-visible .m-tag {
-  background: var(--nf-ink);
-  color: var(--nf-paper);
+  background: #111;
+  color: #fff;
 }
 
 a.m-block__face:focus-visible { outline-offset: 4px; }
 
-/* Slots: colour, position on the photo, and where the tag sits. */
-.m-block--1 { --c: var(--m-sage);    --c-ink: var(--m-sage-ink);    left: 0;     top: 0;   width: 8.4%; }
-.m-block--2 { --c: var(--m-violet);  --c-ink: var(--m-violet-ink);  left: 39%;   top: 7%;  }
-.m-block--3 { --c: var(--m-green);   --c-ink: var(--m-green-ink);   left: 86%;   top: 9%;  }
-.m-block--4 { --c: var(--m-magenta); --c-ink: var(--m-magenta-ink); left: 20.5%; top: 47%; }
-.m-block--5 { --c: var(--m-yellow);  --c-ink: var(--m-yellow-ink);  left: 51%;   top: 38%; }
-.m-block--6 { --c: var(--m-blue);    --c-ink: var(--m-blue-ink);    left: 71.5%; top: 50%; }
-.m-block--7 { --c: var(--m-red);     --c-ink: var(--m-red-ink);     left: 6.5%;  top: 73%; }
-.m-block--8 { --c: var(--m-rose);    --c-ink: var(--m-rose-ink);    left: 48.5%; top: 71%; }
-.m-block--9 { --c: var(--m-plum);    --c-ink: var(--m-plum-ink);    left: 79%;   top: 78%; }
+/* Slots: colour, deep label tone, place on the photo, drift depth.
+   All sit in the lower half: odd slots on an upper row (≈ 50–55%), even
+   slots on a lower row (≈ 70–73%), staggered left to right. */
+.m-block--1 { --c: var(--m-sage);    --c-deep: #4e7a3e; --depth: 14px; left: 2%;  top: 53%; }
+.m-block--2 { --c: var(--m-violet);  --c-deep: #8b45c8; --depth: 22px; left: 14%; top: 72%; }
+.m-block--3 { --c: var(--m-green);   --c-deep: #0b7a40; --depth: 10px; left: 26%; top: 50%; }
+.m-block--4 { --c: var(--m-magenta); --c-deep: #a8238f; --depth: 18px; left: 38%; top: 73%; }
+.m-block--5 { --c: var(--m-yellow);  --c-deep: #8a6400; --depth: 26px; left: 50%; top: 54%; }
+.m-block--6 { --c: var(--m-blue);    --c-deep: #1f6fd0; --depth: 12px; left: 62%; top: 70%; }
+.m-block--7 { --c: var(--m-red);     --c-deep: #c2301a; --depth: 20px; left: 74%; top: 51%; }
+.m-block--8 { --c: var(--m-rose);    --c-deep: #c2185b; --depth: 16px; left: 86%; top: 72%; }
+.m-block--9 { --c: var(--m-plum);    --c-deep: #8e1e5f; --depth: 24px; left: 91%; top: 50%; width: 7%; }
 
-.m-block--1 .m-tag { right: 0.4rem; top: 32%; }
-.m-block--2 .m-tag { left: -0.9rem; top: -0.75rem; }
-.m-block--3 .m-tag { bottom: -0.7rem; right: -0.6rem; }
-.m-block--4 .m-tag { right: -1rem; top: -0.4rem; }
-.m-block--5 .m-tag { left: 18%; top: 0; }
-.m-block--6 .m-tag { left: 22%; top: 0.35rem; }
-.m-block--7 .m-tag { bottom: -0.75rem; left: -1.2rem; }
-.m-block--8 .m-tag { bottom: 0.6rem; left: -0.2rem; }
-.m-block--9 .m-tag { right: -0.5rem; top: -0.75rem; }
+/* Movement: the photo drifts against the pointer and slowly zooms while the
+   pointer is over the picture; the blocks drift with it (above). Without a
+   pointer — touch screens — the photo breathes slowly on its own. */
+.m-hero__photo img {
+  scale: 1.06;
+  transition: translate 1.2s cubic-bezier(0.2, 0.7, 0.2, 1), scale 6s ease-out, filter 1.2s ease;
+  translate: calc(var(--px, 0) * -18px) calc(var(--py, 0) * -12px);
+}
+
+.m-hero__stage:hover .m-hero__photo img {
+  filter: var(--m-photo-filter) contrast(1.06);
+  scale: 1.14;
+}
+
+@media (hover: none) {
+  .m-hero__photo img { animation: m-breathe 18s ease-in-out infinite alternate; }
+}
+
+@keyframes m-breathe {
+  from { scale: 1.04; translate: -1% 0; }
+  to   { scale: 1.12; translate: 1% -1.5%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m-hero__photo img,
+  .m-block__face::before,
+  .m-block .m-tag {
+    animation: none;
+    scale: 1;
+    transition: none;
+    translate: none;
+  }
+  .m-hero__stage:hover .m-hero__photo img { scale: 1; }
+}
 
 /* 5b. Writing cards ------------------------------------------------------ */
 .m-writing__head {
@@ -1070,7 +1142,11 @@ a.m-block__face:focus-visible { outline-offset: 4px; }
     width: auto;
   }
 
-  .m-block .m-tag {
+  .m-block__face::before,
+  .m-block .m-tag { translate: none; }
+
+  .m-block .m-tag,
+  .m-block:nth-child(even) .m-tag {
     bottom: 0.45rem;
     left: 0.45rem;
     max-width: calc(100% - 0.9rem);
@@ -1173,6 +1249,8 @@ body:not(.nf-kind-home) .menu li:first-child .nf-menu__primary.active {
 /* When the top bar wraps (tablet widths), the icons take their own line,
    at the right. */
 @media (max-width: 72rem) {
+  .m-block .m-tag { max-width: min(15rem, 150%); }
+
   .m-social {
     border-left: 0;
     margin-left: auto;
@@ -1188,5 +1266,25 @@ body:not(.nf-kind-home) .menu li:first-child .nf-menu__primary.active {
     border-left: 0;
     margin: 0.25rem 0 0 -0.6rem;
     padding: 0;
+  }
+}
+
+/* Small screens: collage becomes two columns of wide tiles, labels inside. */
+@media (max-width: 52rem) {
+  .m-hero__blocks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .m-block { aspect-ratio: 16 / 9; }
+  .m-block .m-tag { overflow-wrap: normal; hyphens: manual; }
+
+  .m-block .m-tag,
+  .m-block:nth-child(even) .m-tag,
+  .m-block--7 .m-tag,
+  .m-block--9 .m-tag {
+    bottom: 0.45rem;
+    font-size: 0.78rem;
+    left: 0.45rem;
+    max-width: calc(100% - 0.9rem);
+    right: auto;
+    top: auto;
+    width: auto;
   }
 }

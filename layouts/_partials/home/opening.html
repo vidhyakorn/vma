@@ -66,3 +66,26 @@
         {{- end }}
     </div>
 </header>
+<script>
+/* Pointer drift for the collage: writes --px / --py (−1 … 1) on the stage;
+   palette.css turns them into small opposite movements of photo and blocks.
+   Skipped on touch screens and when reduced motion is requested. */
+(() => {
+    const stage = document.querySelector(".m-hero__stage");
+    if (!stage || !matchMedia("(hover: hover)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame = 0;
+    stage.addEventListener("pointermove", (e) => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+            const r = stage.getBoundingClientRect();
+            stage.style.setProperty("--px", (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
+            stage.style.setProperty("--py", (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(3));
+        });
+    });
+    stage.addEventListener("pointerleave", () => {
+        cancelAnimationFrame(frame);
+        stage.style.setProperty("--px", 0);
+        stage.style.setProperty("--py", 0);
+    });
+})();
+</script>

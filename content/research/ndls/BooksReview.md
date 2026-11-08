@@ -6,6 +6,7 @@ weight: 3
 # badly in a web address.
 slug: "books"
 feedExclude: true
+landing: true
 ---
 
 >*Getting to know more about how diverse human are and they suffer and thrive through reading books.

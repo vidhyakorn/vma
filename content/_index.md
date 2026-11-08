@@ -28,7 +28,7 @@ visual:
   blocks:
     - { label: "About", note: " ", url: "/about/" }
     - { label: "Research", note:" " , url: "/research/" }
-    - { label: "Book Reviews", note: " ", url: "/brv/" }
+    - { label: "Book Reviews", note: " ", url: "/research/ndls/books/" }
     - { label: "Writing", note: " ", url: "/writing/" }
     - { label: "Epidemiological & Social Modelling", note:" " , url: "/modeling/" }
     - { label: "Social and Health Policy", note:" " , url: "/policy/" }
