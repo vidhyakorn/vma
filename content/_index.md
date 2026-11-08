@@ -1,12 +1,12 @@
 ---
 title: "Vidhyakorn Mahd-Adam"
-description: "Research assistant at MORU, Bangkok. Epidemiological and social modelling, health policy, and the history and philosophy of science and medicine."
+description: " "
 
 # Opening — headline is the h1 (read by screen readers and search engines);
 # deck is the small paragraph over the photo, followed by the body text below.
 opening:
   headline: '"I Am Because We Are."'
-  deck: "Research on epidemiological and social modelling, health policy, and the history and philosophy of science and medicine. Based at MORU, Bangkok."
+  deck: " "
 
 # Selected pages shown in the homepage grid.
 # Paths are relative to baseURL, without trailing slash issues.
@@ -29,17 +29,18 @@ visual:
   hero_image: "img/traditions.jpg"
   hero_image_alt: "A crowd walking together beneath cherry blossoms"
   blocks:
-    - { label: "Ubuntu" }
-    - { label: "Research", note: "projects · publications", url: "/research/" }
-    - { label: "NDLS", note: "neurodiversity", url: "/ndls/" }
-    - { label: "Writing", note: "essays · notes", url: "/blog/" }
-    - { label: "About", note: "CV · contact", url: "/about/" }
+    - { label: "Contact" }
+    - { label: "Research", note:" " , url: "/research/" }
+    - { label: "NDLS", note: " ", url: "/ndls/" }
+    - { label: "Writing", note: " ", url: "/blog/" }
+    - { label: "About", note: " ", url: "/about/" }
     - { label: "Search", url: "/search/" }
-    - { label: "Epidemiological & social modelling" }
-    - { label: "Health policy" }
-    - { label: "History & philosophy of science" }
+    - { label: "Epidemiological & Social Modelling" }
+    - { label: "Health Policy" }
+    - { label: "History & Philosophy of Science" }
 ---
 
-*"...when you live in a way that your own life interests and welfare are connected to the interests and welfare of others around you, your humanity grows, and so does the humanity of the whole community."*
+*"I Am Because We Are."*
+"...when you live in a way that your own life interests and welfare are connected to the interests and welfare of others around you, your humanity grows, and so does the humanity of the whole community."
 
 — Ubuntu Philosophy
