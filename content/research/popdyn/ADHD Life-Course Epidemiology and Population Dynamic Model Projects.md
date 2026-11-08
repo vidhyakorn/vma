@@ -23,13 +23,10 @@ dateModified: 2026-10-24T20:18:40.169+07:00
 draft: /
 ---
 
-# ADHD Model Project
+# ADHD Life-Course Epidemiology and Population Dynamic Model Projects
 
-> [!infobox] **ADHD Model Project**
+> [!infobox] **ADHD Life-Course Epidemiology and Population Dynamic Model Projects (ALEPop)**
 > ![[Image_Name.jpg|cover|200]]
-> **Start:** | 05-November-2026
-
-> **Occupation:** | {data}
 
 ## Introduction
 Write a short, 2-3 sentence overview of the topic here. 
