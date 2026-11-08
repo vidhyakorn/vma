@@ -5,7 +5,7 @@ tags:
   - permanent
   - literature
   - project/open
-title: ADHD Model Project
+title: ADHD Life-Course Epidemiology and Population Dynamic Model Project ()
 summary: A brief one-sentence summary of this topic.
 image: "[[Image_Name.jpg]]"
 born:
@@ -20,6 +20,7 @@ source:
 status: in progress
 target: tasks
 dateModified: 2026-10-24T20:18:40.169+07:00
+draft: /
 ---
 
 # ADHD Model Project
