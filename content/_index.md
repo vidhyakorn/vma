@@ -25,7 +25,7 @@ visual:
     - '"I Am'
     - '*Because'
     - 'We Are."'
-  byline: "Vidhyakorn Mahd-Adam · MORU, Bangkok"
+  byline: "— Ubuntu Philosophy"
   hero_image: "img/traditions.jpg"
   hero_image_alt: "A crowd walking together beneath cherry blossoms"
   blocks:
@@ -40,7 +40,5 @@ visual:
     - { label: "History & Philosophy of Science" }
 ---
 
-*"I Am Because We Are."*
-"...when you live in a way that your own life interests and welfare are connected to the interests and welfare of others around you, your humanity grows, and so does the humanity of the whole community."
 
-— Ubuntu Philosophy
+
