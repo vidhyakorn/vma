@@ -6,7 +6,7 @@ landing: true
 tags:
   - hanami
 description: What we may forget about how science can help improve human flourishing, not as a gatekeeper.
-cover: /img/traditions.jpg
+cover: /img/traditions_v1.jpg
 toc: true
 math: true
 aliases:
