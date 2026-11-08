@@ -64,8 +64,8 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   pageRef = '/writing'
   weight = 4
 [[menu.main]]
-  name = 'About'
-  pageRef = '/about'
+  name = 'Contact'
+  pageRef = '/contact'
   weight = 5
 
 [services]
