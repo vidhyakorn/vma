@@ -1,0 +1,17 @@
+{{- /* Social links — icons read from hugo.toml [[params.social]] and drawn
+     from data/icons.yaml. An entry with an empty url is skipped, so a profile
+     can be listed in the config before its address is known. */ -}}
+{{- $links := slice -}}
+{{- range site.Params.social }}{{ if .url }}{{ $links = $links | append . }}{{ end }}{{ end -}}
+{{- with $links }}
+<ul class="m-social" role="list" aria-label="{{ i18n "nf_social_links" | default "Elsewhere" }}">
+    {{- range . }}
+    <li>
+        <a href="{{ .url }}" rel="me noopener" target="_blank" title="{{ .name }}">
+            {{- with index site.Data.icons .icon }}{{ . | safeHTML }}{{ end -}}
+            <span class="nf-visually-hidden">{{ .name }}</span>
+        </a>
+    </li>
+    {{- end }}
+</ul>
+{{- end -}}

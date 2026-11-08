@@ -92,6 +92,30 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   # See layouts/_partials/pub-block.html.
   crossrefMailto = 'vidhyakornadam@gmail.com'
 
+  # Social links — icons at the right of the top bar
+  # (layouts/_partials/social-links.html; icons in data/icons.yaml).
+  # Leave url empty to hide an entry until you have the address.
+  [[params.social]]
+    name = 'LinkedIn'
+    icon = 'linkedin'
+    url = 'https://www.linkedin.com/in/vidhyakorn/'
+  [[params.social]]
+    name = 'ORCID'
+    icon = 'orcid'
+    url = 'https://orcid.org/0009-0008-2468-8870'
+  [[params.social]]
+    name = 'Google Scholar'
+    icon = 'googlescholar'
+    url = ''   # e.g. 'https://scholar.google.com/citations?user=XXXXXXXXXXXX'
+  [[params.social]]
+    name = 'Bluesky'
+    icon = 'bluesky'
+    url = ''   # e.g. 'https://bsky.app/profile/yourhandle.bsky.social'
+  [[params.social]]
+    name = 'GitHub'
+    icon = 'github'
+    url = 'https://github.com/vidhyakorn'
+
   # Site title in the top bar, drawn as the handwritten signature
   # (layouts/_partials/header.html). Black ink for light mode, white for dark.
   [params.label]

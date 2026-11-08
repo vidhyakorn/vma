@@ -336,10 +336,10 @@ a.m-tag--link:focus-visible {
 
 /* 5a. Collage hero ------------------------------------------------------- */
 .m-hero__stage {
-  aspect-ratio: 1.72;
+  /* height follows the viewport width (aspect-ratio + min-height would
+     force the stage wider than the page between ~830 and ~1000px) */
+  height: clamp(30rem, 52vw, 52rem);
   isolation: isolate;
-  max-height: 52rem;
-  min-height: 36rem;
   position: relative;
   width: 100%;
 }
@@ -1007,6 +1007,7 @@ a.m-block__face:focus-visible { outline-offset: 4px; }
   .m-hero__stage {
     aspect-ratio: auto;
     display: grid;
+    height: auto;
     gap: 1.5rem;
     grid-template-columns: minmax(0, 1fr);
     max-height: none;
@@ -1117,4 +1118,75 @@ body:not(.nf-kind-home) .menu li:first-child .nf-menu__primary.active {
 @media (prefers-color-scheme: dark) {
   :root[data-theme="auto"] .m-signature--light { display: none; }
   :root[data-theme="auto"] .m-signature--dark { display: block; }
+}
+
+/* Top-bar menu: no-fate gives the menu overflow-x: auto, and the tag
+   highlight's negative margin made it a few pixels too wide, which showed
+   a horizontal scrollbar under the menu on Windows. */
+.menu {
+  margin-left: auto;   /* keep the menu at the right, beside the social icons */
+  overflow: visible;
+}
+
+.nf-menu__primary {
+  margin-inline: 0;
+}
+
+/* Social links (layouts/_partials/social-links.html), right of the menu. */
+.m-social {
+  align-items: center;
+  display: flex;
+  gap: 0.15rem;
+  list-style: none;
+  margin: 0 0 0 1.1rem;
+  padding: 0 0 0 1.1rem;
+  border-left: 1px solid var(--nf-soft-rule-colour);
+}
+
+.m-social a {
+  align-items: center;
+  color: var(--nf-ink);
+  display: inline-flex;
+  height: 2.2rem;
+  justify-content: center;
+  transition: background-color var(--nf-fast) var(--nf-ease), color var(--nf-fast) var(--nf-ease);
+  width: 2.2rem;
+}
+
+.m-social svg {
+  height: 1.05rem;
+  width: 1.05rem;
+}
+
+.m-social li:nth-child(5n+1) a { --c: var(--m-blue);   --c-ink: var(--m-blue-ink); }
+.m-social li:nth-child(5n+2) a { --c: var(--m-green);  --c-ink: var(--m-green-ink); }
+.m-social li:nth-child(5n+3) a { --c: var(--m-violet); --c-ink: var(--m-violet-ink); }
+.m-social li:nth-child(5n+4) a { --c: var(--m-yellow); --c-ink: var(--m-yellow-ink); }
+.m-social li:nth-child(5n+5) a { --c: var(--m-rose);   --c-ink: var(--m-rose-ink); }
+
+.m-social a:hover,
+.m-social a:focus-visible {
+  background: var(--c);
+  color: var(--c-ink);
+}
+
+/* When the top bar wraps (tablet widths), the icons take their own line,
+   at the right. */
+@media (max-width: 72rem) {
+  .m-social {
+    border-left: 0;
+    margin-left: auto;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 48rem) {
+  .menu { margin-left: 0; }
+
+  .m-social {
+    align-self: flex-start;
+    border-left: 0;
+    margin: 0.25rem 0 0 -0.6rem;
+    padding: 0;
+  }
 }

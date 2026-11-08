@@ -1,6 +1,7 @@
 ---
 date: {{date:YYYY-MM-DD}}
 draft: true
+landing: false
 doi: ""
 tags: []
 ---
@@ -14,6 +15,8 @@ journal, the year and the abstract are fetched when the site builds.
 
 No DOI? Use the article's address instead:
   source: "https://journal.org/articles/12345"
+
+Tick landing (set it to true) to show this on the homepage's Selected writing.
 
 Anything you write yourself wins over what is fetched:
   title:      a shorter title

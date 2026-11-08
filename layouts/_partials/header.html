@@ -1,7 +1,9 @@
 {{- /* header (project override of no-fate's header.html).
-     Only change: when params.label.icon is set in hugo.toml the site title is
-     drawn as that image (the handwritten signature), with params.label.iconDark
-     swapped in for dark mode. The text label stays as the image's alt text. */ -}}
+     Changes from the theme's version:
+       - when params.label.icon is set in hugo.toml the site title is drawn as
+         that image (the handwritten signature), with params.label.iconDark
+         swapped in for dark mode; the text label stays as the alt text;
+       - social-link icons ([[params.social]]) after the menu. */ -}}
 {{- $label := site.Params.label.text | default site.Title -}}
 {{- $showThemeToggle := not site.Params.disableThemeToggle -}}
 {{- with site.Params.noFate -}}
@@ -88,5 +90,6 @@
             {{- end }}
         </ul>
         {{- end }}
+        {{- partial "social-links.html" . }}
     </nav>
 </header>

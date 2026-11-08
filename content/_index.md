@@ -8,12 +8,9 @@ opening:
   headline: '"I Am Because We Are."'
   deck: " "
 
-# Selected pages shown in the homepage grid.
-# Paths are relative to baseURL, without trailing slash issues.
-selected_writing:
-  - "/blog/hanami2026/"
-  - "/blog/dehumanizing/"
-  - "/blog/acorn2026/"
+# Selected writing (the cards below the photo) is no longer listed here: tick
+# "landing" (landing: true) in the front matter of any post or page and it
+# appears on the homepage, newest first. See home/selected-writing.html.
 
 # Homepage collage (layouts/_partials/home/opening.html).
 #   title_lines — the headline split into lines; start a line with * for italic.
@@ -27,12 +24,12 @@ visual:
     - 'We Are."'
   byline: "— Ubuntu Philosophy"
   hero_image: "img/traditions.jpg"
-  hero_image_alt: "A crowd walking together beneath cherry blossoms"
+  hero_image_alt: "People peering over a wooden fence, bicycles leaning against it"
   blocks:
     - { label: "Contact" }
     - { label: "Research", note:" " , url: "/research/" }
-    - { label: "NDLS", note: " ", url: "/ndls/" }
-    - { label: "Writing", note: " ", url: "/blog/" }
+    - { label: "NDLS", note: " ", url: "/research/ndls/" }
+    - { label: "Writing", note: " ", url: "/writing/" }
     - { label: "About", note: " ", url: "/about/" }
     - { label: "Search", url: "/search/" }
     - { label: "Epidemiological & Social Modelling" }

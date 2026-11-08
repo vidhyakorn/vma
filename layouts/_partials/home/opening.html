@@ -53,11 +53,11 @@
             <li class="m-block m-block--{{ add $i 1 }}">
                 {{- if $b.url }}
                 <a class="m-block__face" href="{{ $b.url | relLangURL }}">
-                    <span class="m-tag"><strong>{{ $b.label }}</strong>{{ with $b.note }} : {{ . }}{{ end }}</span>
+                    <span class="m-tag"><strong>{{ $b.label }}</strong>{{ with strings.TrimSpace ($b.note | default "") }} : {{ . }}{{ end }}</span>
                 </a>
                 {{- else }}
                 <span class="m-block__face">
-                    <span class="m-tag">{{ $b.label }}{{ with $b.note }} : {{ . }}{{ end }}</span>
+                    <span class="m-tag">{{ $b.label }}{{ with strings.TrimSpace ($b.note | default "") }} : {{ . }}{{ end }}</span>
                 </span>
                 {{- end }}
             </li>

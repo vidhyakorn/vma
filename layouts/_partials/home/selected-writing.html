@@ -1,23 +1,26 @@
 {{- /* Homepage writing grid — project override of no-fate's home/selected-writing.html.
 
-     Shows the pages listed under selected_writing in content/_index.md first,
-     then fills up with the newest posts from params.mainSections, six cards in
-     all. Each card is a greyscale picture under a flat colour block, with a
-     small label tag naming the section and date. */ -}}
-{{- $paths := partial "home/value.html" (dict "page" . "key" "selected_writing" "default" slice) -}}
-{{- $selected := partial "home/selected-pages.html" (dict "paths" $paths "context" "selected_writing") -}}
-{{- $recent := where (where site.RegularPages "Section" "in" site.Params.mainSections) "Params.hidden" "ne" true -}}
-{{- $pages := $selected -}}
-{{- range $recent.ByDate.Reverse -}}
-    {{- if and (lt (len $pages) 6) (not (in $pages .)) -}}
-        {{- $pages = $pages | append . -}}
-    {{- end -}}
+     Shows every page whose front matter has
+         landing: true
+     (a checkbox in Obsidian's Properties panel), newest first by date, so a
+     newly ticked post appears at the front on the next build. Any section
+     counts: writing, research, publications, NDLS pages. Drafts never show.
+     If nothing is ticked yet, the newest posts from params.mainSections are
+     shown instead. Each card is a greyscale picture under a flat colour block,
+     with a small label tag naming the section and date. */ -}}
+{{- $limit := 9 -}}
+{{- $pages := where site.RegularPages "Params.landing" true -}}
+{{- if not $pages -}}
+    {{- $pages = where site.RegularPages "Section" "in" site.Params.mainSections -}}
 {{- end -}}
+{{- $pages = first $limit $pages.ByDate.Reverse -}}
 {{- with $pages }}
 <section class="m-writing" aria-labelledby="m-writing-heading">
     <div class="m-writing__head">
         <h2 id="m-writing-heading" class="m-writing__title">{{ i18n "nf_selected_writing" | default "Selected writing" }}</h2>
-        <a class="m-tag m-tag--link" href="{{ "blog/" | relLangURL }}">All writing</a>
+        {{- with site.GetPage "/writing" }}
+        <a class="m-tag m-tag--link" href="{{ .RelPermalink }}">All writing</a>
+        {{- end }}
     </div>
     <ol class="m-cards" role="list">
         {{- range $i, $p := . }}
