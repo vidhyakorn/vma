@@ -3,6 +3,14 @@
      Always fails soft: a dead link must never break the build. */}}
 {{- $url := . -}}
 {{- $out := "" -}}
+{{- /* Publisher sites that answer build servers with a bot check (a page that
+       never yields an og:image, and can stall the build on GitHub Actions).
+       Give pages linking here a cover: in their front matter instead. */ -}}
+{{- $skip := slice "link.springer.com" "www.sciencedirect.com" "onlinelibrary.wiley.com" "www.tandfonline.com" "academic.oup.com" -}}
+{{- if in $skip (urls.Parse $url).Host -}}
+  {{- warnf "og-image: not fetching %q (publisher blocks build servers) — set cover: on the page" $url -}}
+  {{- $url = "" -}}
+{{- end -}}
 {{- if and $url (or (hasPrefix $url "http://") (hasPrefix $url "https://")) -}}
   {{- $opts := dict "headers" (dict "User-Agent" "Mozilla/5.0 (compatible; Hugo static site build)") -}}
   {{- with try (resources.GetRemote $url $opts) -}}

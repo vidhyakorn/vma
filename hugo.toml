@@ -12,6 +12,7 @@ theme = 'no-fate'
 enableRobotsTXT = true
 enableInlineShortcodes = true
 enableGitInfo = true   # populates .Lastmod from git
+timeout = '180s'       # build-time fetches (Crossref, covers) can be slow on GitHub Actions
 
 # Obsidian note templates live in content/_templates/ — not pages, never published.
 ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
