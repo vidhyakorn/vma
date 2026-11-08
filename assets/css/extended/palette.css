@@ -1095,3 +1095,26 @@ body:not(.nf-kind-home) .menu li:first-child .nf-menu__primary.active {
   background: transparent;
   color: inherit;
 }
+
+/* Signature in the top bar (layouts/_partials/header.html). The black-ink
+   image shows in light mode, the white one in dark mode. */
+.nf-site-title--signature {
+  display: inline-block;
+  line-height: 0;
+}
+
+.m-signature {
+  display: block;
+  height: clamp(1.7rem, 2.6vw, 2.35rem);
+  width: auto;
+}
+
+.m-signature--dark { display: none; }
+
+:root[data-theme="dark"] .m-signature--light { display: none; }
+:root[data-theme="dark"] .m-signature--dark { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] .m-signature--light { display: none; }
+  :root[data-theme="auto"] .m-signature--dark { display: block; }
+}

@@ -1,0 +1,92 @@
+{{- /* header (project override of no-fate's header.html).
+     Only change: when params.label.icon is set in hugo.toml the site title is
+     drawn as that image (the handwritten signature), with params.label.iconDark
+     swapped in for dark mode. The text label stays as the image's alt text. */ -}}
+{{- $label := site.Params.label.text | default site.Title -}}
+{{- $showThemeToggle := not site.Params.disableThemeToggle -}}
+{{- with site.Params.noFate -}}
+    {{- if isset . "showthemetoggle" -}}
+        {{- $showThemeToggle = index . "showthemetoggle" -}}
+    {{- end -}}
+{{- end -}}
+{{- $wildMasthead := site.Params.noFate.wild.masthead | default "" -}}
+{{- $wildIssue := site.Params.noFate.wild.issue | default "" -}}
+<header class="header nf-site-header">
+    <nav class="header-nav nf-site-nav" aria-label="{{ i18n "nf_primary_navigation" | default "Primary navigation" }}">
+        {{- with $wildMasthead }}
+        <p class="nf-wild-masthead nf-wild-only">
+            {{ . }}
+            {{- with $wildIssue }}<strong>{{ . }}</strong>{{ end }}
+        </p>
+        {{- end }}
+        <div class="logo">
+            {{- $icon := site.Params.label.icon -}}
+            {{- $iconDark := site.Params.label.iconDark | default $icon -}}
+            <a class="nf-site-title{{ if $icon }} nf-site-title--signature{{ end }}" href="{{ site.Home.RelPermalink }}" accesskey="h"
+                title="{{ printf "%s (%s)" $label (i18n "nf_home_access_key" | default "Alt + H") }}">
+                {{- if $icon }}
+                <img class="m-signature m-signature--light" src="{{ $icon | relURL }}" alt="{{ $label }}" width="615" height="96">
+                <img class="m-signature m-signature--dark" src="{{ $iconDark | relURL }}" alt="" width="615" height="96" aria-hidden="true">
+                {{- else -}}
+                {{- $label -}}
+                {{- end -}}
+            </a>
+
+            {{- if or $showThemeToggle hugo.IsMultilingual }}
+            <div class="logo-switches">
+                {{- if $showThemeToggle }}
+                <button id="theme-toggle" class="theme-toggle" type="button" accesskey="t"
+                    aria-label="{{ i18n "nf_toggle_theme" | default "Toggle colour theme" }}">
+                    {{ i18n "nf_theme" | default "Theme" }}
+                </button>
+                {{- end }}
+
+                {{- if and (not site.Params.disableLangToggle) hugo.IsMultilingual }}
+                <ul class="lang-menu" aria-label="{{ i18n "translations" | default "Translations" }}">
+                    {{- range site.Home.AllTranslations }}
+                        {{- if ne $.Lang .Lang }}
+                        <li>
+                            <a href="{{ .RelPermalink }}" hreflang="{{ .Lang }}"
+                                lang="{{ .Lang }}">{{ .Language.LanguageName | default (.Lang | upper) }}</a>
+                        </li>
+                        {{- end }}
+                    {{- end }}
+                </ul>
+                {{- end }}
+            </div>
+            {{- end }}
+        </div>
+
+        {{- with site.Menus.main }}
+        <ul id="menu" class="menu">
+            {{- range . }}
+            {{- $target := .URL | absLangURL -}}
+            {{- $current := or ($.IsMenuCurrent "main" .) (eq ($.Permalink | absURL) $target) -}}
+            {{- $parsedURL := urls.Parse .URL -}}
+            {{- $targetURL := urls.Parse $target -}}
+            {{- $pageURL := urls.Parse $.Permalink -}}
+            {{- $pathActive := and
+                (eq $targetURL.Host $pageURL.Host)
+                (ne $targetURL.Path "/")
+                (hasPrefix $pageURL.Path $targetURL.Path)
+            -}}
+            {{- $active := or $current ($.HasMenuCurrent "main" .) $pathActive -}}
+            <li class="nf-menu__item{{ if eq .Identifier "search" }} nf-menu__item--search{{ end }}">
+                <a href="{{ $target }}"
+                    {{- if $current }} aria-current="page"{{ end }}
+                    {{- with .Title }} title="{{ . }}"{{ end }}>
+                    <span class="nf-menu__primary{{ if $active }} active{{ end }}">{{ .Name }}</span>
+                    {{- with .Params.secondary }}
+                    <span class="nf-menu__secondary" aria-hidden="true">{{ . }}</span>
+                    {{- end }}
+                    {{- if $parsedURL.IsAbs }}
+                    <span class="nf-external-mark" aria-hidden="true">↗</span>
+                    <span class="nf-visually-hidden">{{ i18n "nf_external_link" | default "External link" }}</span>
+                    {{- end }}
+                </a>
+            </li>
+            {{- end }}
+        </ul>
+        {{- end }}
+    </nav>
+</header>

@@ -104,6 +104,13 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   # See layouts/_partials/pub-block.html.
   crossrefMailto = 'vidhyakornadam@gmail.com'
 
+  # Site title in the top bar, drawn as the handwritten signature
+  # (layouts/_partials/header.html). Black ink for light mode, white for dark.
+  [params.label]
+    text = 'Vidhyakorn Mahd-Adam'
+    icon = 'img/vmd.png'
+    iconDark = 'img/vmd-dark.png'
+
   # ---------------------------------------------------------------------------
   # no-fate theme settings
   # ---------------------------------------------------------------------------
