@@ -55,30 +55,18 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   name = 'Research'
   pageRef = '/research'
   weight = 2
-  [menu.main.params]
-    secondary = 'projects · publications'
 [[menu.main]]
-  name = 'NDLS'
-  pageRef = '/ndls'
+  name = 'Publications'
+  pageRef = '/publications'
   weight = 3
-  [menu.main.params]
-    secondary = 'neurodiversity'
 [[menu.main]]
-  name = 'Writing'
-  pageRef = '/blog'
+  name = 'Writings'
+  pageRef = '/writing'
   weight = 4
-  [menu.main.params]
-    secondary = 'essays · notes'
 [[menu.main]]
   name = 'About'
   pageRef = '/about'
   weight = 5
-  [menu.main.params]
-    secondary = 'CV · contact'
-[[menu.main]]
-  name = 'Search'
-  url = '/search/'
-  weight = 6
 
 [services]
   [services.googleAnalytics]
@@ -91,7 +79,7 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   defaultTheme = 'auto'
 
   # mainSections drives what shows up in listing pages and the feed
-  mainSections = ['blog', 'research']
+  mainSections = ['writing', 'research']
 
   ShowReadingTime = true
   ShowBreadCrumbs = true
