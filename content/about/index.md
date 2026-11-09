@@ -20,9 +20,8 @@ Complementing this, I approach philosophy through investigating historical socia
 
 # _Curriculum Vitae_
 
-{{< cv_v1 src="/cv/vidhyakorn_cv_Oct26.pdf" title="Download CV" height="100" display="false" >}}
-
-## Vidhyakorn Mahd-Adam
+[_Download CV_](cv/vidhyakorn_cv_Oct26.pdf)
+## Vidhyakorn Mahd-Adam*
 *Research Assistant*
 
 **Contact:** vidhyakornadam@gmail.com | (+66) 82-703-5717  
