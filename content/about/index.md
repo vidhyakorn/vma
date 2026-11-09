@@ -1,10 +1,11 @@
 ---
-title: about
+title:
 date: 2026-09-18
 draft: false
 toc: false
 description: Research Assistant at MORU, Bangkok.
 ---
+# _About_
 
 <figure style="float: left; max-width: 200px; margin: 0 20px 20px 0;"> <img src="profile.jpg" alt="vma" style="width: 80%; height: auto; display: block;"></figure>
 <div style="text-align: justify;">
@@ -19,7 +20,7 @@ Complementing this, I approach philosophy through investigating historical socia
 
 # _Curriculum Vitae_
 
-{{< cv_v1 src="/cv/vidhyakorn_cv_Oct26.pdf" title="Curriculum Vitae" height="100" >}}
+{{< cv_v1 src="/cv/vidhyakorn_cv_Oct26.pdf" title="Download CV" height="100" display="false" >}}
 
 ## Vidhyakorn Mahd-Adam
 *Research Assistant*
