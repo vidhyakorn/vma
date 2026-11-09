@@ -85,18 +85,4 @@ url: /about/cv/
 **Interests:** Computational Methods; Population Dynamics; Capabilities Approach; Bio-psychosocial Model; Neurodiversity & EDI; Social Deviance & 'Others'; Social Theories of Health and Diseases
 **Data/Tools/Methods:** R; Data Analysis; MS Office Suite; Systematic Review and Meta-analysis; Mathematical Modeling
 
----
-## REFERENCE PERSONS
-**Assoc. Prof. Wirichada Pan-ngum, PhD**
-Dept. of Tropical Hygiene, Faculty of Tropical Medicine, Mahidol University
-Email: pan@tropmedres.ac
-
-**Assoc. Prof. Poom Adisakwattana, PhD**
-Dept. of Helminthology, Faculty of Tropical Medicine, Mahidol University
-Email: poom.adi@mahidol.ac.th
-
-**Sompob Saralamba, PhD**
-Mahidol-Oxford Tropical Medicine Research Unit, Mahidol University
-Email: sompob@tropmedres.ac
-
 
