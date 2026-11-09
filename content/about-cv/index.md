@@ -10,7 +10,7 @@ feedExclude: true
 layout: cv
 url: /about/cv/
 ---
-## Vidhyakorn Mahd-Adam
+# **Vidhyakorn Mahd-Adam**
 *Research Assistant*
 
 **Contact:** vidhyakornadam@gmail.com | (+66) 82-703-5717  
