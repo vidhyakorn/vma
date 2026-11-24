@@ -2093,3 +2093,17 @@ body { min-height: 100vh; }
 @media (max-width: 52rem) {
   .m-docs .m-hero__stage { aspect-ratio: auto; height: auto; max-height: none; }
 }
+
+/* Homepage as a plain list of latest posts (hugo.toml home modules). */
+.m-docs.nf-kind-home .nf-home { display: block; }
+
+.m-docs .m-writing { max-width: 46rem; }
+
+.m-docs .m-writing__head {
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.m-docs .m-writing__title { margin: 0; }
+
+.m-docs .m-cards { grid-template-columns: 1fr; }

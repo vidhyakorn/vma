@@ -144,7 +144,9 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
     strictHomeSelections = false
 
   [params.noFate.home]
-    modules = ["opening", "selected_writing"]
+    # The homepage is just the list of latest posts. Put "opening" back in
+    # front to bring the photo collage (content/_index.md visual:) back.
+    modules = ["selected_writing"]
     featuredProposition = ""
 
   [params.noFate.images]

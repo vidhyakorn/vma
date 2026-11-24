@@ -8,7 +8,7 @@
      If nothing is ticked yet, the newest posts from params.mainSections are
      shown instead. Each card is a greyscale picture under a flat colour block,
      with a small label tag naming the section and date. */ -}}
-{{- $limit := 9 -}}
+{{- $limit := 20 -}}
 {{- $pages := where site.RegularPages "Params.landing" true -}}
 {{- if not $pages -}}
     {{- $pages = where site.RegularPages "Section" "in" site.Params.mainSections -}}
@@ -17,7 +17,7 @@
 {{- with $pages }}
 <section class="m-writing" aria-labelledby="m-writing-heading">
     <div class="m-writing__head">
-        <h2 id="m-writing-heading" class="m-writing__title">Latest</h2>
+        <h1 id="m-writing-heading" class="m-writing__title">Latest</h1>
         {{- with site.GetPage "/note" }}
         <a class="m-tag m-tag--link" href="{{ .RelPermalink }}">All notes</a>
         {{- end }}
