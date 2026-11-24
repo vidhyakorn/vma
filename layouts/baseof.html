@@ -1,0 +1,94 @@
+{{- /* baseof (project override of no-fate's baseof.html).
+
+     Documentation-style shell: a slim top bar, a navigation tree on the left
+     (layouts/_partials/sidebar.html), the page in the middle, and an
+     "On this page" list on the right for articles with headings. On small
+     screens the tree folds into a menu opened from the top bar. The page
+     templates themselves (block "main") are unchanged. */ -}}
+{{- if lt hugo.Version "0.158.0" }}
+{{- errorf "No Fate requires Hugo v0.158.0 or later" }}
+{{- end -}}
+{{- partial "validate-content-model.html" . -}}
+{{- $style := partial "style-resolver.html" . -}}
+{{- .Store.Set "noFateStyle" $style -}}
+
+<!DOCTYPE html>
+{{- $theme := site.Params.defaultTheme | default "auto" }}
+<html lang="{{ site.Language.Locale }}" dir="{{ .Language.Direction | default "auto" }}"
+    data-theme="{{ $theme }}" data-nf-style="{{ $style }}">
+
+<head>
+    {{- partial "head.html" . }}
+</head>
+
+{{- $bodyClass := printf "nf-page nf-kind-%s m-docs" .Kind -}}
+{{- if or (ne .Kind "page") (eq .Layout "archives") (eq .Layout "search") -}}
+    {{- $bodyClass = printf "%s list" $bodyClass -}}
+{{- end }}
+{{- /* Right-hand contents: single pages whose text has at least two headings. */ -}}
+{{- $toc := "" -}}
+{{- if and (eq .Kind "page") (ne (.Param "toc") false) -}}
+    {{- if ge (len (findRE `<li>` .TableOfContents)) 2 }}{{ $toc = .TableOfContents }}{{ end -}}
+{{- end -}}
+{{- if $toc }}{{ $bodyClass = printf "%s m-has-toc" $bodyClass }}{{ end }}
+<body class="{{ $bodyClass }}" id="top">
+    <a class="nf-skip-link" href="#nf-main">{{ i18n "nf_skip_to_content" | default "Skip to content" }}</a>
+    {{ partial "header.html" . -}}
+    <div class="m-shell">
+        <aside class="m-sidebar" id="m-sidebar" aria-label="{{ i18n "nf_site_sections" | default "Site sections" }}">
+            {{- partial "sidebar.html" . -}}
+        </aside>
+        <main class="main" id="nf-main" tabindex="-1">
+            {{- block "main" . }}{{ end }}
+        </main>
+        {{- with $toc }}
+        <nav class="m-toc" aria-labelledby="m-toc-title">
+            <p class="m-toc__title" id="m-toc-title">On this page</p>
+            {{ . }}
+        </nav>
+        {{- end }}
+    </div>
+    {{ partial "footer.html" . -}}
+    {{ partial "hooks/body-end.html" . -}}
+    <script>
+    /* Menu button (small screens): opens the navigation tree as a panel. */
+    (() => {
+        const button = document.getElementById("m-menu-button");
+        if (!button) return;
+        const close = () => { document.body.classList.remove("m-nav-open"); button.setAttribute("aria-expanded", "false"); };
+        button.addEventListener("click", () => {
+            const open = document.body.classList.toggle("m-nav-open");
+            button.setAttribute("aria-expanded", String(open));
+        });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+        matchMedia("(min-width: 64rem)").addEventListener("change", close);
+    })();
+    /* "/" jumps to search, as on most documentation sites. */
+    (() => {
+        const pill = document.querySelector(".m-topbar .m-search-pill");
+        if (!pill) return;
+        document.addEventListener("keydown", (e) => {
+            if (e.key !== "/" || e.metaKey || e.ctrlKey || e.altKey) return;
+            const t = e.target;
+            if (t.closest && t.closest("input, textarea, select, [contenteditable]")) return;
+            e.preventDefault();
+            location.href = pill.href;
+        });
+    })();
+    /* "On this page": mark the heading currently in view. */
+    (() => {
+        const links = [...document.querySelectorAll(".m-toc a[href^='#']")];
+        if (!links.length || !("IntersectionObserver" in window)) return;
+        const byId = new Map(links.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+        const seen = new Set();
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((e) => e.isIntersecting ? seen.add(e.target.id) : seen.delete(e.target.id));
+            const first = [...byId.keys()].find((id) => seen.has(id));
+            if (first) links.forEach((a) => a.classList.toggle("is-current", a === byId.get(first)));
+        }, { rootMargin: "-10% 0px -70% 0px" });
+        byId.forEach((_, id) => { const h = document.getElementById(id); if (h) io.observe(h); });
+    })();
+    </script>
+</body>
+
+</html>

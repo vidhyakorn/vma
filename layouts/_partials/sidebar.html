@@ -1,0 +1,29 @@
+{{- /* sidebar — the navigation tree on the left.
+
+     Its order comes from hugo.toml:  [params] sidebar = ['/research', …]
+     A section expands into its subsections and pages (ordered by weight, then
+     date); it starts open when it holds the page being read, or when its
+     front matter has  sidebar: { open: true }.  A page or section with
+     sidebar: { exclude: true }  is left out. On small screens the same panel
+     also carries search and the social links from the top bar. */ -}}
+{{- $current := . -}}
+<div class="m-sidebar__mobile">
+    {{- with site.GetPage "/search" }}
+    <a class="m-search-pill" href="{{ .RelPermalink }}"><span>Search…</span></a>
+    {{- end }}
+</div>
+<nav class="m-tree" aria-label="Contents">
+    <ul role="list">
+        <li class="m-tree__item"><a class="m-tree__link{{ if .IsHome }} is-active{{ end }}" href="{{ site.Home.RelPermalink }}"{{ if .IsHome }} aria-current="page"{{ end }}>Home</a></li>
+        {{- range site.Params.sidebar | default slice }}
+            {{- with site.GetPage . }}
+                {{- partial "sidebar-node.html" (dict "node" . "current" $current "depth" 0) }}
+            {{- else }}
+                {{- warnf "sidebar: %q in hugo.toml params.sidebar is not a page" . }}
+            {{- end }}
+        {{- end }}
+    </ul>
+</nav>
+<div class="m-sidebar__mobile">
+    {{- partial "social-links.html" . }}
+</div>

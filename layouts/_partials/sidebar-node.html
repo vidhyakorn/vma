@@ -1,0 +1,36 @@
+{{- /* sidebar-node — one entry in the navigation tree (called recursively by
+     itself and by sidebar.html). Params: node, current, depth. */ -}}
+{{- $node := .node -}}
+{{- $current := .current -}}
+{{- $depth := .depth -}}
+{{- if not ($node.Params.sidebar.exclude | default false) -}}
+{{- $title := $node.LinkTitle | default (humanize $node.File.ContentBaseName) -}}
+{{- if not $title }}{{ $title = humanize (path.Base (strings.TrimSuffix "/" $node.RelPermalink)) }}{{ end -}}
+{{- $isActive := eq $node.RelPermalink $current.RelPermalink -}}
+{{- $children := slice -}}
+{{- if $node.IsSection -}}
+    {{- range (union $node.Sections $node.RegularPages).ByWeight -}}
+        {{- if not (.Params.sidebar.exclude | default false) }}{{ $children = $children | append . }}{{ end -}}
+    {{- end -}}
+{{- end -}}
+<li class="m-tree__item m-tree__item--d{{ $depth }}">
+    {{- if $children }}
+    {{- /* Only the branch holding the page being read starts open, which keeps
+         the tree short; sidebar.open in front matter is no longer used. */ -}}
+    {{- $open := or $isActive ($current.IsDescendant $node) }}
+    <details class="m-tree__group"{{ if $open }} open{{ end }}>
+        <summary>
+            <a class="m-tree__link{{ if $isActive }} is-active{{ end }}" href="{{ $node.RelPermalink }}" title="{{ $title }}"{{ if $isActive }} aria-current="page"{{ end }}>{{ $title }}</a>
+            <span class="m-tree__chevron" aria-hidden="true"></span>
+        </summary>
+        <ul role="list">
+            {{- range $children }}
+            {{- partial "sidebar-node.html" (dict "node" . "current" $current "depth" (add $depth 1)) }}
+            {{- end }}
+        </ul>
+    </details>
+    {{- else }}
+    <a class="m-tree__link{{ if $isActive }} is-active{{ end }}" href="{{ $node.RelPermalink }}" title="{{ $title }}"{{ if $isActive }} aria-current="page"{{ end }}>{{ $title }}</a>
+    {{- end }}
+</li>
+{{- end -}}

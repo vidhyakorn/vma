@@ -93,6 +93,10 @@ ignoreFiles = ['content/_templates/.*', '\.obsidian/.*']
   # See layouts/_partials/pub-block.html.
   crossrefMailto = 'vidhyakornadam@gmail.com'
 
+  # Left-hand navigation tree (layouts/_partials/sidebar.html), top to bottom.
+  # Each entry is a section or page; sections open into their pages.
+  sidebar = ['/research', '/publications', '/note', '/brv', '/modeling', '/policy', '/philosophy', '/about']
+
   # Social links — icons at the right of the top bar
   # (layouts/_partials/social-links.html; icons in data/icons.yaml).
   # Leave url empty to hide an entry until you have the address.

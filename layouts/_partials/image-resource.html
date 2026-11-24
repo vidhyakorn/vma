@@ -1,0 +1,33 @@
+{{- /* image-resource (project override of no-fate's image-resource.html).
+
+     Finds the image a Markdown picture points at. Adds one case to the
+     theme's version: a path written relative to the note's own folder, as
+     Obsidian writes it — ![…](asset/x.png) in content/note/hanami2026.md
+     finds content/note/asset/x.png (a file of the section, not of the page).
+     Also accepts "../asset/x.png" and "/img/x.png" (static/img, mounted as
+     assets/img in hugo.toml). */ -}}
+{{- $page := .page -}}
+{{- $src := .src | default "" -}}
+{{- $resource := false -}}
+{{- if $src -}}
+    {{- $url := urls.Parse $src -}}
+    {{- if not $url.IsAbs -}}
+        {{- $path := strings.TrimPrefix "./" $url.Path -}}
+        {{- with $page.Resources.GetMatch $path -}}
+            {{- $resource = . -}}
+        {{- else -}}
+            {{- $inSection := strings.TrimPrefix "../" $path -}}
+            {{- with $page.CurrentSection -}}
+                {{- if and (not $page.IsSection) (ne . $page) -}}
+                    {{- with .Resources.GetMatch $inSection }}{{ $resource = . }}{{ end -}}
+                {{- end -}}
+            {{- end -}}
+            {{- if not $resource -}}
+                {{- with resources.GetMatch (strings.TrimPrefix "/" $path) -}}
+                    {{- $resource = . -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+{{- return $resource -}}
